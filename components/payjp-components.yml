@@ -1,0 +1,30 @@
+generated: '2026-07-17'
+method: searched
+source: https://docs.pay.jp/ , https://js.pay.jp/ , https://checkout.pay.jp/
+notes: >-
+  Client-side / embeddable payment UI surfaces PAY.JP provides for collecting
+  card data without raw PANs touching the merchant server. Distinct from the
+  server-side SDKs in packages/payjp-packages.yml.
+components:
+  - family: payjp.js (v2)
+    kind: browser-tokenization-library
+    loader: https://js.pay.jp/v2/pay.js
+    docs: https://docs.pay.jp/v2/guide/basics/how-to-collect-card-information
+    note: >-
+      JavaScript library that mounts secure card input fields (Elements-style)
+      and exchanges entered card data for a single-use token using the
+      publishable key. Supports 3D Secure and Apple Pay flows.
+  - family: Checkout
+    kind: hosted-drop-in-button
+    loader: https://checkout.pay.jp/
+    docs: https://docs.pay.jp/v1/checkout
+    note: >-
+      Drop-in "PAY" button that opens a hosted, PAY.JP-styled card form and
+      returns a token to the surrounding form — the lowest-integration option.
+  - family: Mobile SDK card forms
+    kind: native-ui
+    docs: https://docs.pay.jp/
+    note: >-
+      iOS (PAYJP) and Android (jp.pay:payjp-android-cardform) ship native card
+      input / card-scan UI that tokenizes on-device; catalogued as SDKs in
+      packages/payjp-packages.yml.

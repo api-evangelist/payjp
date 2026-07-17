@@ -1,0 +1,50 @@
+generated: '2026-07-17'
+method: searched
+source: >-
+  https://pay.jp/security (PCI DSS 4.0), https://docs.pay.jp/v1/api/ ,
+  openapi/payjp-openapi.yml
+notes: >-
+  Which industry / cross-cutting standards PAY.JP conforms to. Compliance items
+  (PCI DSS) are searched from https://pay.jp/security; protocol items are derived
+  from the modeled OpenAPI. See security/payjp-trust-center.yml for the published
+  compliance posture.
+standards:
+  - id: pci-dss
+    conforms: true
+    evidence: >-
+      https://pay.jp/security states "PCI DSS 4.0 準拠" (PCI DSS 4.0 compliant).
+      Tokenization (payjp.js / Checkout) keeps raw PANs out of the merchant
+      environment for reduced SAQ scope.
+  - id: emv-3ds
+    conforms: true
+    evidence: 3D Secure (EMV 3DS) supported on charges and stored cards (tds_finish flow).
+  - id: tls
+    conforms: true
+    evidence: HTTPS-only API endpoint (https://api.pay.jp/v1); see security/payjp-domain-security.yml.
+  - id: http-basic-auth
+    conforms: true
+    evidence: openapi securitySchemes basicAuth (HTTP Basic).
+  - id: oauth2
+    conforms: false
+    evidence: No OAuth2 flows; authentication is HTTP Basic with a secret key.
+  - id: oidc
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Errors use a custom {"error": {type, code, message, status, param}} envelope,
+      not application/problem+json.
+  - id: idempotency-keys
+    conforms: false
+    evidence: No Idempotency-Key header documented (see conventions/payjp-conventions.yml).
+  - id: json-api
+    conforms: false
+  - id: fhir
+    conforms: false
+  - id: scim
+    conforms: false
+  - id: odata
+    conforms: false
+  - id: pagination-offset
+    conforms: true
+    evidence: Offset pagination (limit/offset/since/until) across list endpoints.

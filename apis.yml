@@ -15,7 +15,7 @@ tags:
 - Subscriptions
 - Tokenization
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 specificationVersion: '0.19'
 apis:
 - aid: payjp:payjp-charges-api
@@ -221,18 +221,74 @@ common:
   url: agentic-access/payjp-agentic-access.yml
 - type: TrustCenter
   url: security/payjp-trust-center.yml
+- type: Compliance
+  url: https://pay.jp/security
 - type: VulnerabilityDisclosure
   url: security/payjp-vulnerability-disclosure.yml
 - type: DomainSecurity
   url: security/payjp-domain-security.yml
 - type: Authentication
   url: authentication/payjp-authentication.yml
+- type: Conventions
+  url: conventions/payjp-conventions.yml
+- type: Packages
+  url: packages/payjp-packages.yml
+- type: SDKs
+  url: packages/payjp-packages.yml
+- type: MCPServer
+  url: mcp/payjp-mcp.yml
+- type: LLMsTxt
+  url: llms/payjp-llms.txt
+- type: Overlay
+  url: overlays/payjp-openapi-overlay.yaml
+- type: Conformance
+  url: conformance/payjp-conformance.yml
+- type: ErrorCatalog
+  url: errors/payjp-error-codes.yml
+- type: DeclineCodes
+  url: errors/payjp-decline-codes.yml
+- type: Webhooks
+  url: asyncapi/payjp-webhooks.yml
+- type: Sandbox
+  url: sandbox/payjp-sandbox.yml
+- type: DataModel
+  url: data-model/payjp-data-model.yml
+- type: Components
+  url: components/payjp-components.yml
+- type: Lifecycle
+  url: lifecycle/payjp-lifecycle.yml
+- type: StatusPage
+  url: https://status.pay.jp
+- type: Deprecation
+  url: https://pay.jp/info
+- type: ChangeLog
+  url: changelog/payjp-changelog.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Postman
+  url: collections/payjp.postman_collection.json
 - type: GitHubOrganization
   url: https://github.com/payjp
 - type: Website
   url: https://pay.jp/
+- type: DeveloperPortal
+  url: https://docs.pay.jp/
 - type: Documentation
   url: https://docs.pay.jp/v1/
+- type: GettingStarted
+  url: https://docs.pay.jp/v1/started
+- type: Support
+  url: https://help.pay.jp/ja
+- type: Pricing
+  url: https://pay.jp/plan
+- type: SignUp
+  url: https://console.pay.jp/d/signup
+- type: Login
+  url: https://console.pay.jp/d/login
+- type: TermsOfService
+  url: https://pay.jp/legal/tos
+- type: PrivacyPolicy
+  url: https://pay.co.jp/privacy
 - type: Plans
   url: plans/payjp-plans-pricing.yml
 - type: RateLimits

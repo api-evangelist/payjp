@@ -1,0 +1,36 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for PAY.JP
+  version: 1.0.0
+extends: openapi/payjp-openapi.yml
+# Provenance: generated 2026-07-17 by the API Evangelist enrichment pipeline.
+# Captures our enrichment metadata as a non-destructive Overlay; the original
+# modeled OpenAPI is never mutated. Cross-references the artifacts produced this
+# round so downstream tooling can find them from the spec.
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-enriched: '2026-07-17'
+      x-apievangelist-artifacts:
+        authentication: authentication/payjp-authentication.yml
+        conventions: conventions/payjp-conventions.yml
+        errors: errors/payjp-error-codes.yml
+        decline_codes: errors/payjp-decline-codes.yml
+        webhooks: asyncapi/payjp-webhooks.yml
+        sandbox: sandbox/payjp-sandbox.yml
+        lifecycle: lifecycle/payjp-lifecycle.yml
+        changelog: changelog/payjp-changelog.yml
+        components: components/payjp-components.yml
+        data_model: data-model/payjp-data-model.yml
+        conformance: conformance/payjp-conformance.yml
+        packages: packages/payjp-packages.yml
+  - target: $.info
+    update:
+      x-payjp-currency: JPY
+      x-payjp-auth: HTTP Basic (secret key as username, empty password)
+      x-payjp-idempotency: not-supported
+      x-payjp-pagination: offset (limit/offset/since/until)
+  - target: $.components.securitySchemes.basicAuth
+    update:
+      x-key-prefixes: [sk_test_, sk_live_]
+      x-client-side-key: publishable key (pk_test_ / pk_live_) via payjp.js / Checkout

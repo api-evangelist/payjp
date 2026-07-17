@@ -1,0 +1,61 @@
+generated: '2026-07-17'
+method: searched
+type: Webhooks
+source: >-
+  https://docs.pay.jp/v1/webhook and the event type map in
+  https://github.com/payjp/payjp-go/blob/master/v1/event.go
+notes: >-
+  PAY.JP does not publish an AsyncAPI document. It delivers system Event objects
+  to merchant-configured webhook endpoints as HTTP POST with a JSON Event body.
+  This is the honest webhook catalog (no fabricated AsyncAPI spec). Events are
+  also readable via the REST Events API (listEvents / retrieveEvent).
+delivery:
+  transport: HTTP POST
+  content_type: application/json
+  success_status: HTTP 200 required (empty body acceptable)
+  retry: Non-2xx responses are retried at 3-minute intervals, up to 3 times.
+  configuration: Endpoint URLs are registered in the PAY.JP dashboard (console.pay.jp).
+signature:
+  header: X-Payjp-Webhook-Token
+  scheme: >-
+    Account-specific token ID. The receiver verifies the header value matches the
+    webhook token configured for its account to confirm the request is genuine.
+event_object:
+  fields:
+    id: Event identifier
+    object: Always "event"
+    type: Event type string (see event_types)
+    created: Unix timestamp
+    livemode: Boolean (true = live, false = test)
+    pending_webhooks: Count of endpoints still awaiting delivery
+    data: Container for the related resource (charge, customer, subscription, ...)
+event_types:
+  charges:
+    - charge.succeeded
+    - charge.failed
+    - charge.updated
+    - charge.refunded
+    - charge.captured
+  tokens:
+    - token.create
+  customers:
+    - customer.created
+    - customer.updated
+    - customer.deleted
+    - customer.card.created
+    - customer.card.updated
+    - customer.card.deleted
+  plans:
+    - plan.created
+    - plan.updated
+    - plan.deleted
+  subscriptions:
+    - subscription.created
+    - subscription.updated
+    - subscription.deleted
+    - subscription.paused
+    - subscription.resumed
+    - subscription.canceled
+    - subscription.renewed
+  transfers:
+    - transfer.succeeded

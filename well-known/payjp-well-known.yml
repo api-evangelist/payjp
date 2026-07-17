@@ -1,0 +1,34 @@
+generated: '2026-07-17'
+method: searched
+notes: >-
+  Probed the /.well-known/ discovery surface and llms.txt on the pay.jp,
+  api.pay.jp, and docs.pay.jp hosts (2026-07-17). None are published — every path
+  returned HTTP 404. This is an honest record of absence; no raw files were saved.
+hosts:
+  - host: https://pay.jp
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /llms.txt, status: 404}
+      - {path: /llms-full.txt, status: 404}
+  - host: https://api.pay.jp
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /llms.txt, status: 404}
+      - {path: /llms-full.txt, status: 404}
+  - host: https://docs.pay.jp
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /llms.txt, status: 404}
+      - {path: /llms-full.txt, status: 404}

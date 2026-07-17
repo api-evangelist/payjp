@@ -1,0 +1,63 @@
+generated: '2026-07-17'
+method: searched
+source: https://docs.pay.jp/v1/api/
+notes: >-
+  Cross-cutting request/response semantics for the PAY.JP REST API, captured from
+  the public reference and derived from openapi/payjp-openapi.yml. Cross-links:
+  authentication/payjp-authentication.yml, errors/payjp-error-codes.yml,
+  errors/payjp-decline-codes.yml, rate-limits/payjp-rate-limits.yml,
+  lifecycle/payjp-lifecycle.yml.
+authentication:
+  style: HTTP Basic
+  detail: >-
+    Secret key (sk_test_ / sk_live_) as the Basic username, empty password.
+    Client-side tokenization uses the publishable key (pk_test_ / pk_live_).
+  ref: authentication/payjp-authentication.yml
+idempotency:
+  supported: false
+  note: >-
+    PAY.JP does not document an Idempotency-Key header or any request-dedup
+    mechanism. Single-use tokens (token_already_used) provide a narrow guard
+    against double-charging a single token, but there is no general idempotency
+    contract. Callers must dedup client-side.
+pagination:
+  style: offset
+  params:
+    limit: 1-100, default 10
+    offset: default 0
+    since: Unix timestamp lower bound (created_at)
+    until: Unix timestamp upper bound (created_at)
+  ordering: Reverse chronological (most recently created first).
+  response_fields:
+    object: '"list"'
+    count: Total count
+    has_more: Boolean
+    url: Resource collection path
+    data: Array of objects
+currency:
+  code: JPY only
+  amount_format: Integer minor units are not used — amounts are whole yen integers.
+metadata:
+  supported: true
+  limits:
+    max_keys: 20
+    max_value_length: 500
+data_formats:
+  request: application/x-www-form-urlencoded
+  response: application/json
+  timestamps: Unix epoch seconds
+request_tracing:
+  request_id_header: null
+  note: No documented X-Request-Id / request-id response header.
+versioning:
+  scheme: uri-path
+  current: v1
+  ref: lifecycle/payjp-lifecycle.yml
+error_envelope:
+  shape: '{"error": {"type", "code", "message", "status", "param"}}'
+  format: payjp-error-object (not RFC 9457)
+  ref: errors/payjp-error-codes.yml
+rate_limit_signaling:
+  mechanism: HTTP 429 with error.code over_capacity
+  zones: Per-zone req/sec limits (pk / payment / sk); see rate-limits/payjp-rate-limits.yml
+  ref: rate-limits/payjp-rate-limits.yml

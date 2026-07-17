@@ -1,0 +1,93 @@
+generated: '2026-07-17'
+method: searched
+source: >-
+  Public package registries (npm, PyPI, RubyGems, Packagist, Maven Central,
+  CocoaPods) and the payjp GitHub org (https://github.com/payjp). All libraries
+  below are authored/published by PAY.JP (PAY, Inc.) and are first-party.
+packages:
+  - language: javascript
+    registry: npm
+    name: payjp
+    url: https://www.npmjs.com/package/payjp
+    version: 3.1.2
+    install: npm install payjp
+    repo: https://github.com/payjp/payjp-node
+    official: true
+    note: Server-side Node.js / TypeScript SDK (author PAY.JP <support@pay.jp>).
+  - language: python
+    registry: pypi
+    name: payjp
+    url: https://pypi.org/project/payjp/
+    version: 1.6.1
+    install: pip install payjp
+    repo: https://github.com/payjp/payjp-python
+    official: true
+    note: PAY.JP Python bindings.
+  - language: ruby
+    registry: rubygems
+    name: payjp
+    url: https://rubygems.org/gems/payjp
+    version: 1.1.7
+    install: gem install payjp
+    repo: https://github.com/payjp/payjp-ruby
+    official: true
+    note: Ruby gem, ~1.9M downloads.
+  - language: php
+    registry: packagist
+    name: payjp/payjp-php
+    url: https://packagist.org/packages/payjp/payjp-php
+    version: 1.8.0
+    install: composer require payjp/payjp-php
+    repo: https://github.com/payjp/payjp-php
+    official: true
+    note: Payjp PHP Library.
+  - language: java
+    registry: maven-central
+    name: jp.pay:payjp-java
+    url: https://central.sonatype.com/artifact/jp.pay/payjp-java
+    version: 0.8.0
+    install: "implementation 'jp.pay:payjp-java:0.8.0'"
+    repo: https://github.com/payjp/payjp-java
+    official: true
+    note: Server-side Java SDK.
+  - language: kotlin
+    registry: maven-central
+    name: jp.pay:payjp-android
+    url: https://central.sonatype.com/artifact/jp.pay/payjp-android
+    version: 2.2.0
+    install: "implementation 'jp.pay:payjp-android:2.2.0'"
+    repo: https://github.com/payjp/payjp-android
+    official: true
+    note: >-
+      Android SDK (client-side tokenization). Companion artifacts under jp.pay:
+      payjp-android-core, -cardform, -cardio, -coroutine, -verifier.
+  - language: swift
+    registry: cocoapods
+    name: PAYJP
+    url: https://cocoapods.org/pods/PAYJP
+    install: "pod 'PAYJP'"
+    repo: https://github.com/payjp/payjp-ios
+    official: true
+    note: iOS SDK (client-side tokenization, Apple Pay).
+  - language: go
+    registry: github
+    name: github.com/payjp/payjp-go
+    url: https://github.com/payjp/payjp-go
+    install: go get github.com/payjp/payjp-go/v1
+    repo: https://github.com/payjp/payjp-go
+    official: true
+    note: Go SDK (module distributed via GitHub, not a central registry).
+  - language: perl
+    registry: github
+    name: payjp-perl
+    url: https://github.com/payjp/payjp-perl
+    repo: https://github.com/payjp/payjp-perl
+    official: true
+    note: Perl bindings (source-only on GitHub).
+client_side:
+  - name: payjp.js
+    url: https://js.pay.jp/
+    note: Browser tokenization library (loaded from https://js.pay.jp/v2/pay.js).
+  - name: Checkout
+    url: https://checkout.pay.jp/
+    note: Hosted, drop-in payment form / button.

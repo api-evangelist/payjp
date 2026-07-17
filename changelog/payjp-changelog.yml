@@ -1,0 +1,47 @@
+generated: '2026-07-17'
+method: searched
+source: https://pay.jp/info
+notes: >-
+  PAY.JP publishes dated product/API announcements (お知らせ) at https://pay.jp/info
+  rather than a semantic-versioned changelog. Entries below are the recent window
+  captured verbatim (dates as published, YYYY.MM.DD). This is not full history —
+  the live announcements page is the source of truth.
+scheme: dated-announcements
+current_version: v1
+entries:
+  - date: '2026-07-17'
+    breaking: false
+    highlight: Card registration validity-check amount changed from ¥11 to ¥0.
+  - date: '2026-07-08'
+    breaking: false
+    highlight: Apple Pay domain-authentication file update notice.
+  - date: '2026-06-22'
+    breaking: true
+    highlight: Key-name changes in v2 API Webhook event payloads.
+  - date: '2026-04-16'
+    breaking: false
+    highlight: Golden Week 2026 holiday closure announcement.
+  - date: '2026-04-15'
+    breaking: true
+    highlight: Card object address_zip_check specification change notice.
+  - date: '2026-03-27'
+    breaking: false
+    highlight: Privacy policy update effective 2026-04-10.
+  - date: '2026-03-18'
+    breaking: false
+    highlight: API v1 test mode now supports authorization-period verification.
+  - date: '2026-03-03'
+    breaking: true
+    highlight: Foreign-issued cards authorization period limited to "maximum 7 days" (planned August 2026).
+  - date: '2026-02-19'
+    breaking: false
+    highlight: Apple Pay token specification changes (release moved to February 26).
+  - date: '2026-02-12'
+    breaking: false
+    highlight: '"PayPay" added as a new payment method.'
+  - date: '2026-02-03'
+    breaking: false
+    highlight: Apple Pay token specification partial modifications.
+  - date: '2025-11-27'
+    breaking: false
+    highlight: Year-end / New Year holiday closure notice.

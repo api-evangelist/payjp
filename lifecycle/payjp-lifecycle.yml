@@ -1,0 +1,31 @@
+generated: '2026-07-17'
+method: searched
+source: >-
+  https://docs.pay.jp/v1/api/ , https://pay.jp/info (dated announcements),
+  https://status.pay.jp (Statuspage)
+notes: >-
+  PAY.JP versions its API by URI path (/v1, with a newer /v2 guide surface). It
+  does not publish a formal RFC 8594 Sunset/Deprecation-header policy; deprecations
+  are communicated as dated notices on https://pay.jp/info with effective dates.
+versioning:
+  scheme: uri-path
+  current: v1
+  also: v2 (developer guides at https://docs.pay.jp/v2/)
+  docs: https://docs.pay.jp/v1/api/
+deprecation:
+  policy_url: https://pay.jp/info
+  sunset_header: false
+  mechanism: >-
+    Dated advance notices on the announcements page with an effective date; no
+    machine-readable Sunset/Deprecation headers.
+  recent_examples:
+    - date: '2026-04-15'
+      change: Card object address_zip_check specification change; validity-check amount ¥11 -> ¥0 (effective 2026-07-17).
+    - date: '2026-03-03'
+      change: Foreign-issued card authorization period capped at "maximum 7 days" (planned August 2026).
+status_page: https://status.pay.jp
+status_page_provider: Atlassian Statuspage (payjp.statuspage.io)
+sla:
+  url: null
+  note: No public numeric uptime SLA located; incident history is on the status page.
+deprecated_operations: []

@@ -1,0 +1,20 @@
+generated: '2026-07-17'
+method: generated
+source: openapi/payjp-openapi.yml (operationIds grounded), conventions/ + errors/ + asyncapi/
+skills:
+  - file: payjp-tokenize-and-charge.md
+    name: Tokenize a card and create a charge
+    api: openapi/payjp-openapi.yml
+    operations: [createToken, createCharge, retrieveCharge]
+  - file: payjp-customer-subscription.md
+    name: Create a customer, plan, and subscription
+    api: openapi/payjp-openapi.yml
+    operations: [createToken, createCustomer, createCustomerCard, createPlan, createSubscription, cancelSubscription]
+  - file: payjp-authorize-capture-refund.md
+    name: Authorize, capture, and refund a charge
+    api: openapi/payjp-openapi.yml
+    operations: [createCharge, captureCharge, reauthCharge, retrieveCharge, refundCharge]
+  - file: payjp-handle-webhooks.md
+    name: Receive and verify PAY.JP webhooks
+    api: openapi/payjp-openapi.yml
+    operations: [listEvents, retrieveEvent]

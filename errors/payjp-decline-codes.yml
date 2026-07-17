@@ -1,0 +1,64 @@
+generated: '2026-07-17'
+method: searched
+source: https://docs.pay.jp/v1/api/ and https://docs.pay.jp/v1/testcard
+notes: >-
+  Card-processing decline / failure codes returned by PAY.JP. These appear as
+  `error.code` with `error.type` = card_error and typically HTTP 402 (some at
+  token creation return 400). They complement — do not replace — the full API
+  error registry in errors/payjp-error-codes.yml. Each code below is reproducible
+  with the matching test card in sandbox/payjp-sandbox.yml. Buyer-facing messages
+  are intentionally generic; the specific reason is only in the API response.
+envelope_field: error.code
+error_type: card_error
+http_status: 402
+masked_to_buyer:
+  note: >-
+    Precise decline reasons (issuer decline vs. limit vs. fraud lock) are not
+    surfaced to the cardholder; the checkout UI shows a generic failure. The
+    granular code is available server-side only.
+decline_codes:
+  - code: card_declined
+    meaning: The issuer rejected the transaction (generic decline / limit / suspected fraud).
+    action: Ask the cardholder to contact their issuer or try another card.
+    test_card: '4000000000000002 (token), 4000000000080319 (payment)'
+  - code: expired_card
+    meaning: The card is past its expiration date.
+    action: Ask the cardholder to use a card that has not expired.
+    test_card: '4000000000000069 (token), 4000000000004012 (payment)'
+  - code: incorrect_card_data
+    meaning: One or more card fields (number, CVC, expiry, name) are incorrect.
+    action: Re-collect the card details and retry.
+    test_card: '4000000000000127, 4000003720000278 (token), 4000000000000077 (payment)'
+  - code: processing_error
+    meaning: A network / payment-gateway level processing failure occurred.
+    action: Retry after a short delay; if persistent, contact PAY.JP support.
+    test_card: '4000000000000119'
+  - code: unacceptable_brand
+    meaning: The card brand is not permitted for this merchant account.
+    action: Ask the cardholder to use a supported brand.
+    test_card: '36227206271667'
+  - code: card_flagged
+    meaning: Temporary lockout after repeated card errors on the account/card.
+    action: Wait before retrying; excessive retries extend the lock.
+  - code: invalid_number
+    meaning: The card number is malformed (fails format/Luhn check).
+    action: Re-collect a valid card number.
+  - code: invalid_cvc
+    meaning: The security code is invalid.
+    action: Re-collect the CVC.
+  - code: invalid_expiry_month
+    meaning: The expiration month is invalid.
+    action: Re-collect the expiry.
+  - code: invalid_expiry_year
+    meaning: The expiration year is invalid.
+    action: Re-collect the expiry.
+status_check_codes:
+  note: Returned on the card object (not a hard decline) via cvc_check / address_zip_check.
+  checks:
+    - field: cvc_check
+      values: [passed, failed, unavailable, unchecked]
+      test_card: '4000000000000101 (failed), 4000000000000044 (unavailable)'
+    - field: address_zip_check
+      values: [passed, failed, unavailable, unchecked]
+      note: Deprecated after 2026/05/11 (validity-check amount changed from ¥11 to ¥0).
+      test_card: '4000000000000036 (failed)'

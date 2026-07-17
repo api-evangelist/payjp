@@ -1,0 +1,85 @@
+generated: '2026-07-17'
+method: derived
+source: openapi/payjp-openapi.yml , https://docs.pay.jp/v1/api/
+notes: >-
+  Entity-relationship graph derived from the PAY.JP object reference and the
+  modeled OpenAPI. id-prefixes are captured from the docs where published.
+entities:
+  - name: charge
+    id_prefix: ch_
+    domain: payments
+    key_fields: [amount, currency, paid, captured, refunded, card, customer, subscription]
+  - name: customer
+    id_prefix: cus_
+    domain: billing
+    key_fields: [email, description, default_card, cards, subscriptions]
+  - name: card
+    id_prefix: car_
+    domain: vault
+    key_fields: [brand, last4, exp_month, exp_year, customer, cvc_check, address_zip_check]
+  - name: token
+    id_prefix: tok_
+    domain: tokenization
+    key_fields: [card, used, livemode]
+  - name: plan
+    id_prefix: pln_
+    domain: recurring
+    key_fields: [amount, currency, interval, trial_days, billing_day]
+  - name: subscription
+    id_prefix: sub_
+    domain: recurring
+    key_fields: [customer, plan, status, current_period_start, current_period_end]
+  - name: transfer
+    id_prefix: tr_
+    domain: payouts
+    key_fields: [amount, status, term_start, term_end, charges]
+  - name: statement
+    id_prefix: st_
+    domain: reporting
+    key_fields: [title, tenant_id, items]
+  - name: balance
+    id_prefix: ba_
+    domain: reporting
+    key_fields: [state, closed, net, statements]
+  - name: term
+    id_prefix: tm_
+    domain: reporting
+    key_fields: [start_at, end_at, charge_count, refund_count]
+  - name: event
+    id_prefix: evnt_
+    domain: events
+    key_fields: [type, data, pending_webhooks, livemode]
+  - name: three_d_secure_request
+    id_prefix: tdsr_
+    domain: authentication
+    key_fields: [resource_id, state, expired_at, finished_at]
+  - name: tenant
+    id_prefix: null
+    domain: platform
+    key_fields: [name, platform_fee_rate, bank_account, application_fee_rate]
+  - name: tenant_transfer
+    id_prefix: ten_tr_
+    domain: platform
+    key_fields: [tenant_id, amount, status, term_start, term_end]
+  - name: account
+    id_prefix: acct_
+    domain: merchant
+    key_fields: [merchant, customer, email]
+relationships:
+  - {from: customer, to: card, type: has_many, via: cards}
+  - {from: customer, to: card, type: has_one, via: default_card}
+  - {from: customer, to: subscription, type: has_many, via: subscriptions}
+  - {from: card, to: customer, type: belongs_to, via: customer}
+  - {from: token, to: card, type: has_one, via: card}
+  - {from: charge, to: customer, type: belongs_to, via: customer}
+  - {from: charge, to: card, type: has_one, via: card}
+  - {from: charge, to: subscription, type: belongs_to, via: subscription}
+  - {from: subscription, to: customer, type: belongs_to, via: customer}
+  - {from: subscription, to: plan, type: belongs_to, via: plan}
+  - {from: transfer, to: charge, type: has_many, via: charges}
+  - {from: balance, to: statement, type: has_many, via: statements}
+  - {from: statement, to: tenant, type: belongs_to, via: tenant_id}
+  - {from: event, to: charge, type: has_one, via: data}
+  - {from: three_d_secure_request, to: charge, type: belongs_to, via: resource_id}
+  - {from: tenant_transfer, to: tenant, type: belongs_to, via: tenant_id}
+  - {from: account, to: customer, type: has_one, via: customer}

@@ -1,0 +1,52 @@
+# PAY.JP
+
+> PAY.JP is an online payment service operated by PAY, Inc. (PAY株式会社) in Japan. Its Stripe-style REST API lets merchants create charges, tokenize cards, manage customers, run subscriptions (定期課金), and settle transfers (入金) in Japanese yen (JPY only). Authentication is HTTP Basic with a secret key (sk_test_ / sk_live_). No official OpenAPI or MCP server is published; this profile is maintained by API Evangelist.
+
+## APIs
+
+- [Charges API](https://docs.pay.jp/v1/api/): Create, capture, re-authorize, and refund one-time and subscription charges (two-step auth/capture, 3D Secure).
+- [Customers API](https://docs.pay.jp/v1/customer): Store tokenized cards for recurring and one-click billing.
+- [Cards API](https://docs.pay.jp/v1/api/): Attach and manage stored cards on a customer.
+- [Tokens API](https://docs.pay.jp/v1/api/): Single-use card tokens created client-side with the publishable key.
+- [Plans API](https://docs.pay.jp/v1/api/): Recurring billing plans (amount, interval, trial, billing day).
+- [Subscriptions API](https://docs.pay.jp/v1/subscription): Recurring billing (定期課金) with pause/resume/cancel.
+- [Transfers API](https://docs.pay.jp/v1/api/): Read payouts (入金) settled to the merchant bank account.
+- [Statements & Balances API](https://docs.pay.jp/v1/api/): Transaction statements, aggregation terms, and balances with signed CSV export.
+- [Events & Webhooks API](https://docs.pay.jp/v1/webhook): System Event objects backing the webhook system.
+- [3D Secure API](https://docs.pay.jp/v1/api/): EMV 3DS cardholder authentication on charges and cards.
+- [Platform API (Tenants)](https://pay.jp/docs/platform-payment): Beta marketplace onboarding and split payouts.
+- [Account API](https://docs.pay.jp/v1/api/): Retrieve the authenticated merchant account.
+
+## Specs & artifacts
+
+- [OpenAPI (modeled)](openapi/payjp-openapi.yml)
+- [Authentication](authentication/payjp-authentication.yml)
+- [API conventions](conventions/payjp-conventions.yml)
+- [Error codes](errors/payjp-error-codes.yml)
+- [Decline codes](errors/payjp-decline-codes.yml)
+- [Webhook event catalog](asyncapi/payjp-webhooks.yml)
+- [Sandbox / test cards](sandbox/payjp-sandbox.yml)
+- [Data model](data-model/payjp-data-model.yml)
+- [Lifecycle](lifecycle/payjp-lifecycle.yml)
+- [Changelog](changelog/payjp-changelog.yml)
+- [Packages / SDKs](packages/payjp-packages.yml)
+- [Embedded components](components/payjp-components.yml)
+- [Conformance](conformance/payjp-conformance.yml)
+
+## Docs
+
+- [API Reference](https://docs.pay.jp/v1/api/)
+- [Getting started](https://docs.pay.jp/v1/started)
+- [Test cards](https://docs.pay.jp/v1/testcard)
+- [Security (PCI DSS 4.0)](https://pay.jp/security)
+- [Pricing](https://pay.jp/plan)
+- [Help center](https://help.pay.jp/ja)
+- [Status](https://status.pay.jp)
+- [GitHub org](https://github.com/payjp)
+
+## Notes
+
+- Currency is JPY only; amounts are whole-yen integers.
+- No Idempotency-Key header is documented — dedup client-side.
+- Pagination is offset-based (limit 1-100 default 10, offset, since, until).
+- Errors use a custom {"error": {type, code, message, status, param}} envelope (not RFC 9457).

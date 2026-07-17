@@ -1,0 +1,78 @@
+generated: '2026-07-17'
+method: searched
+source: https://docs.pay.jp/v1/testcard
+notes: >-
+  PAY.JP separates test and live via key prefix; there is no separate sandbox
+  host — the same https://api.pay.jp/v1 endpoint runs in test mode when called
+  with a test secret key. All values below are published verbatim in the docs;
+  none are invented. Arbitrary cardholder name and other free-text fields may be
+  sent in test mode. Test mode rate limit is 2 req/sec across all zones.
+modes:
+  test:
+    secret_key_prefix: sk_test_
+    publishable_key_prefix: pk_test_
+    note: Charges/tokens created with a test key have livemode=false and never move real money.
+  live:
+    secret_key_prefix: sk_live_
+    publishable_key_prefix: pk_live_
+test_cards:
+  success:
+    - number: '4242424242424242'
+      brand: Visa
+    - number: '4012888888881881'
+      brand: Visa
+    - number: '5555555555554444'
+      brand: Mastercard
+    - number: '5105105105105100'
+      brand: Mastercard
+    - number: '3530111333300000'
+      brand: JCB
+    - number: '3566002020360505'
+      brand: JCB
+    - number: '378282246310005'
+      brand: American Express
+    - number: '371449635398431'
+      brand: American Express
+    - number: '38520000023237'
+      brand: Diners Club
+    - number: '30569309025904'
+      brand: Diners Club
+    - number: '6011111111111117'
+      brand: Discover
+    - number: '6011000990139424'
+      brand: Discover
+    - number: '4000000900000003'
+      brand: Visa
+      behavior: >-
+        Overseas-issued card; authorization validity beyond 7 days is shortened to 7 days.
+  error_at_token_creation:
+    - number: '4000000000000002'
+      error_code: card_declined
+    - number: '4000000000000069'
+      error_code: expired_card
+    - number: '4000000000000127'
+      error_code: incorrect_card_data
+    - number: '4000000000000119'
+      error_code: processing_error
+    - number: '4000003720000278'
+      error_code: incorrect_card_data
+    - number: '36227206271667'
+      error_code: unacceptable_brand
+  error_at_payment:
+    - number: '4000000000080319'
+      error_code: card_declined
+    - number: '4000000000004012'
+      error_code: expired_card
+    - number: '4000000000080202'
+      error_code: card_declined
+      condition: amounts exceeding ¥10,000
+    - number: '4000000000000077'
+      error_code: incorrect_card_data
+  status_checks:
+    - number: '4000000000000036'
+      status: address_zip_check=failed
+      note: deprecated after 2026/05/11
+    - number: '4000000000000101'
+      status: cvc_check=failed
+    - number: '4000000000000044'
+      status: cvc_check=unavailable

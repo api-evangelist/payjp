@@ -1,0 +1,144 @@
+generated: '2026-07-17'
+method: searched
+source: https://docs.pay.jp/v1/api/
+format: payjp-error-object
+notes: >-
+  PAY.JP returns a single top-level `error` object (not RFC 9457
+  application/problem+json). Card-specific decline codes are catalogued
+  separately in errors/payjp-decline-codes.yml. All codes below are published in
+  the PAY.JP API reference.
+envelope:
+  shape: '{"error": {"type": ..., "code": ..., "message": ..., "status": ..., "param": ...}}'
+  fields:
+    type: High-level error class (see error_types).
+    code: Machine-readable error code (see codes).
+    message: Human-readable Japanese message.
+    status: Duplicated HTTP status code.
+    param: The offending request parameter, when applicable.
+error_types:
+  - id: client_error
+    meaning: Request validation failures.
+  - id: card_error
+    meaning: Card processing issues.
+  - id: auth_error
+    meaning: Authentication failures (invalid/missing API key).
+  - id: invalid_request_error
+    meaning: Invalid request format.
+  - id: not_allowed_method_error
+    meaning: Unsupported HTTP method.
+  - id: server_error
+    meaning: PAY.JP or network infrastructure failure.
+http_status:
+  '200': Success
+  '400': Request error (invalid parameters, missing resources)
+  '401': Authentication error (invalid API key)
+  '402': Card processing error
+  '404': Resource not found
+  '429': Rate limit exceeded (code over_capacity)
+  '500': Server-side failure
+codes:
+  card_information:
+    - {code: invalid_number, meaning: Malformed card number}
+    - {code: incorrect_card_data, meaning: One or more card fields incorrect}
+    - {code: invalid_cvc, meaning: Invalid security code}
+    - {code: invalid_expiry_month, meaning: Invalid month value}
+    - {code: invalid_expiry_year, meaning: Invalid year value}
+    - {code: expired_card, meaning: Card past expiration}
+  request_parameters:
+    - {code: invalid_id, meaning: Malformed ID}
+    - {code: invalid_api_key, meaning: Authentication key invalid}
+    - {code: no_api_key, meaning: Missing authentication}
+    - {code: invalid_plan, meaning: Nonexistent or invalid plan}
+    - {code: invalid_expiry_days, meaning: Invalid authorization hold duration}
+    - {code: unnecessary_expiry_days, meaning: Parameter not applicable}
+    - {code: invalid_flexible_id, meaning: ID violates naming rules}
+    - {code: invalid_timestamp, meaning: Malformed Unix timestamp}
+    - {code: invalid_trial_end, meaning: Invalid trial end date}
+    - {code: invalid_string_length, meaning: Text exceeds limits}
+    - {code: invalid_country, meaning: Invalid country code}
+    - {code: invalid_currency, meaning: Currency not supported}
+    - {code: invalid_address_zip, meaning: Invalid postal code}
+    - {code: invalid_amount, meaning: Amount outside valid range}
+    - {code: invalid_plan_amount, meaning: Plan amount invalid}
+    - {code: invalid_customer, meaning: Nonexistent customer}
+    - {code: invalid_boolean, meaning: Non-boolean value}
+    - {code: invalid_email, meaning: Malformed email address}
+    - {code: invalid_querystring, meaning: Malformed query parameters}
+    - {code: invalid_param_key, meaning: Disallowed parameter specified}
+    - {code: invalid_owner_type, meaning: Invalid owner parameter value}
+  missing_data:
+    - {code: no_allowed_param, meaning: Parameter not permitted}
+    - {code: no_param, meaning: No parameters provided}
+    - {code: missing_param, meaning: Required parameter absent}
+    - {code: no_payment_method, meaning: No payment method specified}
+    - {code: no_allowed_method, meaning: HTTP method not allowed}
+  payment_processing:
+    - {code: payment_method_duplicate, meaning: Multiple payment methods specified}
+    - {code: payment_method_duplicate_including_customer, meaning: Duplicate including customer}
+    - {code: failed_payment, meaning: Referenced payment failed}
+    - {code: invalid_refund_amount, meaning: Refund amount invalid}
+    - {code: already_refunded, meaning: Payment already fully refunded}
+    - {code: invalid_amount_to_not_captured, meaning: Cannot partially refund uncaptured payment}
+    - {code: refund_amount_gt_net, meaning: Refund exceeds original amount}
+    - {code: capture_amount_gt_net, meaning: Capture exceeds original amount}
+    - {code: invalid_refund_reason, meaning: Invalid refund reason text}
+    - {code: already_captured, meaning: Payment already confirmed}
+    - {code: cant_capture_refunded_charge, meaning: Cannot confirm refunded payment}
+    - {code: cant_reauth_refunded_charge, meaning: Cannot re-authorize refunded payment}
+    - {code: charge_expired, meaning: Authorization hold expired}
+    - {code: operation_not_allowed_on_no_authorized_charge, meaning: Operation requires authorization}
+  subscription_plan:
+    - {code: invalid_interval, meaning: Invalid billing cycle}
+    - {code: invalid_trial_days, meaning: Invalid trial duration}
+    - {code: invalid_billing_day, meaning: Invalid billing day}
+    - {code: billing_day_for_non_monthly_plan, meaning: Day only for monthly plans}
+    - {code: exist_subscribers, meaning: Cannot delete plan with active subscriptions}
+    - {code: already_subscribed, meaning: Customer already subscribed}
+    - {code: already_canceled, meaning: Subscription already canceled}
+    - {code: already_paused, meaning: Subscription already paused}
+    - {code: subscription_worked, meaning: Subscription already active}
+    - {code: cannot_change_prorate_status, meaning: Proration only changeable during plan update}
+  data_management:
+    - {code: already_exist_id, meaning: ID already exists}
+    - {code: token_already_used, meaning: Token previously consumed}
+    - {code: already_have_card, meaning: Customer already holds card}
+    - {code: dont_has_this_card, meaning: Customer lacks specified card}
+    - {code: doesnt_have_card, meaning: Customer has no default card}
+    - {code: already_have_the_same_card, meaning: Duplicate card number/expiration}
+    - {code: not_customer_card, meaning: Card not registered to customer or deleted}
+    - {code: missing_card, meaning: Customer has no default card}
+    - {code: invalid_card, meaning: Malformed card reference}
+    - {code: invalid_card_name, meaning: Invalid cardholder name}
+    - {code: invalid_card_country, meaning: Invalid country code}
+    - {code: invalid_card_address_zip, meaning: Invalid postal code}
+    - {code: invalid_card_address_state, meaning: Invalid prefecture}
+    - {code: invalid_card_address_city, meaning: Invalid city}
+    - {code: invalid_card_address_line, meaning: Invalid street address}
+  metadata:
+    - {code: too_many_metadata_keys, meaning: Exceeds 20-key limit}
+    - {code: invalid_metadata_key, meaning: Key violates format rules}
+    - {code: invalid_metadata_value, meaning: Value exceeds 500 characters}
+  three_d_secure:
+    - {code: three_d_secure_incompleted, meaning: 3DS not completed}
+    - {code: three_d_secure_failed, meaning: 3DS authentication failed}
+    - {code: not_in_three_d_secure_flow, meaning: Not currently in 3DS flow or timed out}
+    - {code: unverified_token, meaning: Token lacks 3DS completion}
+    - {code: three_d_secure_expired, meaning: 3DS authentication window closed}
+    - {code: invalid_three_d_secure_state, meaning: Improper 3DS state transition}
+  apple_pay:
+    - {code: apple_pay_disabled_in_livemode, meaning: Apple Pay not enabled for production}
+    - {code: invalid_apple_pay_token, meaning: Malformed Apple Pay token}
+    - {code: applepay_token_not_registrable, meaning: Apple Pay tokens cannot be registered to customers}
+    - {code: applepay_card_not_reusable, meaning: Customer-registered Apple Pay cards cannot be reused}
+  environment:
+    - {code: test_card_on_livemode, meaning: Test card used in production}
+    - {code: not_activated_account, meaning: Production not authorized}
+  refund_chargeback:
+    - {code: refund_limit_exceeded, meaning: Past 180-day refund deadline}
+    - {code: cannot_prorated_refund_of_subscription, meaning: Refund deadline expired}
+    - {code: chargeback, meaning: Chargeback proceedings active}
+  infrastructure:
+    - {code: payjp_wrong, meaning: PAY.JP server error}
+    - {code: pg_wrong, meaning: Payment gateway error}
+    - {code: not_found, meaning: Resource does not exist}
+    - {code: over_capacity, meaning: Rate limit reached (HTTP 429)}
