@@ -1,0 +1,343 @@
+generated: '2026-07-17'
+method: generated
+source: openapi/payjp-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this payments API to AI agents — review
+  and bind audience per deployment. Because these operations move money in JPY, charge, refund,
+  capture, subscription, and tenant writes are flagged human-in-the-loop required by default.
+  See research/curity/agentic-governance/.
+summary:
+  operations: 24
+  by_action_class:
+    acting: 15
+    connected: 9
+  by_consequence:
+    write: 15
+    read: 9
+  human_in_the_loop_required: 6
+operations:
+- path: /charges
+  method: post
+  operationId: createCharge
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+    escalation:
+      human-in-the-loop: required
+      triggers:
+      - money-movement
+      - high-value
+    audit: required
+- path: /charges
+  method: get
+  operationId: listCharges
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /charges/{id}/refund
+  method: post
+  operationId: refundCharge
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+    escalation:
+      human-in-the-loop: required
+      triggers:
+      - money-movement
+      - high-value
+    audit: required
+- path: /charges/{id}/capture
+  method: post
+  operationId: captureCharge
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+    escalation:
+      human-in-the-loop: required
+      triggers:
+      - money-movement
+    audit: required
+- path: /charges/{id}
+  method: get
+  operationId: retrieveCharge
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tokens
+  method: post
+  operationId: createToken
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - pii
+      - card-data
+    audit: required
+- path: /customers
+  method: post
+  operationId: createCustomer
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - pii
+    audit: required
+- path: /customers
+  method: get
+  operationId: listCustomers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: required
+- path: /customers/{id}
+  method: delete
+  operationId: deleteCustomer
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+    escalation:
+      human-in-the-loop: required
+      triggers:
+      - destructive
+    audit: required
+- path: /customers/{id}/cards
+  method: post
+  operationId: createCustomerCard
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - card-data
+    audit: required
+- path: /customers/{id}/cards/{card_id}
+  method: delete
+  operationId: deleteCustomerCard
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - destructive
+    audit: required
+- path: /plans
+  method: post
+  operationId: createPlan
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+    audit: required
+- path: /plans/{id}
+  method: delete
+  operationId: deletePlan
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - destructive
+    audit: required
+- path: /subscriptions
+  method: post
+  operationId: createSubscription
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+    escalation:
+      human-in-the-loop: required
+      triggers:
+      - recurring-billing
+      - money-movement
+    audit: required
+- path: /subscriptions/{id}/cancel
+  method: post
+  operationId: cancelSubscription
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - recurring-billing
+    audit: required
+- path: /subscriptions/{id}/pause
+  method: post
+  operationId: pauseSubscription
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - recurring-billing
+    audit: required
+- path: /transfers
+  method: get
+  operationId: listTransfers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: required
+- path: /statements
+  method: get
+  operationId: listStatements
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: required
+- path: /balances
+  method: get
+  operationId: listBalances
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: required
+- path: /events
+  method: get
+  operationId: listEvents
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /three_d_secure_requests
+  method: post
+  operationId: createThreeDSecureRequest
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - card-data
+    audit: required
+- path: /tenants
+  method: post
+  operationId: createTenant
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+    escalation:
+      human-in-the-loop: required
+      triggers:
+      - onboarding
+      - money-movement
+    audit: required
+- path: /tenants/{id}
+  method: delete
+  operationId: deleteTenant
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - destructive
+    audit: required
+- path: /account
+  method: get
+  operationId: retrieveAccount
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: required

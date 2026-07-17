@@ -1,0 +1,67 @@
+aid: payjp
+name: PAY.JP
+review:
+  question: Does PAY.JP expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-17'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. PAY.JP delivers asynchronous
+    notifications via HTTP webhooks (merchant-hosted endpoints receiving
+    POSTed Event objects), not via a message broker, Server-Sent Events
+    stream, or WebSocket. Webhooks are outbound HTTP callbacks and are out
+    of scope for AsyncAPI modeling under current API Evangelist scope, so
+    no asyncapi/ artifact was created.
+findings:
+  summary: |
+    PAY.JP does not publish a documented public WebSocket API. The service
+    is a Stripe-style synchronous REST API served over HTTPS at
+    https://api.pay.jp/v1. Asynchronous event delivery is handled through
+    outbound HTTP webhooks that POST Event objects to merchant-configured
+    URLs; merchants can also poll the REST GET /v1/events endpoint. No
+    realtime, bidirectional, or streaming WebSocket (ws:// or wss://)
+    endpoint is documented anywhere in the PAY.JP API reference, guides, or
+    SDKs (payjp-ruby, -php, -node, -python, -go, -ios, -android).
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.pay.jp/v1
+      documented: true
+    - protocol: Webhook
+      scheme: https
+      note: Outbound HTTP callbacks POSTing Event objects to merchant URLs. Not WebSocket, not SSE.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in the PAY.JP API reference, guides, or any official SDK as of the review date.
+  endpointsConfirmedRest:
+    - POST https://api.pay.jp/v1/charges
+    - GET  https://api.pay.jp/v1/charges
+    - POST https://api.pay.jp/v1/charges/{id}/refund
+    - POST https://api.pay.jp/v1/charges/{id}/capture
+    - POST https://api.pay.jp/v1/tokens
+    - POST https://api.pay.jp/v1/customers
+    - POST https://api.pay.jp/v1/subscriptions
+    - GET  https://api.pay.jp/v1/transfers
+    - GET  https://api.pay.jp/v1/events
+    - GET  https://api.pay.jp/v1/account
+sources:
+  - url: https://docs.pay.jp/v1/api/
+    type: APIReference
+    note: Full REST reference; base host api.pay.jp, HTTPS only, HTTP Basic auth with secret key. No WebSocket surface.
+  - url: https://pay.jp/docs/
+    type: Documentation
+    note: Integration guides describe REST charges/tokens/subscriptions and HTTP webhooks; no realtime/WebSocket transport.
+  - url: https://github.com/payjp
+    type: SourceCode
+    note: Official SDKs (Ruby, PHP, Node, Python, Go, iOS, Android) are all HTTP REST clients; none implement a WebSocket transport.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: false
+  reason: |
+    No WebSocket protocol surface exists, and PAY.JP's only asynchronous
+    channel is outbound HTTP webhooks, which are out of scope for AsyncAPI
+    under current API Evangelist scope. No asyncapi/ artifact was created
+    and no AsyncAPI property was added to apis.yml.

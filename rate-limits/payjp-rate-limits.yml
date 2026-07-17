@@ -1,0 +1,53 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: PAY.JP
+providerId: payjp
+created: '2026-07-17'
+modified: '2026-07-17'
+reconciled: true
+tags:
+- Payments
+- FinTech
+- Japan
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  PAY.JP enforces per-second request rate limits split into three zones by key
+  type and operation. Token creation (publishable-key "pk" zone), payment
+  operations such as charges and refunds ("payment" zone), and other secret-key
+  requests ("sk" zone) each have their own thresholds, with much lower limits in
+  test mode. Exceeding a limit returns HTTP 429 with the over_capacity error code.
+notes: >-
+  Values read from https://docs.pay.jp/v1/api/ on 2026-07-17. Limits are expressed
+  in requests per second; confirm current thresholds against the live reference.
+sources:
+- https://docs.pay.jp/v1/api/
+responseCodes:
+  throttled: 429
+  errorCode: over_capacity
+limits:
+- name: Token zone (pk)
+  scope: account
+  metric: requests_per_second
+  limit: 10 rps live / 2 rps test
+  notes: Applies to token creation via the publishable key (POST /tokens).
+- name: Payment zone
+  scope: account
+  metric: requests_per_second
+  limit: 14 rps live / 2 rps test
+  notes: Applies to payment operations such as charges and refunds.
+- name: Secret-key zone (sk)
+  scope: account
+  metric: requests_per_second
+  limit: 30 rps live / 2 rps test
+  notes: Applies to other secret-key requests (customers, plans, subscriptions, reads, etc.).
+policies:
+- name: Test-mode throttling
+  description: Test keys (sk_test_ / pk_test_) are limited to ~2 rps across all zones.
+- name: Backoff Strategy
+  description: On HTTP 429 over_capacity, back off with exponential delay and jitter and retry idempotent reads.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,35 @@
+generated: '2026-07-17'
+method: derived
+source: openapi/payjp-openapi.yml
+notes: >-
+  PAY.JP authenticates REST requests with HTTP Basic auth: the secret key
+  (sk_test_ / sk_live_) is sent as the Basic username with an empty password.
+  Client-side tokenization (payjp.js / Checkout) uses the publishable key
+  (pk_test_ / pk_live_) instead, which can only create tokens.
+summary:
+  types:
+  - http
+schemes:
+- name: secret_key
+  type: http
+  scheme: basic
+  in: header
+  keyPrefixes:
+  - sk_test_
+  - sk_live_
+  note: Secret key as Basic username, empty password. Server-side only; never expose.
+  sources:
+  - openapi/payjp-openapi.yml
+  - https://docs.pay.jp/v1/api/
+- name: publishable_key
+  type: apiKey
+  in: body
+  keyPrefixes:
+  - pk_test_
+  - pk_live_
+  note: >-
+    Publishable key used client-side by payjp.js / Checkout to create single-use
+    card tokens (POST /tokens). Safe to embed in front-end code; cannot read or
+    charge.
+  sources:
+  - https://docs.pay.jp/v1/api/

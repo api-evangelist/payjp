@@ -1,0 +1,32 @@
+generated: '2026-07-17'
+method: searched
+probe: true
+source: https://pay.jp/ and https://help.pay.jp/
+url: https://pay.jp/
+certifications:
+- PCI DSS
+compliance:
+- name: PCI DSS
+  note: >-
+    PAY.JP is built for PCI DSS compliance; card tokenization (payjp.js / Checkout)
+    keeps raw card numbers out of the merchant environment so merchants can qualify
+    for reduced SAQ scope. PAY, Inc. is a registered payment service provider in Japan.
+- name: 3D Secure (EMV 3DS)
+  note: Cardholder authentication supported on charges and stored cards to reduce chargeback/fraud risk.
+- name: Japan (割賦販売法 / Installment Sales Act)
+  note: Operates under Japanese payment/credit regulation as a domestic PSP.
+evidence:
+- source: https://pay.jp/
+  keywords:
+  - PCI DSS
+  - トークン化
+  - 3D Secure
+  - セキュリティ
+- source: https://docs.pay.jp/v1/api/
+  keywords:
+  - 3d_secure
+  - tds_finish
+notes: >-
+  No dedicated public "trust center" portal (e.g. Vanta/SafeBase) was found;
+  security posture is described across pay.jp and the help center. Verify current
+  certifications directly with PAY, Inc. during reconciliation.

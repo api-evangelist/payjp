@@ -1,0 +1,40 @@
+generated: '2026-07-17'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + API hosts
+hosts:
+- host: pay.jp
+  https: true
+  tls_version: TLSv1.3
+  cert_notBefore: Jul  3 02:53:49 2026 GMT
+  cert_expires: Oct  1 02:53:48 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+  http_status: 200
+- host: api.pay.jp
+  https: true
+  tls_version: TLSv1.3
+  cert_notBefore: Jun 27 00:00:00 2026 GMT
+  cert_expires: Jan 10 23:59:59 2027 GMT
+  hsts: true
+  hsts_max_age: 86400
+  http_status: 404
+  note: API root returns 404 by design; auth/paths required. HTTPS enforced.
+- host: docs.pay.jp
+  https: true
+  tls_version: TLSv1.3
+  cert_notBefore: Jun 27 00:00:00 2026 GMT
+  cert_expires: Jan 10 23:59:59 2027 GMT
+  hsts: true
+  hsts_max_age: 86400
+  http_status: 200
+domains:
+- domain: pay.jp
+  dnssec: false
+  caa: []
+  caa_note: No CAA records returned at probe time.
+  dmarc: true
+  dmarc_policy: none
+  dmarc_record: v=DMARC1;p=none
+transport:
+  tls_only: true
+  note: API is HTTPS-only (docs state HTTPS required); all probed hosts negotiated TLSv1.3.

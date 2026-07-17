@@ -1,0 +1,203 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: PAY.JP
+providerId: payjp
+created: '2026-07-17'
+modified: '2026-07-17'
+reconciled: true
+tags:
+- Payments
+- FinTech
+- Japan
+- Credit Cards
+- Plans
+description: >-
+  PAY.JP has no API access fee; merchants pay a per-transaction processing fee
+  (決済手数料) on successful card charges plus a fixed transfer fee (振込手数料) per payout.
+  Card processing rates step down by monthly volume across Standard, Business, and
+  Enterprise plans (which carry a monthly platform fee). Special Seed/Partner,
+  Travel, and NPO programs offer reduced rates. All settlement is in JPY.
+notes: >-
+  Rates below were read from https://pay.jp/plan on 2026-07-17 and are subject to
+  change; confirm the current fee schedule and eligibility with PAY, Inc. Amounts
+  are JPY. PayPay acceptance is priced separately by merchant category.
+sources:
+- https://pay.jp/plan
+- https://help.pay.jp/ja/collections/2009236
+plans:
+- id: payjp-standard
+  name: Standard (スタンダード)
+  type: usage
+  description: >-
+    Entry plan with no monthly fee; recommended for under ~4M JPY monthly sales.
+  entries:
+  - label: Card processing fee (all brands)
+    name: card_fee_standard
+    type: usage
+    metric: transaction_percent
+    limit: -1
+    timeFrame: transaction
+    geo: japan
+    unit: 1
+    price: 3.3% per successful charge
+    userMultiplied: false
+  - label: Monthly fee
+    name: monthly_fee_standard
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: japan
+    unit: 1
+    price: "\xA50"
+    userMultiplied: false
+  elements:
+  - name: Charges
+  - name: Customers
+  - name: Subscriptions
+  - name: Tokens
+- id: payjp-business
+  name: Business (ビジネス)
+  type: usage
+  description: >-
+    Mid-volume plan; recommended for ~4M-20M JPY monthly sales.
+  entries:
+  - label: Card processing fee (all brands)
+    name: card_fee_business
+    type: usage
+    metric: transaction_percent
+    limit: -1
+    timeFrame: transaction
+    geo: japan
+    unit: 1
+    price: 2.78% per successful charge
+    userMultiplied: false
+  - label: Monthly fee
+    name: monthly_fee_business
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: japan
+    unit: 1
+    price: "\xA520,000"
+    userMultiplied: false
+  elements:
+  - name: All Standard features
+- id: payjp-enterprise
+  name: Enterprise (エンタープライズ)
+  type: usage
+  description: >-
+    High-volume plan; recommended for 20M+ JPY monthly sales.
+  entries:
+  - label: Card processing fee (Visa / Mastercard)
+    name: card_fee_enterprise_visa_mc
+    type: usage
+    metric: transaction_percent
+    limit: -1
+    timeFrame: transaction
+    geo: japan
+    unit: 1
+    price: 2.59% per successful charge
+    userMultiplied: false
+  - label: Card processing fee (JCB / Amex / Diners / Discover)
+    name: card_fee_enterprise_other
+    type: usage
+    metric: transaction_percent
+    limit: -1
+    timeFrame: transaction
+    geo: japan
+    unit: 1
+    price: 2.7% per successful charge
+    userMultiplied: false
+  - label: Monthly fee
+    name: monthly_fee_enterprise
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: japan
+    unit: 1
+    price: "\xA550,000"
+    userMultiplied: false
+  elements:
+  - name: All Business features
+- id: payjp-paypay
+  name: PayPay acceptance
+  type: usage
+  description: >-
+    PayPay wallet acceptance priced by merchant category, independent of card plan.
+  entries:
+  - label: Physical goods / services
+    name: paypay_physical
+    type: usage
+    metric: transaction_percent
+    limit: -1
+    timeFrame: transaction
+    geo: japan
+    unit: 1
+    price: 3.5% per successful payment
+    userMultiplied: false
+  - label: Digital content
+    name: paypay_digital
+    type: usage
+    metric: transaction_percent
+    limit: -1
+    timeFrame: transaction
+    geo: japan
+    unit: 1
+    price: 9.0% per successful payment
+    userMultiplied: false
+  elements:
+  - name: PayPay
+- id: payjp-programs
+  name: Seed / Partner / Travel / NPO programs
+  type: usage
+  description: >-
+    Eligibility-based reduced-rate programs (contact PAY.JP).
+  entries:
+  - label: Seed & Partner (1-year term)
+    name: program_seed_partner
+    type: usage
+    metric: transaction_percent
+    limit: -1
+    timeFrame: transaction
+    geo: japan
+    unit: 1
+    price: 2.78% card fee, "\xA50" monthly
+    userMultiplied: false
+  - label: Travel / NPO (Visa / Mastercard)
+    name: program_travel_npo
+    type: usage
+    metric: transaction_percent
+    limit: -1
+    timeFrame: transaction
+    geo: japan
+    unit: 1
+    price: 1.5% Visa/MC, 3.3% other brands, "\xA50" monthly
+    userMultiplied: false
+  elements:
+  - name: Contact PAY.JP for eligibility
+- id: payjp-transfer-fee
+  name: Payout / transfer fee (振込手数料)
+  type: usage
+  description: >-
+    Fixed fee deducted per payout to the merchant bank account. Payout cycle is
+    monthly (month-end) by default, or twice monthly (15th and month-end).
+  entries:
+  - label: Transfer fee per payout
+    name: transfer_fee
+    type: flat
+    metric: payout
+    limit: -1
+    timeFrame: payout
+    geo: japan
+    unit: 1
+    price: "\xA5250 per payout"
+    userMultiplied: false
+  elements:
+  - name: Transfers (入金)
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

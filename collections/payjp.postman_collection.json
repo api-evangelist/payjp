@@ -1,0 +1,232 @@
+{
+  "info": {
+    "name": "PAY.JP API",
+    "description": "PAY.JP REST API (PAY, Inc.). Base URL https://api.pay.jp/v1. Authenticate with HTTP Basic auth using your secret key (sk_test_ / sk_live_) as the username and an empty password. All amounts are integer JPY. Collection modeled by API Evangelist from https://docs.pay.jp/v1/api/ (2026-07-17).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "basic",
+    "basic": [
+      { "key": "username", "value": "{{secret_key}}", "type": "string" },
+      { "key": "password", "value": "", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.pay.jp/v1", "type": "string" },
+    { "key": "secret_key", "value": "YOUR_PAYJP_TEST_SECRET_KEY", "type": "string" },
+    { "key": "charge_id", "value": "ch_xxxxxxxxxxxxxxxxxxxxxxxx", "type": "string" },
+    { "key": "customer_id", "value": "cus_xxxxxxxxxxxxxxxxxxxxxxxx", "type": "string" },
+    { "key": "card_id", "value": "car_xxxxxxxxxxxxxxxxxxxxxxxx", "type": "string" },
+    { "key": "token_id", "value": "tok_xxxxxxxxxxxxxxxxxxxxxxxx", "type": "string" },
+    { "key": "plan_id", "value": "pln_xxxxxxxxxxxxxxxxxxxxxxxx", "type": "string" },
+    { "key": "subscription_id", "value": "sub_xxxxxxxxxxxxxxxxxxxxxxxx", "type": "string" },
+    { "key": "transfer_id", "value": "tr_xxxxxxxxxxxxxxxxxxxxxxxx", "type": "string" },
+    { "key": "event_id", "value": "evnt_xxxxxxxxxxxxxxxxxxxxxxxx", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Charges",
+      "item": [
+        {
+          "name": "Create charge",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/x-www-form-urlencoded" } ],
+            "url": { "raw": "{{baseUrl}}/charges", "host": ["{{baseUrl}}"], "path": ["charges"] },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "amount", "value": "3500" },
+                { "key": "currency", "value": "jpy" },
+                { "key": "card", "value": "{{token_id}}" },
+                { "key": "capture", "value": "true" },
+                { "key": "description", "value": "Order #1234" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "List charges",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/charges?limit=10", "host": ["{{baseUrl}}"], "path": ["charges"], "query": [ { "key": "limit", "value": "10" } ] }
+          }
+        },
+        {
+          "name": "Retrieve charge",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/charges/{{charge_id}}", "host": ["{{baseUrl}}"], "path": ["charges", "{{charge_id}}"] }
+          }
+        },
+        {
+          "name": "Capture charge",
+          "request": {
+            "method": "POST",
+            "url": { "raw": "{{baseUrl}}/charges/{{charge_id}}/capture", "host": ["{{baseUrl}}"], "path": ["charges", "{{charge_id}}", "capture"] }
+          }
+        },
+        {
+          "name": "Refund charge",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/x-www-form-urlencoded" } ],
+            "url": { "raw": "{{baseUrl}}/charges/{{charge_id}}/refund", "host": ["{{baseUrl}}"], "path": ["charges", "{{charge_id}}", "refund"] },
+            "body": { "mode": "urlencoded", "urlencoded": [ { "key": "amount", "value": "3500" }, { "key": "refund_reason", "value": "requested_by_customer" } ] }
+          }
+        },
+        {
+          "name": "Finish 3D Secure (charge)",
+          "request": {
+            "method": "POST",
+            "url": { "raw": "{{baseUrl}}/charges/{{charge_id}}/tds_finish", "host": ["{{baseUrl}}"], "path": ["charges", "{{charge_id}}", "tds_finish"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tokens",
+      "item": [
+        {
+          "name": "Create token",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/x-www-form-urlencoded" } ],
+            "url": { "raw": "{{baseUrl}}/tokens", "host": ["{{baseUrl}}"], "path": ["tokens"] },
+            "description": "Normally created client-side with the publishable key via payjp.js so raw card data never touches your server.",
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "card[number]", "value": "4242424242424242" },
+                { "key": "card[exp_month]", "value": "12" },
+                { "key": "card[exp_year]", "value": "2028" },
+                { "key": "card[cvc]", "value": "123" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Retrieve token",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/tokens/{{token_id}}", "host": ["{{baseUrl}}"], "path": ["tokens", "{{token_id}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customers",
+      "item": [
+        {
+          "name": "Create customer",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/x-www-form-urlencoded" } ],
+            "url": { "raw": "{{baseUrl}}/customers", "host": ["{{baseUrl}}"], "path": ["customers"] },
+            "body": { "mode": "urlencoded", "urlencoded": [ { "key": "email", "value": "buyer@example.com" }, { "key": "card", "value": "{{token_id}}" } ] }
+          }
+        },
+        {
+          "name": "Retrieve customer",
+          "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/customers/{{customer_id}}", "host": ["{{baseUrl}}"], "path": ["customers", "{{customer_id}}"] } }
+        },
+        {
+          "name": "Delete customer",
+          "request": { "method": "DELETE", "url": { "raw": "{{baseUrl}}/customers/{{customer_id}}", "host": ["{{baseUrl}}"], "path": ["customers", "{{customer_id}}"] } }
+        },
+        {
+          "name": "List customer cards",
+          "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/customers/{{customer_id}}/cards", "host": ["{{baseUrl}}"], "path": ["customers", "{{customer_id}}", "cards"] } }
+        },
+        {
+          "name": "Attach card to customer",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/x-www-form-urlencoded" } ],
+            "url": { "raw": "{{baseUrl}}/customers/{{customer_id}}/cards", "host": ["{{baseUrl}}"], "path": ["customers", "{{customer_id}}", "cards"] },
+            "body": { "mode": "urlencoded", "urlencoded": [ { "key": "card", "value": "{{token_id}}" } ] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Plans",
+      "item": [
+        {
+          "name": "Create plan",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/x-www-form-urlencoded" } ],
+            "url": { "raw": "{{baseUrl}}/plans", "host": ["{{baseUrl}}"], "path": ["plans"] },
+            "body": { "mode": "urlencoded", "urlencoded": [ { "key": "amount", "value": "1000" }, { "key": "currency", "value": "jpy" }, { "key": "interval", "value": "month" }, { "key": "name", "value": "Monthly Pro" } ] }
+          }
+        },
+        {
+          "name": "List plans",
+          "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/plans", "host": ["{{baseUrl}}"], "path": ["plans"] } }
+        }
+      ]
+    },
+    {
+      "name": "Subscriptions",
+      "item": [
+        {
+          "name": "Create subscription",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/x-www-form-urlencoded" } ],
+            "url": { "raw": "{{baseUrl}}/subscriptions", "host": ["{{baseUrl}}"], "path": ["subscriptions"] },
+            "body": { "mode": "urlencoded", "urlencoded": [ { "key": "customer", "value": "{{customer_id}}" }, { "key": "plan", "value": "{{plan_id}}" } ] }
+          }
+        },
+        {
+          "name": "Pause subscription",
+          "request": { "method": "POST", "url": { "raw": "{{baseUrl}}/subscriptions/{{subscription_id}}/pause", "host": ["{{baseUrl}}"], "path": ["subscriptions", "{{subscription_id}}", "pause"] } }
+        },
+        {
+          "name": "Resume subscription",
+          "request": { "method": "POST", "url": { "raw": "{{baseUrl}}/subscriptions/{{subscription_id}}/resume", "host": ["{{baseUrl}}"], "path": ["subscriptions", "{{subscription_id}}", "resume"] } }
+        },
+        {
+          "name": "Cancel subscription",
+          "request": { "method": "POST", "url": { "raw": "{{baseUrl}}/subscriptions/{{subscription_id}}/cancel", "host": ["{{baseUrl}}"], "path": ["subscriptions", "{{subscription_id}}", "cancel"] } }
+        }
+      ]
+    },
+    {
+      "name": "Transfers",
+      "item": [
+        {
+          "name": "List transfers",
+          "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/transfers", "host": ["{{baseUrl}}"], "path": ["transfers"] } }
+        },
+        {
+          "name": "Retrieve transfer",
+          "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/transfers/{{transfer_id}}", "host": ["{{baseUrl}}"], "path": ["transfers", "{{transfer_id}}"] } }
+        }
+      ]
+    },
+    {
+      "name": "Events",
+      "item": [
+        {
+          "name": "List events",
+          "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/events", "host": ["{{baseUrl}}"], "path": ["events"] } }
+        },
+        {
+          "name": "Retrieve event",
+          "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/events/{{event_id}}", "host": ["{{baseUrl}}"], "path": ["events", "{{event_id}}"] } }
+        }
+      ]
+    },
+    {
+      "name": "Account",
+      "item": [
+        {
+          "name": "Retrieve account",
+          "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/account", "host": ["{{baseUrl}}"], "path": ["account"] } }
+        }
+      ]
+    }
+  ]
+}
