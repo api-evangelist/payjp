@@ -1,0 +1,183 @@
+openapi: 3.0.3
+info:
+  title: PAY.JP 3D Secure Subscriptions API
+  description: PAY.JP is an online payment service operated by PAY, Inc. (PAY株式会社) in Japan. The REST API creates charges, tokenizes cards, manages customers, runs subscriptions (定期課金), and reports transfers (入金) and balances in Japanese yen. Authentication is HTTP Basic with a secret key (sk_test_ / sk_live_) as the username and an empty password. All amounts are integer JPY.
+  termsOfService: https://pay.jp/terms
+  contact:
+    name: PAY.JP Support
+    url: https://help.pay.jp/
+  version: '1.0'
+servers:
+- url: https://api.pay.jp/v1
+  description: PAY.JP REST API (HTTPS only)
+security:
+- basicAuth: []
+tags:
+- name: Subscriptions
+paths:
+  /subscriptions:
+    get:
+      operationId: listSubscriptions
+      tags:
+      - Subscriptions
+      summary: List subscriptions
+      responses:
+        '200':
+          $ref: '#/components/responses/List'
+    post:
+      operationId: createSubscription
+      tags:
+      - Subscriptions
+      summary: Create a subscription (定期課金)
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                customer:
+                  type: string
+                plan:
+                  type: string
+                prorate:
+                  type: boolean
+                metadata:
+                  type: object
+                  additionalProperties: true
+              required:
+              - customer
+              - plan
+      responses:
+        '200':
+          $ref: '#/components/responses/Subscription'
+  /subscriptions/{id}:
+    parameters:
+    - $ref: '#/components/parameters/id'
+    get:
+      operationId: retrieveSubscription
+      tags:
+      - Subscriptions
+      summary: Retrieve a subscription
+      responses:
+        '200':
+          $ref: '#/components/responses/Subscription'
+    post:
+      operationId: updateSubscription
+      tags:
+      - Subscriptions
+      summary: Update a subscription
+      responses:
+        '200':
+          $ref: '#/components/responses/Subscription'
+    delete:
+      operationId: deleteSubscription
+      tags:
+      - Subscriptions
+      summary: Delete a subscription
+      responses:
+        '200':
+          $ref: '#/components/responses/Deleted'
+  /subscriptions/{id}/pause:
+    parameters:
+    - $ref: '#/components/parameters/id'
+    post:
+      operationId: pauseSubscription
+      tags:
+      - Subscriptions
+      summary: Pause a subscription
+      responses:
+        '200':
+          $ref: '#/components/responses/Subscription'
+  /subscriptions/{id}/resume:
+    parameters:
+    - $ref: '#/components/parameters/id'
+    post:
+      operationId: resumeSubscription
+      tags:
+      - Subscriptions
+      summary: Resume a paused subscription
+      responses:
+        '200':
+          $ref: '#/components/responses/Subscription'
+  /subscriptions/{id}/cancel:
+    parameters:
+    - $ref: '#/components/parameters/id'
+    post:
+      operationId: cancelSubscription
+      tags:
+      - Subscriptions
+      summary: Cancel a subscription
+      responses:
+        '200':
+          $ref: '#/components/responses/Subscription'
+components:
+  schemas:
+    List:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        count:
+          type: integer
+        has_more:
+          type: boolean
+        url:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Object'
+    Object:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        livemode:
+          type: boolean
+        created:
+          type: integer
+          description: Unix timestamp
+      additionalProperties: true
+  responses:
+    Deleted:
+      description: A deletion confirmation
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+              object:
+                type: string
+                example: charge
+              deleted:
+                type: boolean
+                example: true
+    Subscription:
+      description: A Subscription object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Object'
+    List:
+      description: A paginated list object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/List'
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use the secret key (sk_test_ / sk_live_) as the username and leave the password empty.

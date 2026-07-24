@@ -1,0 +1,310 @@
+openapi: 3.0.3
+info:
+  title: PAY.JP 3D Secure Charges API
+  description: PAY.JP is an online payment service operated by PAY, Inc. (PAY株式会社) in Japan. The REST API creates charges, tokenizes cards, manages customers, runs subscriptions (定期課金), and reports transfers (入金) and balances in Japanese yen. Authentication is HTTP Basic with a secret key (sk_test_ / sk_live_) as the username and an empty password. All amounts are integer JPY.
+  termsOfService: https://pay.jp/terms
+  contact:
+    name: PAY.JP Support
+    url: https://help.pay.jp/
+  version: '1.0'
+servers:
+- url: https://api.pay.jp/v1
+  description: PAY.JP REST API (HTTPS only)
+security:
+- basicAuth: []
+tags:
+- name: Charges
+paths:
+  /charges:
+    get:
+      operationId: listCharges
+      tags:
+      - Charges
+      summary: List charges
+      parameters:
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          $ref: '#/components/responses/List'
+    post:
+      operationId: createCharge
+      tags:
+      - Charges
+      summary: Create a charge
+      description: Create a charge against a card token, a customer, or a stored card. Set capture=false to authorize only and capture later.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: integer
+                  description: Amount in JPY
+                  minimum 50: null
+                currency:
+                  type: string
+                  enum:
+                  - jpy
+                  default: jpy
+                card:
+                  type: string
+                  description: A token id (tok_xxx) or card id
+                customer:
+                  type: string
+                  description: A customer id (cus_xxx)
+                capture:
+                  type: boolean
+                  default: true
+                description:
+                  type: string
+                metadata:
+                  type: object
+                  additionalProperties: true
+              required:
+              - amount
+              - currency
+      responses:
+        '200':
+          $ref: '#/components/responses/Charge'
+        '400':
+          $ref: '#/components/responses/Error'
+        '402':
+          $ref: '#/components/responses/Error'
+  /charges/{id}:
+    parameters:
+    - $ref: '#/components/parameters/id'
+    get:
+      operationId: retrieveCharge
+      tags:
+      - Charges
+      summary: Retrieve a charge
+      responses:
+        '200':
+          $ref: '#/components/responses/Charge'
+    post:
+      operationId: updateCharge
+      tags:
+      - Charges
+      summary: Update a charge (description / metadata)
+      responses:
+        '200':
+          $ref: '#/components/responses/Charge'
+  /charges/{id}/refund:
+    parameters:
+    - $ref: '#/components/parameters/id'
+    post:
+      operationId: refundCharge
+      tags:
+      - Charges
+      summary: Refund a charge (full or partial)
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: integer
+                refund_reason:
+                  type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/Charge'
+  /charges/{id}/capture:
+    parameters:
+    - $ref: '#/components/parameters/id'
+    post:
+      operationId: captureCharge
+      tags:
+      - Charges
+      summary: Capture a previously authorized charge
+      responses:
+        '200':
+          $ref: '#/components/responses/Charge'
+  /charges/{id}/reauth:
+    parameters:
+    - $ref: '#/components/parameters/id'
+    post:
+      operationId: reauthCharge
+      tags:
+      - Charges
+      summary: Re-authorize an expiring authorization
+      responses:
+        '200':
+          $ref: '#/components/responses/Charge'
+  /charges/{id}/tds_finish:
+    parameters:
+    - $ref: '#/components/parameters/id'
+    post:
+      operationId: finishChargeThreeDSecure
+      tags:
+      - Charges
+      summary: Complete the 3D Secure flow for a charge
+      responses:
+        '200':
+          $ref: '#/components/responses/Charge'
+components:
+  schemas:
+    List:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        count:
+          type: integer
+        has_more:
+          type: boolean
+        url:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Object'
+    Charge:
+      type: object
+      properties:
+        id:
+          type: string
+          example: ch_xxxxxxxxxxxxxxxx
+        object:
+          type: string
+          example: charge
+        amount:
+          type: integer
+          example: 3500
+        currency:
+          type: string
+          example: jpy
+        paid:
+          type: boolean
+        captured:
+          type: boolean
+        refunded:
+          type: boolean
+        amount_refunded:
+          type: integer
+        customer:
+          type: string
+          nullable: true
+        card:
+          $ref: '#/components/schemas/Card'
+        three_d_secure_status:
+          type: string
+          nullable: true
+        created:
+          type: integer
+        livemode:
+          type: boolean
+        metadata:
+          type: object
+          additionalProperties: true
+    Card:
+      type: object
+      properties:
+        id:
+          type: string
+          example: car_xxxxxxxxxxxxxxxx
+        object:
+          type: string
+          example: card
+        brand:
+          type: string
+          example: Visa
+        last4:
+          type: string
+          example: '4242'
+        exp_month:
+          type: integer
+        exp_year:
+          type: integer
+        name:
+          type: string
+          nullable: true
+        three_d_secure_status:
+          type: string
+          nullable: true
+        created:
+          type: integer
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - client_error
+              - card_error
+              - auth_error
+              - server_error
+            code:
+              type: string
+              example: over_capacity
+            message:
+              type: string
+            status:
+              type: integer
+            param:
+              type: string
+    Object:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        livemode:
+          type: boolean
+        created:
+          type: integer
+          description: Unix timestamp
+      additionalProperties: true
+  responses:
+    Charge:
+      description: A Charge object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Charge'
+    Error:
+      description: An error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    List:
+      description: A paginated list object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/List'
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    offset:
+      name: offset
+      in: query
+      schema:
+        type: integer
+        default: 0
+    limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        default: 10
+        maximum: 100
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use the secret key (sk_test_ / sk_live_) as the username and leave the password empty.

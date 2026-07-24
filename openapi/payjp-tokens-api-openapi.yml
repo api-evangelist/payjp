@@ -1,0 +1,128 @@
+openapi: 3.0.3
+info:
+  title: PAY.JP 3D Secure Tokens API
+  description: PAY.JP is an online payment service operated by PAY, Inc. (PAY株式会社) in Japan. The REST API creates charges, tokenizes cards, manages customers, runs subscriptions (定期課金), and reports transfers (入金) and balances in Japanese yen. Authentication is HTTP Basic with a secret key (sk_test_ / sk_live_) as the username and an empty password. All amounts are integer JPY.
+  termsOfService: https://pay.jp/terms
+  contact:
+    name: PAY.JP Support
+    url: https://help.pay.jp/
+  version: '1.0'
+servers:
+- url: https://api.pay.jp/v1
+  description: PAY.JP REST API (HTTPS only)
+security:
+- basicAuth: []
+tags:
+- name: Tokens
+paths:
+  /tokens:
+    post:
+      operationId: createToken
+      tags:
+      - Tokens
+      summary: Create a single-use card token
+      description: Normally called client-side with the publishable key (pk_xxx) via payjp.js so raw card numbers never touch the merchant server.
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                card[number]:
+                  type: string
+                card[exp_month]:
+                  type: integer
+                card[exp_year]:
+                  type: integer
+                card[cvc]:
+                  type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/Token'
+  /tokens/{id}:
+    parameters:
+    - $ref: '#/components/parameters/id'
+    get:
+      operationId: retrieveToken
+      tags:
+      - Tokens
+      summary: Retrieve a token
+      responses:
+        '200':
+          $ref: '#/components/responses/Token'
+  /tokens/{id}/tds_finish:
+    parameters:
+    - $ref: '#/components/parameters/id'
+    post:
+      operationId: finishTokenThreeDSecure
+      tags:
+      - Tokens
+      summary: Complete the 3D Secure flow for a token
+      responses:
+        '200':
+          $ref: '#/components/responses/Token'
+components:
+  schemas:
+    Token:
+      type: object
+      properties:
+        id:
+          type: string
+          example: tok_xxxxxxxxxxxxxxxx
+        object:
+          type: string
+          example: token
+        livemode:
+          type: boolean
+        used:
+          type: boolean
+        card:
+          $ref: '#/components/schemas/Card'
+        created:
+          type: integer
+    Card:
+      type: object
+      properties:
+        id:
+          type: string
+          example: car_xxxxxxxxxxxxxxxx
+        object:
+          type: string
+          example: card
+        brand:
+          type: string
+          example: Visa
+        last4:
+          type: string
+          example: '4242'
+        exp_month:
+          type: integer
+        exp_year:
+          type: integer
+        name:
+          type: string
+          nullable: true
+        three_d_secure_status:
+          type: string
+          nullable: true
+        created:
+          type: integer
+  responses:
+    Token:
+      description: A Token object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Token'
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use the secret key (sk_test_ / sk_live_) as the username and leave the password empty.

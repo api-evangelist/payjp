@@ -1,0 +1,104 @@
+openapi: 3.0.3
+info:
+  title: PAY.JP 3D Secure Transfers API
+  description: PAY.JP is an online payment service operated by PAY, Inc. (PAY株式会社) in Japan. The REST API creates charges, tokenizes cards, manages customers, runs subscriptions (定期課金), and reports transfers (入金) and balances in Japanese yen. Authentication is HTTP Basic with a secret key (sk_test_ / sk_live_) as the username and an empty password. All amounts are integer JPY.
+  termsOfService: https://pay.jp/terms
+  contact:
+    name: PAY.JP Support
+    url: https://help.pay.jp/
+  version: '1.0'
+servers:
+- url: https://api.pay.jp/v1
+  description: PAY.JP REST API (HTTPS only)
+security:
+- basicAuth: []
+tags:
+- name: Transfers
+paths:
+  /transfers:
+    get:
+      operationId: listTransfers
+      tags:
+      - Transfers
+      summary: List transfers (入金)
+      responses:
+        '200':
+          $ref: '#/components/responses/List'
+  /transfers/{id}:
+    parameters:
+    - $ref: '#/components/parameters/id'
+    get:
+      operationId: retrieveTransfer
+      tags:
+      - Transfers
+      summary: Retrieve a transfer
+      responses:
+        '200':
+          $ref: '#/components/responses/Object'
+  /transfers/{id}/details:
+    parameters:
+    - $ref: '#/components/parameters/id'
+    get:
+      operationId: listTransferDetails
+      tags:
+      - Transfers
+      summary: List the charges settled in a transfer
+      responses:
+        '200':
+          $ref: '#/components/responses/List'
+components:
+  responses:
+    Object:
+      description: A PAY.JP resource object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Object'
+    List:
+      description: A paginated list object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/List'
+  schemas:
+    List:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        count:
+          type: integer
+        has_more:
+          type: boolean
+        url:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Object'
+    Object:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        livemode:
+          type: boolean
+        created:
+          type: integer
+          description: Unix timestamp
+      additionalProperties: true
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use the secret key (sk_test_ / sk_live_) as the username and leave the password empty.
