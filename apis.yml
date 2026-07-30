@@ -6,7 +6,20 @@ description: PAY.JP is an online payment service operated by PAY, Inc. (PAY株�
   in Japan. Its Stripe-style REST API lets merchants create charges, tokenize cards,
   manage customers, run subscriptions (定期課金), and settle transfers (入金) in
   Japanese yen, with a Platform API (beta) for marketplace/multi-tenant payouts.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/payjp.png
 tags:
 - Payments
 - FinTech
@@ -18,205 +31,289 @@ created: '2026-07-17'
 modified: '2026-07-18'
 specificationVersion: '0.19'
 apis:
-- aid: payjp:payjp-charges-api
-  name: PAY.JP Charges API
-  tags:
-  - Charges
-  - Payments
-  - Refunds
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.pay.jp/v1/api/
-  baseURL: https://api.pay.jp/v1
-  properties:
-  - url: https://pay.jp/docs/charge
-    type: Documentation
-  - url: https://docs.pay.jp/v1/api/
-    type: APIReference
-  - url: openapi/payjp-openapi.yml
-    type: OpenAPI
-  description: Create, retrieve, list, update, capture, re-authorize, and refund
-    one-time and subscription charges in JPY, including two-step (auth/capture) and
-    3D Secure (tds_finish) flows.
-- aid: payjp:payjp-customers-api
-  name: PAY.JP Customers API
-  tags:
-  - Customers
-  - Billing
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.pay.jp/v1/customer
-  baseURL: https://api.pay.jp/v1
-  properties:
-  - url: https://docs.pay.jp/v1/customer
-    type: Documentation
-  - url: https://docs.pay.jp/v1/api/
-    type: APIReference
-  - url: openapi/payjp-openapi.yml
-    type: OpenAPI
-  description: Create, retrieve, list, update, and delete customer records that store
-    tokenized cards for recurring and one-click billing.
-- aid: payjp:payjp-cards-api
-  name: PAY.JP Cards API
-  tags:
-  - Cards
-  - Vault
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.pay.jp/v1/api/
-  baseURL: https://api.pay.jp/v1
-  properties:
-  - url: https://docs.pay.jp/v1/api/
-    type: APIReference
-  - url: openapi/payjp-openapi.yml
-    type: OpenAPI
-  description: Attach, list, retrieve, update, and delete stored credit cards on a
-    customer, keeping raw PANs out of the merchant environment.
-- aid: payjp:payjp-tokens-api
-  name: PAY.JP Tokens API
-  tags:
-  - Tokens
-  - Tokenization
-  - Client Side
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.pay.jp/v1/api/
-  baseURL: https://api.pay.jp/v1
-  properties:
-  - url: https://docs.pay.jp/v1/api/
-    type: APIReference
-  - url: openapi/payjp-openapi.yml
-    type: OpenAPI
-  description: Single-use card tokens created with the publishable key (typically via
-    payjp.js / Checkout) and exchanged server-side for charges or customer cards,
-    with a tds_finish step for 3D Secure.
-- aid: payjp:payjp-plans-api
-  name: PAY.JP Plans API
-  tags:
-  - Plans
-  - Recurring
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.pay.jp/v1/api/
-  baseURL: https://api.pay.jp/v1
-  properties:
-  - url: https://docs.pay.jp/v1/api/
-    type: APIReference
-  - url: openapi/payjp-openapi.yml
-    type: OpenAPI
-  description: Define recurring billing plans (amount, currency, interval, trial,
-    billing day) that subscriptions attach to.
-- aid: payjp:payjp-subscriptions-api
-  name: PAY.JP Subscriptions API
-  tags:
-  - Subscriptions
-  - Teiki Kakin
-  - Recurring
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.pay.jp/v1/subscription
-  baseURL: https://api.pay.jp/v1
-  properties:
-  - url: https://docs.pay.jp/v1/subscription
-    type: Documentation
-  - url: https://docs.pay.jp/v1/api/
-    type: APIReference
-  - url: openapi/payjp-openapi.yml
-    type: OpenAPI
-  description: Recurring billing (定期課金 / teiki kakin) that links a customer to a plan,
-    with pause, resume, cancel, update, and delete lifecycle operations.
-- aid: payjp:payjp-transfers-api
-  name: PAY.JP Transfers API
-  tags:
-  - Transfers
-  - Nyukin
-  - Payouts
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.pay.jp/v1/api/
-  baseURL: https://api.pay.jp/v1
-  properties:
-  - url: https://docs.pay.jp/v1/api/
-    type: APIReference
-  - url: openapi/payjp-openapi.yml
-    type: OpenAPI
-  description: Read-only access to payouts (入金 / nyukin) settled to the merchant bank
-    account, including per-transfer charge details.
-- aid: payjp:payjp-statements-balances-api
-  name: PAY.JP Statements & Balances API
-  tags:
-  - Statements
-  - Balances
-  - Reporting
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.pay.jp/v1/api/
-  baseURL: https://api.pay.jp/v1
-  properties:
-  - url: https://docs.pay.jp/v1/api/
-    type: APIReference
-  - url: openapi/payjp-openapi.yml
-    type: OpenAPI
-  description: Transaction statements (取引明細), aggregation terms (集計区間), and account
-    balances (残高), with signed CSV download URLs for reconciliation.
-- aid: payjp:payjp-events-api
-  name: PAY.JP Events & Webhooks API
-  tags:
-  - Events
-  - Webhooks
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.pay.jp/v1/api/
-  baseURL: https://api.pay.jp/v1
-  properties:
-  - url: https://docs.pay.jp/v1/api/
-    type: APIReference
-  - url: openapi/payjp-openapi.yml
-    type: OpenAPI
-  description: List and retrieve system Event objects that back the webhook system,
-    letting merchants react asynchronously to charge, customer, and subscription
-    changes.
-- aid: payjp:payjp-three-d-secure-api
+- aid: payjp:payjp-3d-secure-api
   name: PAY.JP 3D Secure API
+  description: The 3D Secure API from PAY.JP — 4 operation(s) for 3d secure.
+  humanURL: https://docs.pay.jp/v1/api/
+  baseURL: https://api.pay.jp/v1
   tags:
   - 3D Secure
-  - EMV 3DS
-  - Authentication
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.pay.jp/v1/api/
-  baseURL: https://api.pay.jp/v1
   properties:
-  - url: https://docs.pay.jp/v1/api/
-    type: APIReference
-  - url: openapi/payjp-openapi.yml
-    type: OpenAPI
-  description: Create and inspect 3D Secure requests to add cardholder authentication
-    (EMV 3DS) to charges and stored cards.
-- aid: payjp:payjp-platform-api
-  name: PAY.JP Platform API (Tenants)
-  tags:
-  - Platform
-  - Marketplace
-  - Multi Tenant
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://pay.jp/docs/platform-payment
-  baseURL: https://api.pay.jp/v1
-  properties:
-  - url: https://pay.jp/docs/platform-payment
-    type: Documentation
-  - url: https://docs.pay.jp/v1/api/
-    type: APIReference
-  - url: openapi/payjp-openapi.yml
-    type: OpenAPI
-  description: Beta marketplace API to onboard and manage sub-merchant tenants and
-    their transfers, enabling split payouts on a PAY.JP platform account.
+  - type: OpenAPI
+    url: openapi/payjp-3d-secure-api-openapi.yml
+  - type: Documentation
+    url: https://pay.jp/docs/charge
+  - type: APIReference
+    url: https://docs.pay.jp/v1/api/
+  - type: Documentation
+    url: https://docs.pay.jp/v1/customer
+  - type: Documentation
+    url: https://docs.pay.jp/v1/subscription
+  - type: Documentation
+    url: https://pay.jp/docs/platform-payment
 - aid: payjp:payjp-account-api
   name: PAY.JP Account API
-  tags:
-  - Account
-  - Merchant
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  description: The Account API from PAY.JP — 1 operation(s) for account.
   humanURL: https://docs.pay.jp/v1/api/
   baseURL: https://api.pay.jp/v1
+  tags:
+  - Account
   properties:
-  - url: https://docs.pay.jp/v1/api/
-    type: APIReference
-  - url: openapi/payjp-openapi.yml
-    type: OpenAPI
-  description: Retrieve the authenticated merchant account, including merchant and
-    customer sub-objects and API key metadata.
+  - type: OpenAPI
+    url: openapi/payjp-account-api-openapi.yml
+  - type: Documentation
+    url: https://pay.jp/docs/charge
+  - type: APIReference
+    url: https://docs.pay.jp/v1/api/
+  - type: Documentation
+    url: https://docs.pay.jp/v1/customer
+  - type: Documentation
+    url: https://docs.pay.jp/v1/subscription
+  - type: Documentation
+    url: https://pay.jp/docs/platform-payment
+- aid: payjp:payjp-balances-api
+  name: PAY.JP Balances API
+  description: The Balances API from PAY.JP — 2 operation(s) for balances.
+  humanURL: https://docs.pay.jp/v1/api/
+  baseURL: https://api.pay.jp/v1
+  tags:
+  - Balances
+  properties:
+  - type: OpenAPI
+    url: openapi/payjp-balances-api-openapi.yml
+  - type: Documentation
+    url: https://pay.jp/docs/charge
+  - type: APIReference
+    url: https://docs.pay.jp/v1/api/
+  - type: Documentation
+    url: https://docs.pay.jp/v1/customer
+  - type: Documentation
+    url: https://docs.pay.jp/v1/subscription
+  - type: Documentation
+    url: https://pay.jp/docs/platform-payment
+- aid: payjp:payjp-cards-api
+  name: PAY.JP Cards API
+  description: The Cards API from PAY.JP — 2 operation(s) for cards.
+  humanURL: https://docs.pay.jp/v1/api/
+  baseURL: https://api.pay.jp/v1
+  tags:
+  - Cards
+  properties:
+  - type: OpenAPI
+    url: openapi/payjp-cards-api-openapi.yml
+  - type: Documentation
+    url: https://pay.jp/docs/charge
+  - type: APIReference
+    url: https://docs.pay.jp/v1/api/
+  - type: Documentation
+    url: https://docs.pay.jp/v1/customer
+  - type: Documentation
+    url: https://docs.pay.jp/v1/subscription
+  - type: Documentation
+    url: https://pay.jp/docs/platform-payment
+- aid: payjp:payjp-charges-api
+  name: PAY.JP Charges API
+  description: The Charges API from PAY.JP — 6 operation(s) for charges.
+  humanURL: https://docs.pay.jp/v1/api/
+  baseURL: https://api.pay.jp/v1
+  tags:
+  - Charges
+  properties:
+  - type: OpenAPI
+    url: openapi/payjp-charges-api-openapi.yml
+  - type: Documentation
+    url: https://pay.jp/docs/charge
+  - type: APIReference
+    url: https://docs.pay.jp/v1/api/
+  - type: Documentation
+    url: https://docs.pay.jp/v1/customer
+  - type: Documentation
+    url: https://docs.pay.jp/v1/subscription
+  - type: Documentation
+    url: https://pay.jp/docs/platform-payment
+- aid: payjp:payjp-customers-api
+  name: PAY.JP Customers API
+  description: The Customers API from PAY.JP — 2 operation(s) for customers.
+  humanURL: https://docs.pay.jp/v1/api/
+  baseURL: https://api.pay.jp/v1
+  tags:
+  - Customers
+  properties:
+  - type: OpenAPI
+    url: openapi/payjp-customers-api-openapi.yml
+  - type: Documentation
+    url: https://pay.jp/docs/charge
+  - type: APIReference
+    url: https://docs.pay.jp/v1/api/
+  - type: Documentation
+    url: https://docs.pay.jp/v1/customer
+  - type: Documentation
+    url: https://docs.pay.jp/v1/subscription
+  - type: Documentation
+    url: https://pay.jp/docs/platform-payment
+- aid: payjp:payjp-events-api
+  name: PAY.JP Events API
+  description: The Events API from PAY.JP — 2 operation(s) for events.
+  humanURL: https://docs.pay.jp/v1/api/
+  baseURL: https://api.pay.jp/v1
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/payjp-events-api-openapi.yml
+  - type: Documentation
+    url: https://pay.jp/docs/charge
+  - type: APIReference
+    url: https://docs.pay.jp/v1/api/
+  - type: Documentation
+    url: https://docs.pay.jp/v1/customer
+  - type: Documentation
+    url: https://docs.pay.jp/v1/subscription
+  - type: Documentation
+    url: https://pay.jp/docs/platform-payment
+- aid: payjp:payjp-plans-api
+  name: PAY.JP Plans API
+  description: The Plans API from PAY.JP — 2 operation(s) for plans.
+  humanURL: https://docs.pay.jp/v1/api/
+  baseURL: https://api.pay.jp/v1
+  tags:
+  - Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/payjp-plans-api-openapi.yml
+  - type: Documentation
+    url: https://pay.jp/docs/charge
+  - type: APIReference
+    url: https://docs.pay.jp/v1/api/
+  - type: Documentation
+    url: https://docs.pay.jp/v1/customer
+  - type: Documentation
+    url: https://docs.pay.jp/v1/subscription
+  - type: Documentation
+    url: https://pay.jp/docs/platform-payment
+- aid: payjp:payjp-platform-api
+  name: PAY.JP Platform API
+  description: The Platform API from PAY.JP — 4 operation(s) for platform.
+  humanURL: https://docs.pay.jp/v1/api/
+  baseURL: https://api.pay.jp/v1
+  tags:
+  - Platform
+  properties:
+  - type: OpenAPI
+    url: openapi/payjp-platform-api-openapi.yml
+  - type: Documentation
+    url: https://pay.jp/docs/charge
+  - type: APIReference
+    url: https://docs.pay.jp/v1/api/
+  - type: Documentation
+    url: https://docs.pay.jp/v1/customer
+  - type: Documentation
+    url: https://docs.pay.jp/v1/subscription
+  - type: Documentation
+    url: https://pay.jp/docs/platform-payment
+- aid: payjp:payjp-statements-api
+  name: PAY.JP Statements API
+  description: The Statements API from PAY.JP — 3 operation(s) for statements.
+  humanURL: https://docs.pay.jp/v1/api/
+  baseURL: https://api.pay.jp/v1
+  tags:
+  - Statements
+  properties:
+  - type: OpenAPI
+    url: openapi/payjp-statements-api-openapi.yml
+  - type: Documentation
+    url: https://pay.jp/docs/charge
+  - type: APIReference
+    url: https://docs.pay.jp/v1/api/
+  - type: Documentation
+    url: https://docs.pay.jp/v1/customer
+  - type: Documentation
+    url: https://docs.pay.jp/v1/subscription
+  - type: Documentation
+    url: https://pay.jp/docs/platform-payment
+- aid: payjp:payjp-subscriptions-api
+  name: PAY.JP Subscriptions API
+  description: The Subscriptions API from PAY.JP — 5 operation(s) for subscriptions.
+  humanURL: https://docs.pay.jp/v1/api/
+  baseURL: https://api.pay.jp/v1
+  tags:
+  - Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/payjp-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://pay.jp/docs/charge
+  - type: APIReference
+    url: https://docs.pay.jp/v1/api/
+  - type: Documentation
+    url: https://docs.pay.jp/v1/customer
+  - type: Documentation
+    url: https://docs.pay.jp/v1/subscription
+  - type: Documentation
+    url: https://pay.jp/docs/platform-payment
+- aid: payjp:payjp-terms-api
+  name: PAY.JP Terms API
+  description: The Terms API from PAY.JP — 2 operation(s) for terms.
+  humanURL: https://docs.pay.jp/v1/api/
+  baseURL: https://api.pay.jp/v1
+  tags:
+  - Terms
+  properties:
+  - type: OpenAPI
+    url: openapi/payjp-terms-api-openapi.yml
+  - type: Documentation
+    url: https://pay.jp/docs/charge
+  - type: APIReference
+    url: https://docs.pay.jp/v1/api/
+  - type: Documentation
+    url: https://docs.pay.jp/v1/customer
+  - type: Documentation
+    url: https://docs.pay.jp/v1/subscription
+  - type: Documentation
+    url: https://pay.jp/docs/platform-payment
+- aid: payjp:payjp-tokens-api
+  name: PAY.JP Tokens API
+  description: The Tokens API from PAY.JP — 3 operation(s) for tokens.
+  humanURL: https://docs.pay.jp/v1/api/
+  baseURL: https://api.pay.jp/v1
+  tags:
+  - Tokens
+  properties:
+  - type: OpenAPI
+    url: openapi/payjp-tokens-api-openapi.yml
+  - type: Documentation
+    url: https://pay.jp/docs/charge
+  - type: APIReference
+    url: https://docs.pay.jp/v1/api/
+  - type: Documentation
+    url: https://docs.pay.jp/v1/customer
+  - type: Documentation
+    url: https://docs.pay.jp/v1/subscription
+  - type: Documentation
+    url: https://pay.jp/docs/platform-payment
+- aid: payjp:payjp-transfers-api
+  name: PAY.JP Transfers API
+  description: The Transfers API from PAY.JP — 3 operation(s) for transfers.
+  humanURL: https://docs.pay.jp/v1/api/
+  baseURL: https://api.pay.jp/v1
+  tags:
+  - Transfers
+  properties:
+  - type: OpenAPI
+    url: openapi/payjp-transfers-api-openapi.yml
+  - type: Documentation
+    url: https://pay.jp/docs/charge
+  - type: APIReference
+    url: https://docs.pay.jp/v1/api/
+  - type: Documentation
+    url: https://docs.pay.jp/v1/customer
+  - type: Documentation
+    url: https://docs.pay.jp/v1/subscription
+  - type: Documentation
+    url: https://pay.jp/docs/platform-payment
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/payjp/overview
 - type: AgenticAccess
   url: agentic-access/payjp-agentic-access.yml
 - type: TrustCenter
