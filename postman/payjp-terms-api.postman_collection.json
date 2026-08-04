@@ -1,0 +1,212 @@
+{
+  "info": {
+    "_postman_id": "dbe677c1-0bec-4d32-aa36-2a87a5f1c41c",
+    "name": "PAY.JP 3D Secure Terms API",
+    "description": "PAY.JP is an online payment service operated by PAY, Inc. (PAY\u682a\u5f0f\u4f1a\u793e) in Japan. The REST API creates charges, tokenizes cards, manages customers, runs subscriptions (\u5b9a\u671f\u8ab2\u91d1), and reports transfers (\u5165\u91d1) and balances in Japanese yen. Authentication is HTTP Basic with a secret key (sk_test_ / sk_live_) as the username and an empty password. All amounts are integer JPY.\n\nContact Support:\n Name: PAY.JP Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:32:43.000Z",
+    "updatedAt": "2026-07-28T02:32:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-dbe677c1-0bec-4d32-aa36-2a87a5f1c41c"
+  },
+  "item": [
+    {
+      "name": "terms",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Retrieve a term",
+              "id": "f9041a5b-274c-4b21-b695-ab2ea96be2d8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/terms/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "terms",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "983943a9-14e9-4d1a-a01c-02779a3ba761",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "cf9d8425-077c-4786-bbf3-f45ebcaa537d",
+                  "name": "A PAY.JP resource object",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/terms/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "terms",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"livemode\": \"<boolean>\",\n  \"created\": \"<integer>\",\n  \"dolora\": \"nulla culpa Lorem\",\n  \"ut9\": 55298285.5492048\n}",
+                  "createdAt": "2026-07-28T02:32:43.000Z",
+                  "updatedAt": "2026-07-28T02:32:43.000Z",
+                  "uid": "35240-cf9d8425-077c-4786-bbf3-f45ebcaa537d"
+                }
+              ],
+              "createdAt": "2026-07-28T02:32:43.000Z",
+              "updatedAt": "2026-07-28T02:32:43.000Z",
+              "uid": "35240-f9041a5b-274c-4b21-b695-ab2ea96be2d8"
+            }
+          ],
+          "id": "09c83646-99d8-4b8b-8100-d3fa06c31dd1",
+          "createdAt": "2026-07-28T02:32:43.000Z",
+          "updatedAt": "2026-07-28T02:32:43.000Z",
+          "uid": "35240-09c83646-99d8-4b8b-8100-d3fa06c31dd1"
+        },
+        {
+          "name": "List aggregation terms (\u96c6\u8a08\u533a\u9593)",
+          "id": "36d993b7-0bdb-4baf-a16c-4079b8069ac8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/terms",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "terms"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "73bdd42e-5fdd-4529-a501-6146be7d1a21",
+              "name": "A paginated list object",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/terms",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "terms"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"object\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"has_more\": \"<boolean>\",\n  \"url\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"object\": \"<string>\",\n      \"livemode\": \"<boolean>\",\n      \"created\": \"<integer>\",\n      \"consectetur_66\": \"anim et mollit\",\n      \"magna057\": true,\n      \"doe\": false\n    },\n    {\n      \"id\": \"<string>\",\n      \"object\": \"<string>\",\n      \"livemode\": \"<boolean>\",\n      \"created\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:32:43.000Z",
+              "updatedAt": "2026-07-28T02:32:43.000Z",
+              "uid": "35240-73bdd42e-5fdd-4529-a501-6146be7d1a21"
+            }
+          ],
+          "createdAt": "2026-07-28T02:32:43.000Z",
+          "updatedAt": "2026-07-28T02:32:43.000Z",
+          "uid": "35240-36d993b7-0bdb-4baf-a16c-4079b8069ac8"
+        }
+      ],
+      "id": "6207ca61-bdb6-402f-9035-9b618c267cf4",
+      "createdAt": "2026-07-28T02:32:43.000Z",
+      "updatedAt": "2026-07-28T02:32:43.000Z",
+      "uid": "35240-6207ca61-bdb6-402f-9035-9b618c267cf4"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pay.jp/v1"
+    }
+  ]
+}

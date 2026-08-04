@@ -1,0 +1,538 @@
+{
+  "info": {
+    "_postman_id": "34f1be59-8f2d-4306-9d57-ad31fa2abcb3",
+    "name": "PAY.JP 3D Secure Customers API",
+    "description": "PAY.JP is an online payment service operated by PAY, Inc. (PAY\u682a\u5f0f\u4f1a\u793e) in Japan. The REST API creates charges, tokenizes cards, manages customers, runs subscriptions (\u5b9a\u671f\u8ab2\u91d1), and reports transfers (\u5165\u91d1) and balances in Japanese yen. Authentication is HTTP Basic with a secret key (sk_test_ / sk_live_) as the username and an empty password. All amounts are integer JPY.\n\nContact Support:\n Name: PAY.JP Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:32:15.000Z",
+    "updatedAt": "2026-07-28T02:32:15.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-34f1be59-8f2d-4306-9d57-ad31fa2abcb3"
+  },
+  "item": [
+    {
+      "name": "customers",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Retrieve a customer",
+              "id": "8401a198-3424-4d02-bee9-b48e5a8f80c9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/customers/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "f7ea6de3-aefc-49dc-af28-35c40b0565b5",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "360f8ef6-0321-4745-bfd8-02a0b69a4094",
+                  "name": "A Customer object",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"email\": \"<string>\",\n  \"description\": \"<string>\",\n  \"default_card\": \"<string>\",\n  \"cards\": {\n    \"object\": \"<string>\",\n    \"count\": \"<integer>\",\n    \"has_more\": \"<boolean>\",\n    \"url\": \"<string>\",\n    \"data\": [\n      {\n        \"id\": \"<string>\",\n        \"object\": \"<string>\",\n        \"livemode\": \"<boolean>\",\n        \"created\": \"<integer>\",\n        \"voluptate17\": -13885379\n      },\n      {\n        \"id\": \"<string>\",\n        \"object\": \"<string>\",\n        \"livemode\": \"<boolean>\",\n        \"created\": \"<integer>\"\n      }\n    ]\n  },\n  \"subscriptions\": {\n    \"object\": \"<string>\",\n    \"count\": \"<integer>\",\n    \"has_more\": \"<boolean>\",\n    \"url\": \"<string>\",\n    \"data\": [\n      {\n        \"id\": \"<string>\",\n        \"object\": \"<string>\",\n        \"livemode\": \"<boolean>\",\n        \"created\": \"<integer>\",\n        \"minim_2c5\": 28471582,\n        \"exercitationcab\": \"mollit sit ea\",\n        \"incididunt6e\": \"laboris aliquip labore \",\n        \"aliqua_3ac\": true,\n        \"magna_c2\": -39037341\n      },\n      {\n        \"id\": \"<string>\",\n        \"object\": \"<string>\",\n        \"livemode\": \"<boolean>\",\n        \"created\": \"<integer>\",\n        \"reprehenderit_0\": true\n      }\n    ]\n  },\n  \"created\": \"<integer>\",\n  \"livemode\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:32:16.000Z",
+                  "updatedAt": "2026-07-28T02:32:16.000Z",
+                  "uid": "35240-360f8ef6-0321-4745-bfd8-02a0b69a4094"
+                }
+              ],
+              "createdAt": "2026-07-28T02:32:16.000Z",
+              "updatedAt": "2026-07-28T02:32:16.000Z",
+              "uid": "35240-8401a198-3424-4d02-bee9-b48e5a8f80c9"
+            },
+            {
+              "name": "Update a customer",
+              "id": "fec9db99-9e72-491c-8273-03ecbf326b56",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/customers/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "683b4f59-3639-4e51-8edd-ded290011619",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "5e0c2115-81be-4edc-aecf-2fa60af58504",
+                  "name": "A Customer object",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"email\": \"<string>\",\n  \"description\": \"<string>\",\n  \"default_card\": \"<string>\",\n  \"cards\": {\n    \"object\": \"<string>\",\n    \"count\": \"<integer>\",\n    \"has_more\": \"<boolean>\",\n    \"url\": \"<string>\",\n    \"data\": [\n      {\n        \"id\": \"<string>\",\n        \"object\": \"<string>\",\n        \"livemode\": \"<boolean>\",\n        \"created\": \"<integer>\",\n        \"voluptate17\": -13885379\n      },\n      {\n        \"id\": \"<string>\",\n        \"object\": \"<string>\",\n        \"livemode\": \"<boolean>\",\n        \"created\": \"<integer>\"\n      }\n    ]\n  },\n  \"subscriptions\": {\n    \"object\": \"<string>\",\n    \"count\": \"<integer>\",\n    \"has_more\": \"<boolean>\",\n    \"url\": \"<string>\",\n    \"data\": [\n      {\n        \"id\": \"<string>\",\n        \"object\": \"<string>\",\n        \"livemode\": \"<boolean>\",\n        \"created\": \"<integer>\",\n        \"minim_2c5\": 28471582,\n        \"exercitationcab\": \"mollit sit ea\",\n        \"incididunt6e\": \"laboris aliquip labore \",\n        \"aliqua_3ac\": true,\n        \"magna_c2\": -39037341\n      },\n      {\n        \"id\": \"<string>\",\n        \"object\": \"<string>\",\n        \"livemode\": \"<boolean>\",\n        \"created\": \"<integer>\",\n        \"reprehenderit_0\": true\n      }\n    ]\n  },\n  \"created\": \"<integer>\",\n  \"livemode\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:32:16.000Z",
+                  "updatedAt": "2026-07-28T02:32:16.000Z",
+                  "uid": "35240-5e0c2115-81be-4edc-aecf-2fa60af58504"
+                }
+              ],
+              "createdAt": "2026-07-28T02:32:16.000Z",
+              "updatedAt": "2026-07-28T02:32:16.000Z",
+              "uid": "35240-fec9db99-9e72-491c-8273-03ecbf326b56"
+            },
+            {
+              "name": "Delete a customer",
+              "id": "42f948ef-b6be-4ff2-8679-d759e0771fde",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/customers/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "59ca95a4-188a-44cd-9d39-b134ea75097a",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "a4029571-7d6a-4650-8219-48eafc1d8e0e",
+                  "name": "A deletion confirmation",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"deleted\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:32:16.000Z",
+                  "updatedAt": "2026-07-28T02:32:16.000Z",
+                  "uid": "35240-a4029571-7d6a-4650-8219-48eafc1d8e0e"
+                }
+              ],
+              "createdAt": "2026-07-28T02:32:16.000Z",
+              "updatedAt": "2026-07-28T02:32:16.000Z",
+              "uid": "35240-42f948ef-b6be-4ff2-8679-d759e0771fde"
+            }
+          ],
+          "id": "a109cd90-6361-4e99-a826-8cf6bf96f81c",
+          "createdAt": "2026-07-28T02:32:16.000Z",
+          "updatedAt": "2026-07-28T02:32:16.000Z",
+          "uid": "35240-a109cd90-6361-4e99-a826-8cf6bf96f81c"
+        },
+        {
+          "name": "List customers",
+          "id": "2f711277-c287-478b-b17d-23a0b15ba239",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/customers?limit=10&offset=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "customers"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "644de81e-ebf0-44a5-9032-b8710ab131d7",
+              "name": "A paginated list object",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/customers?limit=10&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"object\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"has_more\": \"<boolean>\",\n  \"url\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"object\": \"<string>\",\n      \"livemode\": \"<boolean>\",\n      \"created\": \"<integer>\",\n      \"ipsum_a7a\": \"in ipsum\",\n      \"incididuntfaa\": 12832088.580939204\n    },\n    {\n      \"id\": \"<string>\",\n      \"object\": \"<string>\",\n      \"livemode\": \"<boolean>\",\n      \"created\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:32:16.000Z",
+              "updatedAt": "2026-07-28T02:32:16.000Z",
+              "uid": "35240-644de81e-ebf0-44a5-9032-b8710ab131d7"
+            }
+          ],
+          "createdAt": "2026-07-28T02:32:16.000Z",
+          "updatedAt": "2026-07-28T02:32:16.000Z",
+          "uid": "35240-2f711277-c287-478b-b17d-23a0b15ba239"
+        },
+        {
+          "name": "Create a customer",
+          "id": "3e634ce6-3234-4450-8b61-b5eb53affaa6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "email",
+                  "value": "<string>"
+                },
+                {
+                  "key": "description",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Token id to attach as default card",
+                  "key": "card",
+                  "value": "<string>"
+                },
+                {
+                  "key": "ea_6",
+                  "value": "-91528257.54703438"
+                },
+                {
+                  "key": "anim_7",
+                  "value": "el"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/customers",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "customers"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "55525942-4215-4555-811b-278766d71486",
+              "name": "A Customer object",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Token id to attach as default card",
+                      "key": "card",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ea_6",
+                      "value": "-91528257.54703438"
+                    },
+                    {
+                      "key": "anim_7",
+                      "value": "el"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/customers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"email\": \"<string>\",\n  \"description\": \"<string>\",\n  \"default_card\": \"<string>\",\n  \"cards\": {\n    \"object\": \"<string>\",\n    \"count\": \"<integer>\",\n    \"has_more\": \"<boolean>\",\n    \"url\": \"<string>\",\n    \"data\": [\n      {\n        \"id\": \"<string>\",\n        \"object\": \"<string>\",\n        \"livemode\": \"<boolean>\",\n        \"created\": \"<integer>\",\n        \"voluptate17\": -13885379\n      },\n      {\n        \"id\": \"<string>\",\n        \"object\": \"<string>\",\n        \"livemode\": \"<boolean>\",\n        \"created\": \"<integer>\"\n      }\n    ]\n  },\n  \"subscriptions\": {\n    \"object\": \"<string>\",\n    \"count\": \"<integer>\",\n    \"has_more\": \"<boolean>\",\n    \"url\": \"<string>\",\n    \"data\": [\n      {\n        \"id\": \"<string>\",\n        \"object\": \"<string>\",\n        \"livemode\": \"<boolean>\",\n        \"created\": \"<integer>\",\n        \"minim_2c5\": 28471582,\n        \"exercitationcab\": \"mollit sit ea\",\n        \"incididunt6e\": \"laboris aliquip labore \",\n        \"aliqua_3ac\": true,\n        \"magna_c2\": -39037341\n      },\n      {\n        \"id\": \"<string>\",\n        \"object\": \"<string>\",\n        \"livemode\": \"<boolean>\",\n        \"created\": \"<integer>\",\n        \"reprehenderit_0\": true\n      }\n    ]\n  },\n  \"created\": \"<integer>\",\n  \"livemode\": \"<boolean>\"\n}",
+              "createdAt": "2026-07-28T02:32:16.000Z",
+              "updatedAt": "2026-07-28T02:32:16.000Z",
+              "uid": "35240-55525942-4215-4555-811b-278766d71486"
+            }
+          ],
+          "createdAt": "2026-07-28T02:32:16.000Z",
+          "updatedAt": "2026-07-28T02:32:16.000Z",
+          "uid": "35240-3e634ce6-3234-4450-8b61-b5eb53affaa6"
+        }
+      ],
+      "id": "08f37a7c-f9dd-47be-b5d1-939a0b88206e",
+      "createdAt": "2026-07-28T02:32:16.000Z",
+      "updatedAt": "2026-07-28T02:32:16.000Z",
+      "uid": "35240-08f37a7c-f9dd-47be-b5d1-939a0b88206e"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pay.jp/v1"
+    }
+  ]
+}

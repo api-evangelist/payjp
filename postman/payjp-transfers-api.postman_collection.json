@@ -1,0 +1,310 @@
+{
+  "info": {
+    "_postman_id": "edbe09a0-183f-47db-836f-5480077d3d7d",
+    "name": "PAY.JP 3D Secure Transfers API",
+    "description": "PAY.JP is an online payment service operated by PAY, Inc. (PAY\u682a\u5f0f\u4f1a\u793e) in Japan. The REST API creates charges, tokenizes cards, manages customers, runs subscriptions (\u5b9a\u671f\u8ab2\u91d1), and reports transfers (\u5165\u91d1) and balances in Japanese yen. Authentication is HTTP Basic with a secret key (sk_test_ / sk_live_) as the username and an empty password. All amounts are integer JPY.\n\nContact Support:\n Name: PAY.JP Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:32:45.000Z",
+    "updatedAt": "2026-07-28T02:32:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-edbe09a0-183f-47db-836f-5480077d3d7d"
+  },
+  "item": [
+    {
+      "name": "transfers",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "details",
+              "item": [
+                {
+                  "name": "List the charges settled in a transfer",
+                  "id": "c202bb42-88bb-48ed-9731-dc1d6bf5c05c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/transfers/:id/details",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transfers",
+                        ":id",
+                        "details"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7b6881aa-6d14-4f03-9870-3ab698ea49ae",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "955c895c-9728-42ed-9bba-b5678c788a0f",
+                      "name": "A paginated list object",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/transfers/:id/details",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transfers",
+                            ":id",
+                            "details"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"object\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"has_more\": \"<boolean>\",\n  \"url\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"object\": \"<string>\",\n      \"livemode\": \"<boolean>\",\n      \"created\": \"<integer>\",\n      \"aliquip_bb3\": false\n    },\n    {\n      \"id\": \"<string>\",\n      \"object\": \"<string>\",\n      \"livemode\": \"<boolean>\",\n      \"created\": \"<integer>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:32:45.000Z",
+                      "updatedAt": "2026-07-28T02:32:45.000Z",
+                      "uid": "35240-955c895c-9728-42ed-9bba-b5678c788a0f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:32:45.000Z",
+                  "updatedAt": "2026-07-28T02:32:45.000Z",
+                  "uid": "35240-c202bb42-88bb-48ed-9731-dc1d6bf5c05c"
+                }
+              ],
+              "id": "9e930d39-8a43-49f0-844b-272d9b74b4c1",
+              "createdAt": "2026-07-28T02:32:45.000Z",
+              "updatedAt": "2026-07-28T02:32:45.000Z",
+              "uid": "35240-9e930d39-8a43-49f0-844b-272d9b74b4c1"
+            },
+            {
+              "name": "Retrieve a transfer",
+              "id": "b9eac92f-e7cf-4ce1-a4b3-b2581d690b6f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/transfers/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "transfers",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "f704d1ef-f892-4298-8a92-e46cb2c910f6",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "72fb2f98-f3bd-4fe0-9cc9-ab642279642d",
+                  "name": "A PAY.JP resource object",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/transfers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transfers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"livemode\": \"<boolean>\",\n  \"created\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T02:32:45.000Z",
+                  "updatedAt": "2026-07-28T02:32:45.000Z",
+                  "uid": "35240-72fb2f98-f3bd-4fe0-9cc9-ab642279642d"
+                }
+              ],
+              "createdAt": "2026-07-28T02:32:45.000Z",
+              "updatedAt": "2026-07-28T02:32:45.000Z",
+              "uid": "35240-b9eac92f-e7cf-4ce1-a4b3-b2581d690b6f"
+            }
+          ],
+          "id": "7a52c5fc-b137-43ed-b485-11ea19f0b61d",
+          "createdAt": "2026-07-28T02:32:45.000Z",
+          "updatedAt": "2026-07-28T02:32:45.000Z",
+          "uid": "35240-7a52c5fc-b137-43ed-b485-11ea19f0b61d"
+        },
+        {
+          "name": "List transfers (\u5165\u91d1)",
+          "id": "ebc1badb-c4ac-43c9-a296-c756a6046ca3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/transfers",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "transfers"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f20fd255-a0e8-406c-a56d-308388649ab7",
+              "name": "A paginated list object",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/transfers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "transfers"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"object\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"has_more\": \"<boolean>\",\n  \"url\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"object\": \"<string>\",\n      \"livemode\": \"<boolean>\",\n      \"created\": \"<integer>\",\n      \"aliquip_bb3\": false\n    },\n    {\n      \"id\": \"<string>\",\n      \"object\": \"<string>\",\n      \"livemode\": \"<boolean>\",\n      \"created\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:32:45.000Z",
+              "updatedAt": "2026-07-28T02:32:45.000Z",
+              "uid": "35240-f20fd255-a0e8-406c-a56d-308388649ab7"
+            }
+          ],
+          "createdAt": "2026-07-28T02:32:45.000Z",
+          "updatedAt": "2026-07-28T02:32:45.000Z",
+          "uid": "35240-ebc1badb-c4ac-43c9-a296-c756a6046ca3"
+        }
+      ],
+      "id": "6cf5d1b5-7caf-4979-848b-b1b2eb12e040",
+      "createdAt": "2026-07-28T02:32:45.000Z",
+      "updatedAt": "2026-07-28T02:32:45.000Z",
+      "uid": "35240-6cf5d1b5-7caf-4979-848b-b1b2eb12e040"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pay.jp/v1"
+    }
+  ]
+}

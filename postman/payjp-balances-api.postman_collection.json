@@ -1,0 +1,212 @@
+{
+  "info": {
+    "_postman_id": "e1eb6085-4029-4737-9221-0c52827fd353",
+    "name": "PAY.JP 3D Secure Balances API",
+    "description": "PAY.JP is an online payment service operated by PAY, Inc. (PAY\u682a\u5f0f\u4f1a\u793e) in Japan. The REST API creates charges, tokenizes cards, manages customers, runs subscriptions (\u5b9a\u671f\u8ab2\u91d1), and reports transfers (\u5165\u91d1) and balances in Japanese yen. Authentication is HTTP Basic with a secret key (sk_test_ / sk_live_) as the username and an empty password. All amounts are integer JPY.\n\nContact Support:\n Name: PAY.JP Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:32:07.000Z",
+    "updatedAt": "2026-07-28T02:32:08.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e1eb6085-4029-4737-9221-0c52827fd353"
+  },
+  "item": [
+    {
+      "name": "balances",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Retrieve a balance",
+              "id": "92f4f72b-eb3f-49c0-8a20-627525ba4b52",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/balances/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "balances",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "97979635-ca54-4f6d-835e-7653b458bd40",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "95885a34-a839-4bac-914f-aaf9abdd815d",
+                  "name": "A PAY.JP resource object",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/balances/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "balances",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"livemode\": \"<boolean>\",\n  \"created\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T02:32:08.000Z",
+                  "updatedAt": "2026-07-28T02:32:08.000Z",
+                  "uid": "35240-95885a34-a839-4bac-914f-aaf9abdd815d"
+                }
+              ],
+              "createdAt": "2026-07-28T02:32:08.000Z",
+              "updatedAt": "2026-07-28T02:32:08.000Z",
+              "uid": "35240-92f4f72b-eb3f-49c0-8a20-627525ba4b52"
+            }
+          ],
+          "id": "f2028577-0b62-47b5-bec4-6f0de71a7d16",
+          "createdAt": "2026-07-28T02:32:08.000Z",
+          "updatedAt": "2026-07-28T02:32:08.000Z",
+          "uid": "35240-f2028577-0b62-47b5-bec4-6f0de71a7d16"
+        },
+        {
+          "name": "List account balances (\u6b8b\u9ad8)",
+          "id": "7048a915-d6a7-411a-a858-8db2b810f96b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/balances",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "balances"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "746000ee-c1c2-4d7e-bb1b-9f23e5fc5416",
+              "name": "A paginated list object",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/balances",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "balances"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"object\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"has_more\": \"<boolean>\",\n  \"url\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"object\": \"<string>\",\n      \"livemode\": \"<boolean>\",\n      \"created\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"object\": \"<string>\",\n      \"livemode\": \"<boolean>\",\n      \"created\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:32:08.000Z",
+              "updatedAt": "2026-07-28T02:32:08.000Z",
+              "uid": "35240-746000ee-c1c2-4d7e-bb1b-9f23e5fc5416"
+            }
+          ],
+          "createdAt": "2026-07-28T02:32:08.000Z",
+          "updatedAt": "2026-07-28T02:32:08.000Z",
+          "uid": "35240-7048a915-d6a7-411a-a858-8db2b810f96b"
+        }
+      ],
+      "id": "090971a3-f7b1-466b-b396-34cad7bb18f9",
+      "createdAt": "2026-07-28T02:32:08.000Z",
+      "updatedAt": "2026-07-28T02:32:08.000Z",
+      "uid": "35240-090971a3-f7b1-466b-b396-34cad7bb18f9"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pay.jp/v1"
+    }
+  ]
+}

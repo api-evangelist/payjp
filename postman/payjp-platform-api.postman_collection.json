@@ -1,0 +1,635 @@
+{
+  "info": {
+    "_postman_id": "a9d9af12-08e1-4ab9-8bdd-47905b9abf89",
+    "name": "PAY.JP 3D Secure Platform API",
+    "description": "PAY.JP is an online payment service operated by PAY, Inc. (PAY\u682a\u5f0f\u4f1a\u793e) in Japan. The REST API creates charges, tokenizes cards, manages customers, runs subscriptions (\u5b9a\u671f\u8ab2\u91d1), and reports transfers (\u5165\u91d1) and balances in Japanese yen. Authentication is HTTP Basic with a secret key (sk_test_ / sk_live_) as the username and an empty password. All amounts are integer JPY.\n\nContact Support:\n Name: PAY.JP Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:32:34.000Z",
+    "updatedAt": "2026-07-28T02:32:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a9d9af12-08e1-4ab9-8bdd-47905b9abf89"
+  },
+  "item": [
+    {
+      "name": "tenants",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Retrieve a tenant",
+              "id": "2bc5882d-45ee-4bc5-b06f-6f0539825ace",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tenants/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tenants",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "3e00515d-7307-4d8e-956e-4a54326cf947",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "09c6dc1f-6f25-43c3-bf43-0dadb5db9e85",
+                  "name": "A PAY.JP resource object",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tenants/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tenants",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"livemode\": \"<boolean>\",\n  \"created\": \"<integer>\",\n  \"exercitation1\": true\n}",
+                  "createdAt": "2026-07-28T02:32:34.000Z",
+                  "updatedAt": "2026-07-28T02:32:34.000Z",
+                  "uid": "35240-09c6dc1f-6f25-43c3-bf43-0dadb5db9e85"
+                }
+              ],
+              "createdAt": "2026-07-28T02:32:34.000Z",
+              "updatedAt": "2026-07-28T02:32:34.000Z",
+              "uid": "35240-2bc5882d-45ee-4bc5-b06f-6f0539825ace"
+            },
+            {
+              "name": "Update a tenant",
+              "id": "196ed013-edbe-4112-91da-6dbdef255f80",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tenants/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tenants",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a2c18dc2-82f5-41bc-b06b-ba4432225ca0",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "9c4da1cf-4268-4e56-aaf3-12980ecedb17",
+                  "name": "A PAY.JP resource object",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tenants/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tenants",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"livemode\": \"<boolean>\",\n  \"created\": \"<integer>\",\n  \"exercitation1\": true\n}",
+                  "createdAt": "2026-07-28T02:32:34.000Z",
+                  "updatedAt": "2026-07-28T02:32:34.000Z",
+                  "uid": "35240-9c4da1cf-4268-4e56-aaf3-12980ecedb17"
+                }
+              ],
+              "createdAt": "2026-07-28T02:32:34.000Z",
+              "updatedAt": "2026-07-28T02:32:34.000Z",
+              "uid": "35240-196ed013-edbe-4112-91da-6dbdef255f80"
+            },
+            {
+              "name": "Delete a tenant",
+              "id": "ae7bce4f-5d21-4443-8d2d-ccd3a8d44acc",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tenants/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tenants",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "fbdcbd43-a7d5-421f-bf1a-88577a7344d4",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "fbde87e4-2bfe-4a42-98d3-f8794682592d",
+                  "name": "A deletion confirmation",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tenants/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tenants",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"deleted\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:32:34.000Z",
+                  "updatedAt": "2026-07-28T02:32:34.000Z",
+                  "uid": "35240-fbde87e4-2bfe-4a42-98d3-f8794682592d"
+                }
+              ],
+              "createdAt": "2026-07-28T02:32:34.000Z",
+              "updatedAt": "2026-07-28T02:32:34.000Z",
+              "uid": "35240-ae7bce4f-5d21-4443-8d2d-ccd3a8d44acc"
+            }
+          ],
+          "id": "26f2f492-49c9-4c80-a99b-cf74ae3ecb3c",
+          "createdAt": "2026-07-28T02:32:34.000Z",
+          "updatedAt": "2026-07-28T02:32:34.000Z",
+          "uid": "35240-26f2f492-49c9-4c80-a99b-cf74ae3ecb3c"
+        },
+        {
+          "name": "List platform tenants (beta)",
+          "id": "25414800-df7a-4893-9563-2c2b6afb6ccd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/tenants",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tenants"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ee6d977b-bbc6-479e-889b-c0b432088996",
+              "name": "A paginated list object",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tenants",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tenants"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"object\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"has_more\": \"<boolean>\",\n  \"url\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"object\": \"<string>\",\n      \"livemode\": \"<boolean>\",\n      \"created\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"object\": \"<string>\",\n      \"livemode\": \"<boolean>\",\n      \"created\": \"<integer>\",\n      \"in_b\": -96565799.75268564\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:32:34.000Z",
+              "updatedAt": "2026-07-28T02:32:34.000Z",
+              "uid": "35240-ee6d977b-bbc6-479e-889b-c0b432088996"
+            }
+          ],
+          "createdAt": "2026-07-28T02:32:34.000Z",
+          "updatedAt": "2026-07-28T02:32:34.000Z",
+          "uid": "35240-25414800-df7a-4893-9563-2c2b6afb6ccd"
+        },
+        {
+          "name": "Create a platform tenant (sub-merchant)",
+          "id": "c9e2fa92-aa6c-48ae-abed-e2b8d290d644",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/tenants",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tenants"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e2158f61-a42f-49d0-b7d9-1d3a0e52044e",
+              "name": "A PAY.JP resource object",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tenants",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tenants"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"livemode\": \"<boolean>\",\n  \"created\": \"<integer>\",\n  \"exercitation1\": true\n}",
+              "createdAt": "2026-07-28T02:32:34.000Z",
+              "updatedAt": "2026-07-28T02:32:34.000Z",
+              "uid": "35240-e2158f61-a42f-49d0-b7d9-1d3a0e52044e"
+            }
+          ],
+          "createdAt": "2026-07-28T02:32:34.000Z",
+          "updatedAt": "2026-07-28T02:32:34.000Z",
+          "uid": "35240-c9e2fa92-aa6c-48ae-abed-e2b8d290d644"
+        }
+      ],
+      "id": "c3c366a5-ac35-475e-a0bf-400015d0b74c",
+      "createdAt": "2026-07-28T02:32:34.000Z",
+      "updatedAt": "2026-07-28T02:32:34.000Z",
+      "uid": "35240-c3c366a5-ac35-475e-a0bf-400015d0b74c"
+    },
+    {
+      "name": "tenant_transfers",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Retrieve a tenant transfer",
+              "id": "2d379142-4e63-4023-a405-653b6838d923",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tenant_transfers/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tenant_transfers",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "7d567479-362b-4c4d-ae34-3dd033392a6b",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "8c520cf2-e988-44c6-84d7-3978bac8600d",
+                  "name": "A PAY.JP resource object",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tenant_transfers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tenant_transfers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"livemode\": \"<boolean>\",\n  \"created\": \"<integer>\",\n  \"exercitation1\": true\n}",
+                  "createdAt": "2026-07-28T02:32:34.000Z",
+                  "updatedAt": "2026-07-28T02:32:34.000Z",
+                  "uid": "35240-8c520cf2-e988-44c6-84d7-3978bac8600d"
+                }
+              ],
+              "createdAt": "2026-07-28T02:32:34.000Z",
+              "updatedAt": "2026-07-28T02:32:34.000Z",
+              "uid": "35240-2d379142-4e63-4023-a405-653b6838d923"
+            }
+          ],
+          "id": "6876c91f-c6f2-4582-95fc-04e07dee9bb5",
+          "createdAt": "2026-07-28T02:32:34.000Z",
+          "updatedAt": "2026-07-28T02:32:34.000Z",
+          "uid": "35240-6876c91f-c6f2-4582-95fc-04e07dee9bb5"
+        },
+        {
+          "name": "List tenant transfers",
+          "id": "61985006-ece0-49a4-a685-4fdb2d02a10b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/tenant_transfers",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tenant_transfers"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "af090097-c0b5-482a-bbfe-3a00948eeda1",
+              "name": "A paginated list object",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tenant_transfers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tenant_transfers"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"object\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"has_more\": \"<boolean>\",\n  \"url\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"object\": \"<string>\",\n      \"livemode\": \"<boolean>\",\n      \"created\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"object\": \"<string>\",\n      \"livemode\": \"<boolean>\",\n      \"created\": \"<integer>\",\n      \"in_b\": -96565799.75268564\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:32:34.000Z",
+              "updatedAt": "2026-07-28T02:32:34.000Z",
+              "uid": "35240-af090097-c0b5-482a-bbfe-3a00948eeda1"
+            }
+          ],
+          "createdAt": "2026-07-28T02:32:34.000Z",
+          "updatedAt": "2026-07-28T02:32:34.000Z",
+          "uid": "35240-61985006-ece0-49a4-a685-4fdb2d02a10b"
+        }
+      ],
+      "id": "63265dae-a417-49b9-8f23-55054607aaba",
+      "createdAt": "2026-07-28T02:32:34.000Z",
+      "updatedAt": "2026-07-28T02:32:34.000Z",
+      "uid": "35240-63265dae-a417-49b9-8f23-55054607aaba"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pay.jp/v1"
+    }
+  ]
+}

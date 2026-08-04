@@ -1,0 +1,577 @@
+{
+  "info": {
+    "_postman_id": "9ce65d9c-90e3-45e7-aa60-cad89491b115",
+    "name": "PAY.JP 3D Secure Cards API",
+    "description": "PAY.JP is an online payment service operated by PAY, Inc. (PAY\u682a\u5f0f\u4f1a\u793e) in Japan. The REST API creates charges, tokenizes cards, manages customers, runs subscriptions (\u5b9a\u671f\u8ab2\u91d1), and reports transfers (\u5165\u91d1) and balances in Japanese yen. Authentication is HTTP Basic with a secret key (sk_test_ / sk_live_) as the username and an empty password. All amounts are integer JPY.\n\nContact Support:\n Name: PAY.JP Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:32:13.000Z",
+    "updatedAt": "2026-07-28T02:32:13.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9ce65d9c-90e3-45e7-aa60-cad89491b115"
+  },
+  "item": [
+    {
+      "name": "customers",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "cards",
+              "item": [
+                {
+                  "name": "{card_id}",
+                  "item": [
+                    {
+                      "name": "Retrieve a customer's card",
+                      "id": "4b491cc2-c895-4f7e-9ec0-a75bc96668e6",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/customers/:id/cards/:card_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "customers",
+                            ":id",
+                            "cards",
+                            ":card_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "4a2859c2-b5ba-48dc-b38b-8d741b3101d4",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "b367c235-7b04-4b40-95b2-bcc2b09fb87e",
+                              "key": "card_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "e5881eaf-083c-42df-b60a-a88cdb7778ba",
+                          "name": "A Card object",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/customers/:id/cards/:card_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "customers",
+                                ":id",
+                                "cards",
+                                ":card_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "card_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"brand\": \"<string>\",\n  \"last4\": \"<string>\",\n  \"exp_month\": \"<integer>\",\n  \"exp_year\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"three_d_secure_status\": \"<string>\",\n  \"created\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T02:32:14.000Z",
+                          "updatedAt": "2026-07-28T02:32:14.000Z",
+                          "uid": "35240-e5881eaf-083c-42df-b60a-a88cdb7778ba"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:32:14.000Z",
+                      "updatedAt": "2026-07-28T02:32:14.000Z",
+                      "uid": "35240-4b491cc2-c895-4f7e-9ec0-a75bc96668e6"
+                    },
+                    {
+                      "name": "Update a customer's card",
+                      "id": "9110d337-dd73-4cef-8509-5e8334a594ba",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/customers/:id/cards/:card_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "customers",
+                            ":id",
+                            "cards",
+                            ":card_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "1a80f9a9-6866-4e7a-881d-2c30c211f0e1",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "bf40e94f-2069-4d2a-93a9-4503d3a4c711",
+                              "key": "card_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "35a230f8-5564-4a4f-b8b2-c109849fbf23",
+                          "name": "A Card object",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/customers/:id/cards/:card_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "customers",
+                                ":id",
+                                "cards",
+                                ":card_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "card_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"brand\": \"<string>\",\n  \"last4\": \"<string>\",\n  \"exp_month\": \"<integer>\",\n  \"exp_year\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"three_d_secure_status\": \"<string>\",\n  \"created\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T02:32:14.000Z",
+                          "updatedAt": "2026-07-28T02:32:14.000Z",
+                          "uid": "35240-35a230f8-5564-4a4f-b8b2-c109849fbf23"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:32:14.000Z",
+                      "updatedAt": "2026-07-28T02:32:14.000Z",
+                      "uid": "35240-9110d337-dd73-4cef-8509-5e8334a594ba"
+                    },
+                    {
+                      "name": "Delete a customer's card",
+                      "id": "3eebdfc7-a8fe-4b3a-b33e-c053d92ec9bf",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/customers/:id/cards/:card_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "customers",
+                            ":id",
+                            "cards",
+                            ":card_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "d0f541ec-f9a5-49dc-8683-977681c4683e",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "8d3f288d-082d-463c-9a6b-dad9e1bd4273",
+                              "key": "card_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "9079260d-b32c-4250-86a0-7bafa5ebf96e",
+                          "name": "A deletion confirmation",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/customers/:id/cards/:card_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "customers",
+                                ":id",
+                                "cards",
+                                ":card_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "card_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"deleted\": \"<boolean>\"\n}",
+                          "createdAt": "2026-07-28T02:32:14.000Z",
+                          "updatedAt": "2026-07-28T02:32:14.000Z",
+                          "uid": "35240-9079260d-b32c-4250-86a0-7bafa5ebf96e"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:32:14.000Z",
+                      "updatedAt": "2026-07-28T02:32:14.000Z",
+                      "uid": "35240-3eebdfc7-a8fe-4b3a-b33e-c053d92ec9bf"
+                    }
+                  ],
+                  "id": "60a088f5-8895-4371-b032-af10d16d8be8",
+                  "createdAt": "2026-07-28T02:32:14.000Z",
+                  "updatedAt": "2026-07-28T02:32:14.000Z",
+                  "uid": "35240-60a088f5-8895-4371-b032-af10d16d8be8"
+                },
+                {
+                  "name": "List a customer's cards",
+                  "id": "2b5704bb-b868-4091-9064-e5c0c8016285",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:id/cards",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":id",
+                        "cards"
+                      ],
+                      "variable": [
+                        {
+                          "id": "823c9894-2fa5-4647-a0f6-aa2c8df6e4b2",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "151a9dea-261b-47ed-95e0-83c7cdbbd174",
+                      "name": "A paginated list object",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/customers/:id/cards",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "customers",
+                            ":id",
+                            "cards"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"object\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"has_more\": \"<boolean>\",\n  \"url\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"object\": \"<string>\",\n      \"livemode\": \"<boolean>\",\n      \"created\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"object\": \"<string>\",\n      \"livemode\": \"<boolean>\",\n      \"created\": \"<integer>\",\n      \"utd\": \"fugiat dolore\",\n      \"deserunt_31\": \"d\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:32:14.000Z",
+                      "updatedAt": "2026-07-28T02:32:14.000Z",
+                      "uid": "35240-151a9dea-261b-47ed-95e0-83c7cdbbd174"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:32:14.000Z",
+                  "updatedAt": "2026-07-28T02:32:14.000Z",
+                  "uid": "35240-2b5704bb-b868-4091-9064-e5c0c8016285"
+                },
+                {
+                  "name": "Attach a card to a customer",
+                  "id": "cbf3e056-129c-407a-89fa-db6366b257bf",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Token id (tok_xxx)",
+                          "key": "card",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:id/cards",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":id",
+                        "cards"
+                      ],
+                      "variable": [
+                        {
+                          "id": "73df5062-afd5-4d95-8a1d-6e62ee223f0c",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "a7f558b3-d78f-454b-ab97-d05360b8282c",
+                      "name": "A Card object",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) Token id (tok_xxx)",
+                              "key": "card",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/customers/:id/cards",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "customers",
+                            ":id",
+                            "cards"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"brand\": \"<string>\",\n  \"last4\": \"<string>\",\n  \"exp_month\": \"<integer>\",\n  \"exp_year\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"three_d_secure_status\": \"<string>\",\n  \"created\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T02:32:14.000Z",
+                      "updatedAt": "2026-07-28T02:32:14.000Z",
+                      "uid": "35240-a7f558b3-d78f-454b-ab97-d05360b8282c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:32:14.000Z",
+                  "updatedAt": "2026-07-28T02:32:14.000Z",
+                  "uid": "35240-cbf3e056-129c-407a-89fa-db6366b257bf"
+                }
+              ],
+              "id": "5261a457-d4bb-4018-b974-5dbdfb1970c1",
+              "createdAt": "2026-07-28T02:32:14.000Z",
+              "updatedAt": "2026-07-28T02:32:14.000Z",
+              "uid": "35240-5261a457-d4bb-4018-b974-5dbdfb1970c1"
+            }
+          ],
+          "id": "894ba8f5-f294-4706-b342-2fb14a9e616e",
+          "createdAt": "2026-07-28T02:32:14.000Z",
+          "updatedAt": "2026-07-28T02:32:14.000Z",
+          "uid": "35240-894ba8f5-f294-4706-b342-2fb14a9e616e"
+        }
+      ],
+      "id": "b61cb409-a6be-4c80-a6ea-14524531e739",
+      "createdAt": "2026-07-28T02:32:14.000Z",
+      "updatedAt": "2026-07-28T02:32:14.000Z",
+      "uid": "35240-b61cb409-a6be-4c80-a6ea-14524531e739"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pay.jp/v1"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "info": {
+    "_postman_id": "3ae4f334-4075-4304-92fd-082fa2004951",
+    "name": "PAY.JP 3D Secure Account API",
+    "description": "PAY.JP is an online payment service operated by PAY, Inc. (PAY\u682a\u5f0f\u4f1a\u793e) in Japan. The REST API creates charges, tokenizes cards, manages customers, runs subscriptions (\u5b9a\u671f\u8ab2\u91d1), and reports transfers (\u5165\u91d1) and balances in Japanese yen. Authentication is HTTP Basic with a secret key (sk_test_ / sk_live_) as the username and an empty password. All amounts are integer JPY.\n\nContact Support:\n Name: PAY.JP Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:32:06.000Z",
+    "updatedAt": "2026-07-28T02:32:06.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3ae4f334-4075-4304-92fd-082fa2004951"
+  },
+  "item": [
+    {
+      "name": "account",
+      "item": [
+        {
+          "name": "Retrieve the authenticated merchant account",
+          "id": "6e5ae3f6-efc5-4f82-a220-dfba6b9682e7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/account",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "account"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "96ff7c26-c9b7-4a59-a931-8fbb31dde002",
+              "name": "A PAY.JP resource object",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/account",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "account"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"livemode\": \"<boolean>\",\n  \"created\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T02:32:07.000Z",
+              "updatedAt": "2026-07-28T02:32:07.000Z",
+              "uid": "35240-96ff7c26-c9b7-4a59-a931-8fbb31dde002"
+            }
+          ],
+          "createdAt": "2026-07-28T02:32:07.000Z",
+          "updatedAt": "2026-07-28T02:32:07.000Z",
+          "uid": "35240-6e5ae3f6-efc5-4f82-a220-dfba6b9682e7"
+        }
+      ],
+      "id": "587a0277-aa1d-4a1c-ae08-1fa870c02709",
+      "createdAt": "2026-07-28T02:32:07.000Z",
+      "updatedAt": "2026-07-28T02:32:07.000Z",
+      "uid": "35240-587a0277-aa1d-4a1c-ae08-1fa870c02709"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pay.jp/v1"
+    }
+  ]
+}

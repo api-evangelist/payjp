@@ -1,0 +1,40 @@
+{
+  "provider": "payjp",
+  "sources": [
+    "payjp-3d-secure-api-openapi.yml",
+    "payjp-account-api-openapi.yml",
+    "payjp-balances-api-openapi.yml",
+    "payjp-cards-api-openapi.yml",
+    "payjp-charges-api-openapi.yml",
+    "payjp-customers-api-openapi.yml",
+    "payjp-events-api-openapi.yml",
+    "payjp-plans-api-openapi.yml",
+    "payjp-platform-api-openapi.yml",
+    "payjp-statements-api-openapi.yml",
+    "payjp-subscriptions-api-openapi.yml",
+    "payjp-terms-api-openapi.yml",
+    "payjp-tokens-api-openapi.yml",
+    "payjp-transfers-api-openapi.yml"
+  ],
+  "outputs": [
+    "payjp-3d-secure-api-openapi.yml",
+    "payjp-account-api-openapi.yml",
+    "payjp-balances-api-openapi.yml",
+    "payjp-cards-api-openapi.yml",
+    "payjp-charges-api-openapi.yml",
+    "payjp-customers-api-openapi.yml",
+    "payjp-events-api-openapi.yml",
+    "payjp-plans-api-openapi.yml",
+    "payjp-platform-api-openapi.yml",
+    "payjp-statements-api-openapi.yml",
+    "payjp-subscriptions-api-openapi.yml",
+    "payjp-terms-api-openapi.yml",
+    "payjp-tokens-api-openapi.yml",
+    "payjp-transfers-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

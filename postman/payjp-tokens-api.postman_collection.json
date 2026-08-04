@@ -1,0 +1,361 @@
+{
+  "info": {
+    "_postman_id": "937d4470-c67b-4024-94eb-917a884a6259",
+    "name": "PAY.JP 3D Secure Tokens API",
+    "description": "PAY.JP is an online payment service operated by PAY, Inc. (PAY\u682a\u5f0f\u4f1a\u793e) in Japan. The REST API creates charges, tokenizes cards, manages customers, runs subscriptions (\u5b9a\u671f\u8ab2\u91d1), and reports transfers (\u5165\u91d1) and balances in Japanese yen. Authentication is HTTP Basic with a secret key (sk_test_ / sk_live_) as the username and an empty password. All amounts are integer JPY.\n\nContact Support:\n Name: PAY.JP Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:32:44.000Z",
+    "updatedAt": "2026-07-28T02:32:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-937d4470-c67b-4024-94eb-917a884a6259"
+  },
+  "item": [
+    {
+      "name": "tokens",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "tds_finish",
+              "item": [
+                {
+                  "name": "Complete the 3D Secure flow for a token",
+                  "id": "a9dda343-59b2-4860-8b15-bd109a63006a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tokens/:id/tds_finish",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tokens",
+                        ":id",
+                        "tds_finish"
+                      ],
+                      "variable": [
+                        {
+                          "id": "65faf801-8b2c-474d-99de-e6c156dcf478",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "1597f90f-9f9a-43b7-b835-3cec29321e33",
+                      "name": "A Token object",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/tokens/:id/tds_finish",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "tokens",
+                            ":id",
+                            "tds_finish"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"livemode\": \"<boolean>\",\n  \"used\": \"<boolean>\",\n  \"card\": {\n    \"id\": \"<string>\",\n    \"object\": \"<string>\",\n    \"brand\": \"<string>\",\n    \"last4\": \"<string>\",\n    \"exp_month\": \"<integer>\",\n    \"exp_year\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"three_d_secure_status\": \"<string>\",\n    \"created\": \"<integer>\"\n  },\n  \"created\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T02:32:44.000Z",
+                      "updatedAt": "2026-07-28T02:32:44.000Z",
+                      "uid": "35240-1597f90f-9f9a-43b7-b835-3cec29321e33"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:32:44.000Z",
+                  "updatedAt": "2026-07-28T02:32:44.000Z",
+                  "uid": "35240-a9dda343-59b2-4860-8b15-bd109a63006a"
+                }
+              ],
+              "id": "572593fe-8497-43fe-a158-b31ac818dfa1",
+              "createdAt": "2026-07-28T02:32:44.000Z",
+              "updatedAt": "2026-07-28T02:32:44.000Z",
+              "uid": "35240-572593fe-8497-43fe-a158-b31ac818dfa1"
+            },
+            {
+              "name": "Retrieve a token",
+              "id": "f8cf1680-8fd9-4cbb-9077-5b537cc7ea07",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tokens/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tokens",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d415247d-842a-4889-9997-c0a60a9f788c",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "063e4f7a-294f-4a67-b4e7-b432f3878c21",
+                  "name": "A Token object",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tokens/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tokens",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"livemode\": \"<boolean>\",\n  \"used\": \"<boolean>\",\n  \"card\": {\n    \"id\": \"<string>\",\n    \"object\": \"<string>\",\n    \"brand\": \"<string>\",\n    \"last4\": \"<string>\",\n    \"exp_month\": \"<integer>\",\n    \"exp_year\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"three_d_secure_status\": \"<string>\",\n    \"created\": \"<integer>\"\n  },\n  \"created\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T02:32:44.000Z",
+                  "updatedAt": "2026-07-28T02:32:44.000Z",
+                  "uid": "35240-063e4f7a-294f-4a67-b4e7-b432f3878c21"
+                }
+              ],
+              "createdAt": "2026-07-28T02:32:44.000Z",
+              "updatedAt": "2026-07-28T02:32:44.000Z",
+              "uid": "35240-f8cf1680-8fd9-4cbb-9077-5b537cc7ea07"
+            }
+          ],
+          "id": "344c02ca-149f-4bf9-afcd-068ea5b1ecd1",
+          "createdAt": "2026-07-28T02:32:44.000Z",
+          "updatedAt": "2026-07-28T02:32:44.000Z",
+          "uid": "35240-344c02ca-149f-4bf9-afcd-068ea5b1ecd1"
+        },
+        {
+          "name": "Create a single-use card token",
+          "id": "1cbd30f7-3976-47b3-a6e3-379f2436159d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "card[number]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "card[exp_month]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "card[exp_year]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "card[cvc]",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/tokens",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tokens"
+              ]
+            },
+            "description": "Normally called client-side with the publishable key (pk_xxx) via payjp.js so raw card numbers never touch the merchant server."
+          },
+          "response": [
+            {
+              "id": "edae8d1e-9533-4500-96ea-d09256664398",
+              "name": "A Token object",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "card[number]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "card[exp_month]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "card[exp_year]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "card[cvc]",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tokens",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tokens"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"livemode\": \"<boolean>\",\n  \"used\": \"<boolean>\",\n  \"card\": {\n    \"id\": \"<string>\",\n    \"object\": \"<string>\",\n    \"brand\": \"<string>\",\n    \"last4\": \"<string>\",\n    \"exp_month\": \"<integer>\",\n    \"exp_year\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"three_d_secure_status\": \"<string>\",\n    \"created\": \"<integer>\"\n  },\n  \"created\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T02:32:44.000Z",
+              "updatedAt": "2026-07-28T02:32:44.000Z",
+              "uid": "35240-edae8d1e-9533-4500-96ea-d09256664398"
+            }
+          ],
+          "createdAt": "2026-07-28T02:32:44.000Z",
+          "updatedAt": "2026-07-28T02:32:44.000Z",
+          "uid": "35240-1cbd30f7-3976-47b3-a6e3-379f2436159d"
+        }
+      ],
+      "id": "4bac68d4-df34-4b3b-a4a7-6969f3236836",
+      "createdAt": "2026-07-28T02:32:44.000Z",
+      "updatedAt": "2026-07-28T02:32:44.000Z",
+      "uid": "35240-4bac68d4-df34-4b3b-a4a7-6969f3236836"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pay.jp/v1"
+    }
+  ]
+}

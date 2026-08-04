@@ -1,0 +1,310 @@
+{
+  "info": {
+    "_postman_id": "0340d4aa-c000-4d83-9400-27bfabad66f5",
+    "name": "PAY.JP 3D Secure Statements API",
+    "description": "PAY.JP is an online payment service operated by PAY, Inc. (PAY\u682a\u5f0f\u4f1a\u793e) in Japan. The REST API creates charges, tokenizes cards, manages customers, runs subscriptions (\u5b9a\u671f\u8ab2\u91d1), and reports transfers (\u5165\u91d1) and balances in Japanese yen. Authentication is HTTP Basic with a secret key (sk_test_ / sk_live_) as the username and an empty password. All amounts are integer JPY.\n\nContact Support:\n Name: PAY.JP Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:32:40.000Z",
+    "updatedAt": "2026-07-28T02:32:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0340d4aa-c000-4d83-9400-27bfabad66f5"
+  },
+  "item": [
+    {
+      "name": "statements",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "statement_urls",
+              "item": [
+                {
+                  "name": "Issue a signed CSV download URL for a statement",
+                  "id": "23cabb44-b837-4501-ac3d-5940f5d1e910",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/statements/:id/statement_urls",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "statements",
+                        ":id",
+                        "statement_urls"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a402498d-c808-4fea-a38e-466a6448b3d8",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "b7b38898-3174-4484-89f8-10da8ff0050d",
+                      "name": "A PAY.JP resource object",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/statements/:id/statement_urls",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "statements",
+                            ":id",
+                            "statement_urls"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"livemode\": \"<boolean>\",\n  \"created\": \"<integer>\",\n  \"nulla_db4\": 75457001\n}",
+                      "createdAt": "2026-07-28T02:32:40.000Z",
+                      "updatedAt": "2026-07-28T02:32:40.000Z",
+                      "uid": "35240-b7b38898-3174-4484-89f8-10da8ff0050d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:32:40.000Z",
+                  "updatedAt": "2026-07-28T02:32:40.000Z",
+                  "uid": "35240-23cabb44-b837-4501-ac3d-5940f5d1e910"
+                }
+              ],
+              "id": "ca7dce5d-7136-45ce-934e-1702139419be",
+              "createdAt": "2026-07-28T02:32:40.000Z",
+              "updatedAt": "2026-07-28T02:32:40.000Z",
+              "uid": "35240-ca7dce5d-7136-45ce-934e-1702139419be"
+            },
+            {
+              "name": "Retrieve a statement",
+              "id": "d5b06a67-ee66-4855-9db9-e8e68e8a7438",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/statements/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "statements",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "5e32f8fd-0b3a-4339-bf2b-a57ba7339541",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "4cd40e91-5591-470e-a947-3277b92c71b9",
+                  "name": "A PAY.JP resource object",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/statements/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "statements",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"livemode\": \"<boolean>\",\n  \"created\": \"<integer>\",\n  \"nulla_db4\": 75457001\n}",
+                  "createdAt": "2026-07-28T02:32:40.000Z",
+                  "updatedAt": "2026-07-28T02:32:40.000Z",
+                  "uid": "35240-4cd40e91-5591-470e-a947-3277b92c71b9"
+                }
+              ],
+              "createdAt": "2026-07-28T02:32:40.000Z",
+              "updatedAt": "2026-07-28T02:32:40.000Z",
+              "uid": "35240-d5b06a67-ee66-4855-9db9-e8e68e8a7438"
+            }
+          ],
+          "id": "adf8fa3e-d9d6-4157-9d8d-c89a88401b4c",
+          "createdAt": "2026-07-28T02:32:40.000Z",
+          "updatedAt": "2026-07-28T02:32:40.000Z",
+          "uid": "35240-adf8fa3e-d9d6-4157-9d8d-c89a88401b4c"
+        },
+        {
+          "name": "List transaction statements (\u53d6\u5f15\u660e\u7d30)",
+          "id": "0e46591a-35fe-4cfe-875d-cb3af407d922",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/statements",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "statements"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "17023b1c-b241-4aa4-82e4-d6490797d494",
+              "name": "A paginated list object",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/statements",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "statements"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"object\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"has_more\": \"<boolean>\",\n  \"url\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"object\": \"<string>\",\n      \"livemode\": \"<boolean>\",\n      \"created\": \"<integer>\",\n      \"aliqua08f\": -7251810.362805948,\n      \"eiusmod_f\": \"ut min\",\n      \"mollit_9\": -1588522.8771491945\n    },\n    {\n      \"id\": \"<string>\",\n      \"object\": \"<string>\",\n      \"livemode\": \"<boolean>\",\n      \"created\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:32:40.000Z",
+              "updatedAt": "2026-07-28T02:32:40.000Z",
+              "uid": "35240-17023b1c-b241-4aa4-82e4-d6490797d494"
+            }
+          ],
+          "createdAt": "2026-07-28T02:32:40.000Z",
+          "updatedAt": "2026-07-28T02:32:40.000Z",
+          "uid": "35240-0e46591a-35fe-4cfe-875d-cb3af407d922"
+        }
+      ],
+      "id": "fe01a77e-6616-4cf4-b616-8debecbb0e27",
+      "createdAt": "2026-07-28T02:32:40.000Z",
+      "updatedAt": "2026-07-28T02:32:40.000Z",
+      "uid": "35240-fe01a77e-6616-4cf4-b616-8debecbb0e27"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pay.jp/v1"
+    }
+  ]
+}

@@ -1,0 +1,530 @@
+{
+  "info": {
+    "_postman_id": "271b8488-d053-422d-a88e-019f2ae1c265",
+    "name": "PAY.JP 3D Secure Plans API",
+    "description": "PAY.JP is an online payment service operated by PAY, Inc. (PAY\u682a\u5f0f\u4f1a\u793e) in Japan. The REST API creates charges, tokenizes cards, manages customers, runs subscriptions (\u5b9a\u671f\u8ab2\u91d1), and reports transfers (\u5165\u91d1) and balances in Japanese yen. Authentication is HTTP Basic with a secret key (sk_test_ / sk_live_) as the username and an empty password. All amounts are integer JPY.\n\nContact Support:\n Name: PAY.JP Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:32:33.000Z",
+    "updatedAt": "2026-07-28T02:32:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-271b8488-d053-422d-a88e-019f2ae1c265"
+  },
+  "item": [
+    {
+      "name": "plans",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Retrieve a plan",
+              "id": "372e45b3-5d50-4bd5-9b94-65649b9a6be5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/plans/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "plans",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "52f25807-2c26-4e8c-94a5-7856df80ba07",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "c62a0608-f38b-4187-a7cc-e0a740b82e01",
+                  "name": "A Plan object",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/plans/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "plans",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"livemode\": \"<boolean>\",\n  \"created\": \"<integer>\",\n  \"eud\": 29058610\n}",
+                  "createdAt": "2026-07-28T02:32:33.000Z",
+                  "updatedAt": "2026-07-28T02:32:33.000Z",
+                  "uid": "35240-c62a0608-f38b-4187-a7cc-e0a740b82e01"
+                }
+              ],
+              "createdAt": "2026-07-28T02:32:33.000Z",
+              "updatedAt": "2026-07-28T02:32:33.000Z",
+              "uid": "35240-372e45b3-5d50-4bd5-9b94-65649b9a6be5"
+            },
+            {
+              "name": "Update a plan",
+              "id": "7633f151-61ca-44ae-9623-77bf8b8393c7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/plans/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "plans",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "ff9d2f3f-2815-4249-bd28-d1784189dab4",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "ac181525-2163-4a7e-b28f-38353c642d50",
+                  "name": "A Plan object",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/plans/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "plans",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"livemode\": \"<boolean>\",\n  \"created\": \"<integer>\",\n  \"eud\": 29058610\n}",
+                  "createdAt": "2026-07-28T02:32:33.000Z",
+                  "updatedAt": "2026-07-28T02:32:33.000Z",
+                  "uid": "35240-ac181525-2163-4a7e-b28f-38353c642d50"
+                }
+              ],
+              "createdAt": "2026-07-28T02:32:33.000Z",
+              "updatedAt": "2026-07-28T02:32:33.000Z",
+              "uid": "35240-7633f151-61ca-44ae-9623-77bf8b8393c7"
+            },
+            {
+              "name": "Delete a plan",
+              "id": "5f79d797-7de4-4fa3-b705-ce51e1a643fe",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/plans/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "plans",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "f5e6a338-d15e-40cb-979a-9772053c09c3",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "4a59c8f8-8323-4eaf-a6af-869b781870cd",
+                  "name": "A deletion confirmation",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/plans/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "plans",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"deleted\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:32:33.000Z",
+                  "updatedAt": "2026-07-28T02:32:33.000Z",
+                  "uid": "35240-4a59c8f8-8323-4eaf-a6af-869b781870cd"
+                }
+              ],
+              "createdAt": "2026-07-28T02:32:33.000Z",
+              "updatedAt": "2026-07-28T02:32:33.000Z",
+              "uid": "35240-5f79d797-7de4-4fa3-b705-ce51e1a643fe"
+            }
+          ],
+          "id": "d65df35a-ae69-4271-b65c-848abb2109ba",
+          "createdAt": "2026-07-28T02:32:33.000Z",
+          "updatedAt": "2026-07-28T02:32:33.000Z",
+          "uid": "35240-d65df35a-ae69-4271-b65c-848abb2109ba"
+        },
+        {
+          "name": "List plans",
+          "id": "89e15dbf-edfa-4595-b92b-56789adc5340",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/plans",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "plans"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7aa51b63-f511-4cc9-920a-cd713a7f953d",
+              "name": "A paginated list object",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/plans",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "plans"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"object\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"has_more\": \"<boolean>\",\n  \"url\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"object\": \"<string>\",\n      \"livemode\": \"<boolean>\",\n      \"created\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"object\": \"<string>\",\n      \"livemode\": \"<boolean>\",\n      \"created\": \"<integer>\",\n      \"ipsum_ce5\": 59358839.15821174,\n      \"Duis84\": -28800438.802676126\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:32:33.000Z",
+              "updatedAt": "2026-07-28T02:32:33.000Z",
+              "uid": "35240-7aa51b63-f511-4cc9-920a-cd713a7f953d"
+            }
+          ],
+          "createdAt": "2026-07-28T02:32:33.000Z",
+          "updatedAt": "2026-07-28T02:32:33.000Z",
+          "uid": "35240-89e15dbf-edfa-4595-b92b-56789adc5340"
+        },
+        {
+          "name": "Create a recurring plan",
+          "id": "40503458-b4dd-420b-9855-77bdbcd30b6a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "(Required) ",
+                  "key": "amount",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) ",
+                  "key": "currency",
+                  "value": "jpy"
+                },
+                {
+                  "description": "(Required) ",
+                  "key": "interval",
+                  "value": "year"
+                },
+                {
+                  "key": "trial_days",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "billing_day",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "name",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/plans",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "plans"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b407eb07-c351-4ab8-89cf-6c828ba00ada",
+              "name": "A Plan object",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) ",
+                      "key": "amount",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "currency",
+                      "value": "jpy"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "interval",
+                      "value": "year"
+                    },
+                    {
+                      "key": "trial_days",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "billing_day",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/plans",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "plans"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"livemode\": \"<boolean>\",\n  \"created\": \"<integer>\",\n  \"eud\": 29058610\n}",
+              "createdAt": "2026-07-28T02:32:33.000Z",
+              "updatedAt": "2026-07-28T02:32:33.000Z",
+              "uid": "35240-b407eb07-c351-4ab8-89cf-6c828ba00ada"
+            }
+          ],
+          "createdAt": "2026-07-28T02:32:33.000Z",
+          "updatedAt": "2026-07-28T02:32:33.000Z",
+          "uid": "35240-40503458-b4dd-420b-9855-77bdbcd30b6a"
+        }
+      ],
+      "id": "d54c68d3-ca27-45c3-93e0-4afa59279e8a",
+      "createdAt": "2026-07-28T02:32:33.000Z",
+      "updatedAt": "2026-07-28T02:32:33.000Z",
+      "uid": "35240-d54c68d3-ca27-45c3-93e0-4afa59279e8a"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pay.jp/v1"
+    }
+  ]
+}
