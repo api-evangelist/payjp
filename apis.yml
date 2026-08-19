@@ -29,7 +29,7 @@ tags:
 - Tokenization
 created: '2026-07-17'
 modified: '2026-07-18'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: payjp:payjp-3d-secure-api
   name: PAY.JP 3D Secure API
