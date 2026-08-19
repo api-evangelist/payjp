@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PAY.JP 3D Secure Account API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve the authenticated merchant account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pay.jp/v1/account"
+          },
+          "docs": "Retrieve the authenticated merchant account"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

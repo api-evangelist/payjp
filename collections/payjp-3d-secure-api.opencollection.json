@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PAY.JP 3D Secure API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "3D Secure",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Complete the 3D Secure flow for a charge",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pay.jp/v1/charges/:id/tds_finish",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Complete the 3D Secure flow for a charge"
+        },
+        {
+          "info": {
+            "name": "Complete the 3D Secure flow for a token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pay.jp/v1/tokens/:id/tds_finish",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Complete the 3D Secure flow for a token"
+        },
+        {
+          "info": {
+            "name": "List 3D Secure requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pay.jp/v1/three_d_secure_requests"
+          },
+          "docs": "List 3D Secure requests"
+        },
+        {
+          "info": {
+            "name": "Create a 3D Secure request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pay.jp/v1/three_d_secure_requests",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "resource_id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create a 3D Secure request"
+        },
+        {
+          "info": {
+            "name": "Retrieve a 3D Secure request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pay.jp/v1/three_d_secure_requests/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a 3D Secure request"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

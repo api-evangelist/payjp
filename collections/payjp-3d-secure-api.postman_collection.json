@@ -1,0 +1,506 @@
+{
+  "item": [
+    {
+      "id": "31f782ed-9af5-4f45-94a1-183460a8bd6e",
+      "name": "3D Secure",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cf2f9f85-2128-4be3-b88a-fa2fe381265f",
+          "name": "Complete the 3D Secure flow for a charge",
+          "request": {
+            "name": "Complete the 3D Secure flow for a charge",
+            "description": {},
+            "url": {
+              "path": [
+                "charges",
+                ":id",
+                "tds_finish"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9a5efb2f-40f8-4b31-bad5-55c2859e1acb",
+              "name": "A Charge object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "charges",
+                    ":id",
+                    "tds_finish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ch_xxxxxxxxxxxxxxxx\",\n  \"object\": \"charge\",\n  \"amount\": 3500,\n  \"currency\": \"jpy\",\n  \"paid\": false,\n  \"captured\": true,\n  \"refunded\": false,\n  \"amount_refunded\": 3992,\n  \"customer\": \"string\",\n  \"card\": {\n    \"id\": \"car_xxxxxxxxxxxxxxxx\",\n    \"object\": \"card\",\n    \"brand\": \"Visa\",\n    \"last4\": \"4242\",\n    \"exp_month\": 8241,\n    \"exp_year\": 9758,\n    \"name\": \"string\",\n    \"three_d_secure_status\": \"string\",\n    \"created\": 4601\n  },\n  \"three_d_secure_status\": \"string\",\n  \"created\": 4989,\n  \"livemode\": false,\n  \"metadata\": {\n    \"key_0\": 2444.7337450510877\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8fcd51c-5796-40d6-8d9f-8824ef80d81f",
+          "name": "Complete the 3D Secure flow for a token",
+          "request": {
+            "name": "Complete the 3D Secure flow for a token",
+            "description": {},
+            "url": {
+              "path": [
+                "tokens",
+                ":id",
+                "tds_finish"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "80a5051d-e458-4bc1-bbd8-91703a418076",
+              "name": "A Token object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    ":id",
+                    "tds_finish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"tok_xxxxxxxxxxxxxxxx\",\n  \"object\": \"token\",\n  \"livemode\": false,\n  \"used\": false,\n  \"card\": {\n    \"id\": \"car_xxxxxxxxxxxxxxxx\",\n    \"object\": \"card\",\n    \"brand\": \"Visa\",\n    \"last4\": \"4242\",\n    \"exp_month\": 800,\n    \"exp_year\": 6667,\n    \"name\": \"string\",\n    \"three_d_secure_status\": \"string\",\n    \"created\": 4844\n  },\n  \"created\": 5748\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "261de86d-9825-4ba4-92e6-d91bab24a980",
+          "name": "List 3D Secure requests",
+          "request": {
+            "name": "List 3D Secure requests",
+            "description": {},
+            "url": {
+              "path": [
+                "three_d_secure_requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "47d7f60c-9118-4eeb-b0f9-b799a8ab3f42",
+              "name": "A paginated list object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "three_d_secure_requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"count\": 7786,\n  \"has_more\": false,\n  \"url\": \"string\",\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"object\": \"string\",\n      \"livemode\": true,\n      \"created\": 817,\n      \"key_0\": false,\n      \"key_1\": false,\n      \"key_2\": true\n    },\n    {\n      \"id\": \"string\",\n      \"object\": \"string\",\n      \"livemode\": true,\n      \"created\": 3168\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b783a0b6-cb0d-48da-9fa5-acccd4df3a28",
+          "name": "Create a 3D Secure request",
+          "request": {
+            "name": "Create a 3D Secure request",
+            "description": {},
+            "url": {
+              "path": [
+                "three_d_secure_requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "resource_id",
+                  "value": "<string>",
+                  "description": "A card id (car_xxx) to authenticate"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "14f72d7f-6dd8-4de4-8ce1-88edfbfdd98d",
+              "name": "A PAY.JP resource object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "three_d_secure_requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "A card id (car_xxx) to authenticate",
+                        "type": "text/plain"
+                      },
+                      "key": "resource_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"string\",\n  \"livemode\": false,\n  \"created\": 8760,\n  \"key_0\": false,\n  \"key_1\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "901b1ed8-1f36-41ca-8493-3ddfec803a64",
+          "name": "Retrieve a 3D Secure request",
+          "request": {
+            "name": "Retrieve a 3D Secure request",
+            "description": {},
+            "url": {
+              "path": [
+                "three_d_secure_requests",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a5a458c6-5fac-4a3f-ac24-b4d35a70a221",
+              "name": "A PAY.JP resource object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "three_d_secure_requests",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"string\",\n  \"livemode\": false,\n  \"created\": 8760,\n  \"key_0\": false,\n  \"key_1\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pay.jp/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a628fa0b-6fe1-4b2c-b133-6f48422444f2",
+    "name": "PAY.JP 3D Secure API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "PAY.JP is an online payment service operated by PAY, Inc. (PAY株式会社) in Japan. The REST API creates charges, tokenizes cards, manages customers, runs subscriptions (定期課金), and reports transfers (入金) and balances in Japanese yen. Authentication is HTTP Basic with a secret key (sk_test_ / sk_live_) as the username and an empty password. All amounts are integer JPY.\n\nContact Support:\n Name: PAY.JP Support",
+      "type": "text/plain"
+    }
+  }
+}

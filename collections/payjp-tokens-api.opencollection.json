@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PAY.JP 3D Secure Tokens API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a single-use card token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pay.jp/v1/tokens",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "card[number]",
+                  "value": ""
+                },
+                {
+                  "name": "card[exp_month]",
+                  "value": ""
+                },
+                {
+                  "name": "card[exp_year]",
+                  "value": ""
+                },
+                {
+                  "name": "card[cvc]",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Normally called client-side with the publishable key (pk_xxx) via payjp.js so raw card numbers never touch the merchant server."
+        },
+        {
+          "info": {
+            "name": "Retrieve a token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pay.jp/v1/tokens/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a token"
+        },
+        {
+          "info": {
+            "name": "Complete the 3D Secure flow for a token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pay.jp/v1/tokens/:id/tds_finish",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Complete the 3D Secure flow for a token"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

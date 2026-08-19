@@ -1,0 +1,364 @@
+{
+  "item": [
+    {
+      "id": "c36014d2-b94c-4f53-979f-f6634231b585",
+      "name": "Tokens",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2858c704-57cd-48c1-95b9-8d78168df86e",
+          "name": "Create a single-use card token",
+          "request": {
+            "name": "Create a single-use card token",
+            "description": {
+              "content": "Normally called client-side with the publishable key (pk_xxx) via payjp.js so raw card numbers never touch the merchant server.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "card[number]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "card[exp_month]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "card[exp_year]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "card[cvc]",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "787b9b68-dcdf-4dc7-893f-1812e89a76d3",
+              "name": "A Token object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "card[number]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "card[exp_month]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "card[exp_year]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "card[cvc]",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"tok_xxxxxxxxxxxxxxxx\",\n  \"object\": \"token\",\n  \"livemode\": false,\n  \"used\": false,\n  \"card\": {\n    \"id\": \"car_xxxxxxxxxxxxxxxx\",\n    \"object\": \"card\",\n    \"brand\": \"Visa\",\n    \"last4\": \"4242\",\n    \"exp_month\": 6519,\n    \"exp_year\": 6038,\n    \"name\": \"string\",\n    \"three_d_secure_status\": \"string\",\n    \"created\": 4470\n  },\n  \"created\": 6181\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f9bc48b9-4007-42c3-8ec2-202bae780346",
+          "name": "Retrieve a token",
+          "request": {
+            "name": "Retrieve a token",
+            "description": {},
+            "url": {
+              "path": [
+                "tokens",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5513dfd3-b941-40aa-a1b5-a0a97c2fccce",
+              "name": "A Token object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"tok_xxxxxxxxxxxxxxxx\",\n  \"object\": \"token\",\n  \"livemode\": false,\n  \"used\": false,\n  \"card\": {\n    \"id\": \"car_xxxxxxxxxxxxxxxx\",\n    \"object\": \"card\",\n    \"brand\": \"Visa\",\n    \"last4\": \"4242\",\n    \"exp_month\": 6519,\n    \"exp_year\": 6038,\n    \"name\": \"string\",\n    \"three_d_secure_status\": \"string\",\n    \"created\": 4470\n  },\n  \"created\": 6181\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f4bf568-e0d8-44c1-8ad9-f4e9eb7b3e5f",
+          "name": "Complete the 3D Secure flow for a token",
+          "request": {
+            "name": "Complete the 3D Secure flow for a token",
+            "description": {},
+            "url": {
+              "path": [
+                "tokens",
+                ":id",
+                "tds_finish"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f0a5bd1f-b5d3-4dfd-b2d9-6a6bf836d233",
+              "name": "A Token object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    ":id",
+                    "tds_finish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"tok_xxxxxxxxxxxxxxxx\",\n  \"object\": \"token\",\n  \"livemode\": false,\n  \"used\": false,\n  \"card\": {\n    \"id\": \"car_xxxxxxxxxxxxxxxx\",\n    \"object\": \"card\",\n    \"brand\": \"Visa\",\n    \"last4\": \"4242\",\n    \"exp_month\": 6519,\n    \"exp_year\": 6038,\n    \"name\": \"string\",\n    \"three_d_secure_status\": \"string\",\n    \"created\": 4470\n  },\n  \"created\": 6181\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pay.jp/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9ae09386-60d1-4553-9a73-17f207b28180",
+    "name": "PAY.JP 3D Secure Tokens API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "PAY.JP is an online payment service operated by PAY, Inc. (PAY株式会社) in Japan. The REST API creates charges, tokenizes cards, manages customers, runs subscriptions (定期課金), and reports transfers (入金) and balances in Japanese yen. Authentication is HTTP Basic with a secret key (sk_test_ / sk_live_) as the username and an empty password. All amounts are integer JPY.\n\nContact Support:\n Name: PAY.JP Support",
+      "type": "text/plain"
+    }
+  }
+}

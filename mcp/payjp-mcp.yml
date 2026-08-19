@@ -2,71 +2,189 @@ generated: '2026-07-17'
 method: derived
 status: candidate
 source: openapi/payjp-openapi.yml
-notes: >-
-  PAY.JP does not publish an official hosted or packaged MCP server (searched
-  docs, the payjp GitHub org, npm @modelcontextprotocol, and MCP registries —
-  none found, 2026-07-17). The tool list below is a CANDIDATE derived one-to-one
-  from the modeled OpenAPI operations, for a future proxy MCP server. It is not
-  an official PAY.JP product.
+notes: PAY.JP does not publish an official hosted or packaged MCP server (searched docs, the payjp GitHub
+  org, npm @modelcontextprotocol, and MCP registries — none found, 2026-07-17). The tool list below is
+  a CANDIDATE derived one-to-one from the modeled OpenAPI operations, for a future proxy MCP server. It
+  is not an official PAY.JP product.
 server:
   name: payjp
   transport: http
   url: null
 tools:
-  - {name: list_charges, description: List charges, source_operation: openapi/payjp-openapi.yml#listCharges}
-  - {name: create_charge, description: Create a charge, source_operation: openapi/payjp-openapi.yml#createCharge}
-  - {name: retrieve_charge, description: Retrieve a charge, source_operation: openapi/payjp-openapi.yml#retrieveCharge}
-  - {name: update_charge, description: Update a charge, source_operation: openapi/payjp-openapi.yml#updateCharge}
-  - {name: refund_charge, description: Refund a charge, source_operation: openapi/payjp-openapi.yml#refundCharge}
-  - {name: capture_charge, description: Capture an authorized charge, source_operation: openapi/payjp-openapi.yml#captureCharge}
-  - {name: reauth_charge, description: Re-authorize a charge, source_operation: openapi/payjp-openapi.yml#reauthCharge}
-  - {name: finish_charge_three_d_secure, description: Finish 3DS on a charge, source_operation: openapi/payjp-openapi.yml#finishChargeThreeDSecure}
-  - {name: list_customers, description: List customers, source_operation: openapi/payjp-openapi.yml#listCustomers}
-  - {name: create_customer, description: Create a customer, source_operation: openapi/payjp-openapi.yml#createCustomer}
-  - {name: retrieve_customer, description: Retrieve a customer, source_operation: openapi/payjp-openapi.yml#retrieveCustomer}
-  - {name: update_customer, description: Update a customer, source_operation: openapi/payjp-openapi.yml#updateCustomer}
-  - {name: delete_customer, description: Delete a customer, source_operation: openapi/payjp-openapi.yml#deleteCustomer}
-  - {name: list_customer_cards, description: List a customer's cards, source_operation: openapi/payjp-openapi.yml#listCustomerCards}
-  - {name: create_customer_card, description: Attach a card to a customer, source_operation: openapi/payjp-openapi.yml#createCustomerCard}
-  - {name: retrieve_customer_card, description: Retrieve a customer card, source_operation: openapi/payjp-openapi.yml#retrieveCustomerCard}
-  - {name: update_customer_card, description: Update a customer card, source_operation: openapi/payjp-openapi.yml#updateCustomerCard}
-  - {name: delete_customer_card, description: Delete a customer card, source_operation: openapi/payjp-openapi.yml#deleteCustomerCard}
-  - {name: create_token, description: Create a single-use card token, source_operation: openapi/payjp-openapi.yml#createToken}
-  - {name: retrieve_token, description: Retrieve a token, source_operation: openapi/payjp-openapi.yml#retrieveToken}
-  - {name: finish_token_three_d_secure, description: Finish 3DS on a token, source_operation: openapi/payjp-openapi.yml#finishTokenThreeDSecure}
-  - {name: list_plans, description: List plans, source_operation: openapi/payjp-openapi.yml#listPlans}
-  - {name: create_plan, description: Create a plan, source_operation: openapi/payjp-openapi.yml#createPlan}
-  - {name: retrieve_plan, description: Retrieve a plan, source_operation: openapi/payjp-openapi.yml#retrievePlan}
-  - {name: update_plan, description: Update a plan, source_operation: openapi/payjp-openapi.yml#updatePlan}
-  - {name: delete_plan, description: Delete a plan, source_operation: openapi/payjp-openapi.yml#deletePlan}
-  - {name: list_subscriptions, description: List subscriptions, source_operation: openapi/payjp-openapi.yml#listSubscriptions}
-  - {name: create_subscription, description: Create a subscription, source_operation: openapi/payjp-openapi.yml#createSubscription}
-  - {name: retrieve_subscription, description: Retrieve a subscription, source_operation: openapi/payjp-openapi.yml#retrieveSubscription}
-  - {name: update_subscription, description: Update a subscription, source_operation: openapi/payjp-openapi.yml#updateSubscription}
-  - {name: delete_subscription, description: Delete a subscription, source_operation: openapi/payjp-openapi.yml#deleteSubscription}
-  - {name: pause_subscription, description: Pause a subscription, source_operation: openapi/payjp-openapi.yml#pauseSubscription}
-  - {name: resume_subscription, description: Resume a subscription, source_operation: openapi/payjp-openapi.yml#resumeSubscription}
-  - {name: cancel_subscription, description: Cancel a subscription, source_operation: openapi/payjp-openapi.yml#cancelSubscription}
-  - {name: list_transfers, description: List transfers, source_operation: openapi/payjp-openapi.yml#listTransfers}
-  - {name: retrieve_transfer, description: Retrieve a transfer, source_operation: openapi/payjp-openapi.yml#retrieveTransfer}
-  - {name: list_transfer_details, description: List a transfer's charge details, source_operation: openapi/payjp-openapi.yml#listTransferDetails}
-  - {name: list_statements, description: List statements, source_operation: openapi/payjp-openapi.yml#listStatements}
-  - {name: retrieve_statement, description: Retrieve a statement, source_operation: openapi/payjp-openapi.yml#retrieveStatement}
-  - {name: create_statement_download_url, description: Create a signed statement CSV URL, source_operation: openapi/payjp-openapi.yml#createStatementDownloadUrl}
-  - {name: list_balances, description: List balances, source_operation: openapi/payjp-openapi.yml#listBalances}
-  - {name: retrieve_balance, description: Retrieve a balance, source_operation: openapi/payjp-openapi.yml#retrieveBalance}
-  - {name: list_terms, description: List aggregation terms, source_operation: openapi/payjp-openapi.yml#listTerms}
-  - {name: retrieve_term, description: Retrieve an aggregation term, source_operation: openapi/payjp-openapi.yml#retrieveTerm}
-  - {name: list_events, description: List events, source_operation: openapi/payjp-openapi.yml#listEvents}
-  - {name: retrieve_event, description: Retrieve an event, source_operation: openapi/payjp-openapi.yml#retrieveEvent}
-  - {name: list_three_d_secure_requests, description: List 3DS requests, source_operation: openapi/payjp-openapi.yml#listThreeDSecureRequests}
-  - {name: create_three_d_secure_request, description: Create a 3DS request, source_operation: openapi/payjp-openapi.yml#createThreeDSecureRequest}
-  - {name: retrieve_three_d_secure_request, description: Retrieve a 3DS request, source_operation: openapi/payjp-openapi.yml#retrieveThreeDSecureRequest}
-  - {name: list_tenants, description: List platform tenants, source_operation: openapi/payjp-openapi.yml#listTenants}
-  - {name: create_tenant, description: Create a platform tenant, source_operation: openapi/payjp-openapi.yml#createTenant}
-  - {name: retrieve_tenant, description: Retrieve a tenant, source_operation: openapi/payjp-openapi.yml#retrieveTenant}
-  - {name: update_tenant, description: Update a tenant, source_operation: openapi/payjp-openapi.yml#updateTenant}
-  - {name: delete_tenant, description: Delete a tenant, source_operation: openapi/payjp-openapi.yml#deleteTenant}
-  - {name: list_tenant_transfers, description: List tenant transfers, source_operation: openapi/payjp-openapi.yml#listTenantTransfers}
-  - {name: retrieve_tenant_transfer, description: Retrieve a tenant transfer, source_operation: openapi/payjp-openapi.yml#retrieveTenantTransfer}
-  - {name: retrieve_account, description: Retrieve the merchant account, source_operation: openapi/payjp-openapi.yml#retrieveAccount}
+- name: list_charges
+  description: List charges
+  source_operation: openapi/payjp-openapi.yml#listCharges
+- name: create_charge
+  description: Create a charge
+  source_operation: openapi/payjp-openapi.yml#createCharge
+- name: retrieve_charge
+  description: Retrieve a charge
+  source_operation: openapi/payjp-openapi.yml#retrieveCharge
+- name: update_charge
+  description: Update a charge
+  source_operation: openapi/payjp-openapi.yml#updateCharge
+- name: refund_charge
+  description: Refund a charge
+  source_operation: openapi/payjp-openapi.yml#refundCharge
+- name: capture_charge
+  description: Capture an authorized charge
+  source_operation: openapi/payjp-openapi.yml#captureCharge
+- name: reauth_charge
+  description: Re-authorize a charge
+  source_operation: openapi/payjp-openapi.yml#reauthCharge
+- name: finish_charge_three_d_secure
+  description: Finish 3DS on a charge
+  source_operation: openapi/payjp-openapi.yml#finishChargeThreeDSecure
+- name: list_customers
+  description: List customers
+  source_operation: openapi/payjp-openapi.yml#listCustomers
+- name: create_customer
+  description: Create a customer
+  source_operation: openapi/payjp-openapi.yml#createCustomer
+- name: retrieve_customer
+  description: Retrieve a customer
+  source_operation: openapi/payjp-openapi.yml#retrieveCustomer
+- name: update_customer
+  description: Update a customer
+  source_operation: openapi/payjp-openapi.yml#updateCustomer
+- name: delete_customer
+  description: Delete a customer
+  source_operation: openapi/payjp-openapi.yml#deleteCustomer
+- name: list_customer_cards
+  description: List a customer's cards
+  source_operation: openapi/payjp-openapi.yml#listCustomerCards
+- name: create_customer_card
+  description: Attach a card to a customer
+  source_operation: openapi/payjp-openapi.yml#createCustomerCard
+- name: retrieve_customer_card
+  description: Retrieve a customer card
+  source_operation: openapi/payjp-openapi.yml#retrieveCustomerCard
+- name: update_customer_card
+  description: Update a customer card
+  source_operation: openapi/payjp-openapi.yml#updateCustomerCard
+- name: delete_customer_card
+  description: Delete a customer card
+  source_operation: openapi/payjp-openapi.yml#deleteCustomerCard
+- name: create_token
+  description: Create a single-use card token
+  source_operation: openapi/payjp-openapi.yml#createToken
+- name: retrieve_token
+  description: Retrieve a token
+  source_operation: openapi/payjp-openapi.yml#retrieveToken
+- name: finish_token_three_d_secure
+  description: Finish 3DS on a token
+  source_operation: openapi/payjp-openapi.yml#finishTokenThreeDSecure
+- name: list_plans
+  description: List plans
+  source_operation: openapi/payjp-openapi.yml#listPlans
+- name: create_plan
+  description: Create a plan
+  source_operation: openapi/payjp-openapi.yml#createPlan
+- name: retrieve_plan
+  description: Retrieve a plan
+  source_operation: openapi/payjp-openapi.yml#retrievePlan
+- name: update_plan
+  description: Update a plan
+  source_operation: openapi/payjp-openapi.yml#updatePlan
+- name: delete_plan
+  description: Delete a plan
+  source_operation: openapi/payjp-openapi.yml#deletePlan
+- name: list_subscriptions
+  description: List subscriptions
+  source_operation: openapi/payjp-openapi.yml#listSubscriptions
+- name: create_subscription
+  description: Create a subscription
+  source_operation: openapi/payjp-openapi.yml#createSubscription
+- name: retrieve_subscription
+  description: Retrieve a subscription
+  source_operation: openapi/payjp-openapi.yml#retrieveSubscription
+- name: update_subscription
+  description: Update a subscription
+  source_operation: openapi/payjp-openapi.yml#updateSubscription
+- name: delete_subscription
+  description: Delete a subscription
+  source_operation: openapi/payjp-openapi.yml#deleteSubscription
+- name: pause_subscription
+  description: Pause a subscription
+  source_operation: openapi/payjp-openapi.yml#pauseSubscription
+- name: resume_subscription
+  description: Resume a subscription
+  source_operation: openapi/payjp-openapi.yml#resumeSubscription
+- name: cancel_subscription
+  description: Cancel a subscription
+  source_operation: openapi/payjp-openapi.yml#cancelSubscription
+- name: list_transfers
+  description: List transfers
+  source_operation: openapi/payjp-openapi.yml#listTransfers
+- name: retrieve_transfer
+  description: Retrieve a transfer
+  source_operation: openapi/payjp-openapi.yml#retrieveTransfer
+- name: list_transfer_details
+  description: List a transfer's charge details
+  source_operation: openapi/payjp-openapi.yml#listTransferDetails
+- name: list_statements
+  description: List statements
+  source_operation: openapi/payjp-openapi.yml#listStatements
+- name: retrieve_statement
+  description: Retrieve a statement
+  source_operation: openapi/payjp-openapi.yml#retrieveStatement
+- name: create_statement_download_url
+  description: Create a signed statement CSV URL
+  source_operation: openapi/payjp-openapi.yml#createStatementDownloadUrl
+- name: list_balances
+  description: List balances
+  source_operation: openapi/payjp-openapi.yml#listBalances
+- name: retrieve_balance
+  description: Retrieve a balance
+  source_operation: openapi/payjp-openapi.yml#retrieveBalance
+- name: list_terms
+  description: List aggregation terms
+  source_operation: openapi/payjp-openapi.yml#listTerms
+- name: retrieve_term
+  description: Retrieve an aggregation term
+  source_operation: openapi/payjp-openapi.yml#retrieveTerm
+- name: list_events
+  description: List events
+  source_operation: openapi/payjp-openapi.yml#listEvents
+- name: retrieve_event
+  description: Retrieve an event
+  source_operation: openapi/payjp-openapi.yml#retrieveEvent
+- name: list_three_d_secure_requests
+  description: List 3DS requests
+  source_operation: openapi/payjp-openapi.yml#listThreeDSecureRequests
+- name: create_three_d_secure_request
+  description: Create a 3DS request
+  source_operation: openapi/payjp-openapi.yml#createThreeDSecureRequest
+- name: retrieve_three_d_secure_request
+  description: Retrieve a 3DS request
+  source_operation: openapi/payjp-openapi.yml#retrieveThreeDSecureRequest
+- name: list_tenants
+  description: List platform tenants
+  source_operation: openapi/payjp-openapi.yml#listTenants
+- name: create_tenant
+  description: Create a platform tenant
+  source_operation: openapi/payjp-openapi.yml#createTenant
+- name: retrieve_tenant
+  description: Retrieve a tenant
+  source_operation: openapi/payjp-openapi.yml#retrieveTenant
+- name: update_tenant
+  description: Update a tenant
+  source_operation: openapi/payjp-openapi.yml#updateTenant
+- name: delete_tenant
+  description: Delete a tenant
+  source_operation: openapi/payjp-openapi.yml#deleteTenant
+- name: list_tenant_transfers
+  description: List tenant transfers
+  source_operation: openapi/payjp-openapi.yml#listTenantTransfers
+- name: retrieve_tenant_transfer
+  description: Retrieve a tenant transfer
+  source_operation: openapi/payjp-openapi.yml#retrieveTenantTransfer
+- name: retrieve_account
+  description: Retrieve the merchant account
+  source_operation: openapi/payjp-openapi.yml#retrieveAccount
+deployment:
+  mode: none
+  verified: derived
+  tools: 57
+  checked: '2026-08-12'
+  source: catalog MCP census

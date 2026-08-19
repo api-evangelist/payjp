@@ -1,0 +1,1156 @@
+{
+  "item": [
+    {
+      "id": "26860eb1-3ba6-4c8e-96fa-76c385cf3e7d",
+      "name": "Charges",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ed72c4da-87fb-48f3-9835-bb8d5025d319",
+          "name": "List charges",
+          "request": {
+            "name": "List charges",
+            "description": {},
+            "url": {
+              "path": [
+                "charges"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d6899475-b093-4ef8-adde-1b27a41f70cd",
+              "name": "A paginated list object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "charges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"count\": 9868,\n  \"has_more\": true,\n  \"url\": \"string\",\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"object\": \"string\",\n      \"livemode\": false,\n      \"created\": 4899\n    },\n    {\n      \"id\": \"string\",\n      \"object\": \"string\",\n      \"livemode\": true,\n      \"created\": 2084\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6982995f-2429-4cff-96b2-e505ede3cdd1",
+          "name": "Create a charge",
+          "request": {
+            "name": "Create a charge",
+            "description": {
+              "content": "Create a charge against a card token, a customer, or a stored card. Set capture=false to authorize only and capture later.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "charges"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "amount",
+                  "value": "<integer>",
+                  "description": "(Required) Amount in JPY"
+                },
+                {
+                  "disabled": false,
+                  "key": "currency",
+                  "value": "jpy",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "card",
+                  "value": "<string>",
+                  "description": "A token id (tok_xxx) or card id"
+                },
+                {
+                  "disabled": false,
+                  "key": "customer",
+                  "value": "<string>",
+                  "description": "A customer id (cus_xxx)"
+                },
+                {
+                  "disabled": false,
+                  "key": "capture",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "key": "description",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "key_0",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "key_1",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "key_2",
+                  "value": "string"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "34a5c595-66f9-4d4f-88d8-e1a0de003de6",
+              "name": "A Charge object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "charges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Amount in JPY",
+                        "type": "text/plain"
+                      },
+                      "key": "amount",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "currency",
+                      "value": "jpy"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "A token id (tok_xxx) or card id",
+                        "type": "text/plain"
+                      },
+                      "key": "card",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "A customer id (cus_xxx)",
+                        "type": "text/plain"
+                      },
+                      "key": "customer",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "capture",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_0",
+                      "value": "string"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_1",
+                      "value": "string"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_2",
+                      "value": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ch_xxxxxxxxxxxxxxxx\",\n  \"object\": \"charge\",\n  \"amount\": 3500,\n  \"currency\": \"jpy\",\n  \"paid\": false,\n  \"captured\": false,\n  \"refunded\": true,\n  \"amount_refunded\": 7113,\n  \"customer\": \"string\",\n  \"card\": {\n    \"id\": \"car_xxxxxxxxxxxxxxxx\",\n    \"object\": \"card\",\n    \"brand\": \"Visa\",\n    \"last4\": \"4242\",\n    \"exp_month\": 3161,\n    \"exp_year\": 8367,\n    \"name\": \"string\",\n    \"three_d_secure_status\": \"string\",\n    \"created\": 8227\n  },\n  \"three_d_secure_status\": \"string\",\n  \"created\": 6586,\n  \"livemode\": true,\n  \"metadata\": {\n    \"key_0\": 8492.728047127754,\n    \"key_1\": \"string\",\n    \"key_2\": 6537\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3f17b5fa-6a26-4531-a3bc-1e0c2b989aa0",
+              "name": "An error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "charges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Amount in JPY",
+                        "type": "text/plain"
+                      },
+                      "key": "amount",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "currency",
+                      "value": "jpy"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "A token id (tok_xxx) or card id",
+                        "type": "text/plain"
+                      },
+                      "key": "card",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "A customer id (cus_xxx)",
+                        "type": "text/plain"
+                      },
+                      "key": "customer",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "capture",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_0",
+                      "value": "string"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_1",
+                      "value": "string"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_2",
+                      "value": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"type\": \"client_error\",\n    \"code\": \"over_capacity\",\n    \"message\": \"string\",\n    \"status\": 4635,\n    \"param\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0742314f-e400-4d36-ab39-b9f827d0a060",
+              "name": "An error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "charges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Amount in JPY",
+                        "type": "text/plain"
+                      },
+                      "key": "amount",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "currency",
+                      "value": "jpy"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "A token id (tok_xxx) or card id",
+                        "type": "text/plain"
+                      },
+                      "key": "card",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "A customer id (cus_xxx)",
+                        "type": "text/plain"
+                      },
+                      "key": "customer",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "capture",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_0",
+                      "value": "string"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_1",
+                      "value": "string"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_2",
+                      "value": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"type\": \"client_error\",\n    \"code\": \"over_capacity\",\n    \"message\": \"string\",\n    \"status\": 4635,\n    \"param\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec11fc36-3ad0-4dc9-9124-49ea9df08f2c",
+          "name": "Retrieve a charge",
+          "request": {
+            "name": "Retrieve a charge",
+            "description": {},
+            "url": {
+              "path": [
+                "charges",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b7fd040b-646e-4dcd-a1b3-0d2cf25f16c7",
+              "name": "A Charge object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "charges",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ch_xxxxxxxxxxxxxxxx\",\n  \"object\": \"charge\",\n  \"amount\": 3500,\n  \"currency\": \"jpy\",\n  \"paid\": false,\n  \"captured\": false,\n  \"refunded\": true,\n  \"amount_refunded\": 7113,\n  \"customer\": \"string\",\n  \"card\": {\n    \"id\": \"car_xxxxxxxxxxxxxxxx\",\n    \"object\": \"card\",\n    \"brand\": \"Visa\",\n    \"last4\": \"4242\",\n    \"exp_month\": 3161,\n    \"exp_year\": 8367,\n    \"name\": \"string\",\n    \"three_d_secure_status\": \"string\",\n    \"created\": 8227\n  },\n  \"three_d_secure_status\": \"string\",\n  \"created\": 6586,\n  \"livemode\": true,\n  \"metadata\": {\n    \"key_0\": 8492.728047127754,\n    \"key_1\": \"string\",\n    \"key_2\": 6537\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd43a78f-e3ce-44e3-a468-576612eff8d0",
+          "name": "Update a charge (description / metadata)",
+          "request": {
+            "name": "Update a charge (description / metadata)",
+            "description": {},
+            "url": {
+              "path": [
+                "charges",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "62fc00f9-30fb-41d6-a110-2f5721c5dab4",
+              "name": "A Charge object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "charges",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ch_xxxxxxxxxxxxxxxx\",\n  \"object\": \"charge\",\n  \"amount\": 3500,\n  \"currency\": \"jpy\",\n  \"paid\": false,\n  \"captured\": false,\n  \"refunded\": true,\n  \"amount_refunded\": 7113,\n  \"customer\": \"string\",\n  \"card\": {\n    \"id\": \"car_xxxxxxxxxxxxxxxx\",\n    \"object\": \"card\",\n    \"brand\": \"Visa\",\n    \"last4\": \"4242\",\n    \"exp_month\": 3161,\n    \"exp_year\": 8367,\n    \"name\": \"string\",\n    \"three_d_secure_status\": \"string\",\n    \"created\": 8227\n  },\n  \"three_d_secure_status\": \"string\",\n  \"created\": 6586,\n  \"livemode\": true,\n  \"metadata\": {\n    \"key_0\": 8492.728047127754,\n    \"key_1\": \"string\",\n    \"key_2\": 6537\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f55eaad9-380b-4a80-b85a-9a75718fe22f",
+          "name": "Refund a charge (full or partial)",
+          "request": {
+            "name": "Refund a charge (full or partial)",
+            "description": {},
+            "url": {
+              "path": [
+                "charges",
+                ":id",
+                "refund"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "amount",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "refund_reason",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "820711df-8820-4c80-8422-5541e59e353a",
+              "name": "A Charge object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "charges",
+                    ":id",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "amount",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "refund_reason",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ch_xxxxxxxxxxxxxxxx\",\n  \"object\": \"charge\",\n  \"amount\": 3500,\n  \"currency\": \"jpy\",\n  \"paid\": false,\n  \"captured\": false,\n  \"refunded\": true,\n  \"amount_refunded\": 7113,\n  \"customer\": \"string\",\n  \"card\": {\n    \"id\": \"car_xxxxxxxxxxxxxxxx\",\n    \"object\": \"card\",\n    \"brand\": \"Visa\",\n    \"last4\": \"4242\",\n    \"exp_month\": 3161,\n    \"exp_year\": 8367,\n    \"name\": \"string\",\n    \"three_d_secure_status\": \"string\",\n    \"created\": 8227\n  },\n  \"three_d_secure_status\": \"string\",\n  \"created\": 6586,\n  \"livemode\": true,\n  \"metadata\": {\n    \"key_0\": 8492.728047127754,\n    \"key_1\": \"string\",\n    \"key_2\": 6537\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "65b7b1c0-1952-4639-9c26-0ea0cc186ca6",
+          "name": "Capture a previously authorized charge",
+          "request": {
+            "name": "Capture a previously authorized charge",
+            "description": {},
+            "url": {
+              "path": [
+                "charges",
+                ":id",
+                "capture"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29491ccc-9443-4d4a-b1e0-5ba520e0b078",
+              "name": "A Charge object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "charges",
+                    ":id",
+                    "capture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ch_xxxxxxxxxxxxxxxx\",\n  \"object\": \"charge\",\n  \"amount\": 3500,\n  \"currency\": \"jpy\",\n  \"paid\": false,\n  \"captured\": false,\n  \"refunded\": true,\n  \"amount_refunded\": 7113,\n  \"customer\": \"string\",\n  \"card\": {\n    \"id\": \"car_xxxxxxxxxxxxxxxx\",\n    \"object\": \"card\",\n    \"brand\": \"Visa\",\n    \"last4\": \"4242\",\n    \"exp_month\": 3161,\n    \"exp_year\": 8367,\n    \"name\": \"string\",\n    \"three_d_secure_status\": \"string\",\n    \"created\": 8227\n  },\n  \"three_d_secure_status\": \"string\",\n  \"created\": 6586,\n  \"livemode\": true,\n  \"metadata\": {\n    \"key_0\": 8492.728047127754,\n    \"key_1\": \"string\",\n    \"key_2\": 6537\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fcea7816-504e-4667-85d5-c55103976a9f",
+          "name": "Re-authorize an expiring authorization",
+          "request": {
+            "name": "Re-authorize an expiring authorization",
+            "description": {},
+            "url": {
+              "path": [
+                "charges",
+                ":id",
+                "reauth"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7c2b6538-a882-4b3e-a4df-b1877c02fd6f",
+              "name": "A Charge object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "charges",
+                    ":id",
+                    "reauth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ch_xxxxxxxxxxxxxxxx\",\n  \"object\": \"charge\",\n  \"amount\": 3500,\n  \"currency\": \"jpy\",\n  \"paid\": false,\n  \"captured\": false,\n  \"refunded\": true,\n  \"amount_refunded\": 7113,\n  \"customer\": \"string\",\n  \"card\": {\n    \"id\": \"car_xxxxxxxxxxxxxxxx\",\n    \"object\": \"card\",\n    \"brand\": \"Visa\",\n    \"last4\": \"4242\",\n    \"exp_month\": 3161,\n    \"exp_year\": 8367,\n    \"name\": \"string\",\n    \"three_d_secure_status\": \"string\",\n    \"created\": 8227\n  },\n  \"three_d_secure_status\": \"string\",\n  \"created\": 6586,\n  \"livemode\": true,\n  \"metadata\": {\n    \"key_0\": 8492.728047127754,\n    \"key_1\": \"string\",\n    \"key_2\": 6537\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7b72c4ba-f4af-4126-bf66-728aad20b5d6",
+          "name": "Complete the 3D Secure flow for a charge",
+          "request": {
+            "name": "Complete the 3D Secure flow for a charge",
+            "description": {},
+            "url": {
+              "path": [
+                "charges",
+                ":id",
+                "tds_finish"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d80ed2dd-8876-417e-87ef-9c4cae2d7c05",
+              "name": "A Charge object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "charges",
+                    ":id",
+                    "tds_finish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ch_xxxxxxxxxxxxxxxx\",\n  \"object\": \"charge\",\n  \"amount\": 3500,\n  \"currency\": \"jpy\",\n  \"paid\": false,\n  \"captured\": false,\n  \"refunded\": true,\n  \"amount_refunded\": 7113,\n  \"customer\": \"string\",\n  \"card\": {\n    \"id\": \"car_xxxxxxxxxxxxxxxx\",\n    \"object\": \"card\",\n    \"brand\": \"Visa\",\n    \"last4\": \"4242\",\n    \"exp_month\": 3161,\n    \"exp_year\": 8367,\n    \"name\": \"string\",\n    \"three_d_secure_status\": \"string\",\n    \"created\": 8227\n  },\n  \"three_d_secure_status\": \"string\",\n  \"created\": 6586,\n  \"livemode\": true,\n  \"metadata\": {\n    \"key_0\": 8492.728047127754,\n    \"key_1\": \"string\",\n    \"key_2\": 6537\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pay.jp/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "dc726505-fc04-4d46-a28b-69955d9c864e",
+    "name": "PAY.JP 3D Secure Charges API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "PAY.JP is an online payment service operated by PAY, Inc. (PAY株式会社) in Japan. The REST API creates charges, tokenizes cards, manages customers, runs subscriptions (定期課金), and reports transfers (入金) and balances in Japanese yen. Authentication is HTTP Basic with a secret key (sk_test_ / sk_live_) as the username and an empty password. All amounts are integer JPY.\n\nContact Support:\n Name: PAY.JP Support",
+      "type": "text/plain"
+    }
+  }
+}
