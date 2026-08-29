@@ -6,6 +6,18 @@ description: PAY.JP is an online payment service operated by PAY, Inc. (PAY株�
   in Japan. Its Stripe-style REST API lets merchants create charges, tokenize cards,
   manage customers, run subscriptions (定期課金), and settle transfers (入金) in
   Japanese yen, with a Platform API (beta) for marketplace/multi-tenant payouts.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
