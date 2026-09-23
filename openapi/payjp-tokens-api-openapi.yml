@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: PAY.JP 3D Secure Tokens API
+  title: PAY.JP Tokens API
   description: PAY.JP is an online payment service operated by PAY, Inc. (PAY株式会社) in Japan. The REST API creates charges, tokenizes cards, manages customers, runs subscriptions (定期課金), and reports transfers (入金) and balances in Japanese yen. Authentication is HTTP Basic with a secret key (sk_test_ / sk_live_) as the username and an empty password. All amounts are integer JPY.
   termsOfService: https://pay.jp/terms
   contact:
@@ -63,23 +63,6 @@ paths:
           $ref: '#/components/responses/Token'
 components:
   schemas:
-    Token:
-      type: object
-      properties:
-        id:
-          type: string
-          example: tok_xxxxxxxxxxxxxxxx
-        object:
-          type: string
-          example: token
-        livemode:
-          type: boolean
-        used:
-          type: boolean
-        card:
-          $ref: '#/components/schemas/Card'
-        created:
-          type: integer
     Card:
       type: object
       properties:
@@ -100,20 +83,32 @@ components:
         exp_year:
           type: integer
         name:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         three_d_secure_status:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         created:
           type: integer
-  responses:
     Token:
-      description: A Token object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Token'
+      type: object
+      properties:
+        id:
+          type: string
+          example: tok_xxxxxxxxxxxxxxxx
+        object:
+          type: string
+          example: token
+        livemode:
+          type: boolean
+        used:
+          type: boolean
+        card:
+          $ref: '#/components/schemas/Card'
+        created:
+          type: integer
   parameters:
     id:
       name: id
@@ -121,6 +116,13 @@ components:
       required: true
       schema:
         type: string
+  responses:
+    Token:
+      description: A Token object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Token'
   securitySchemes:
     basicAuth:
       type: http

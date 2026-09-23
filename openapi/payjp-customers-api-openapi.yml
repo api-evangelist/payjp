@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: PAY.JP 3D Secure Customers API
+  title: PAY.JP Customers API
   description: PAY.JP is an online payment service operated by PAY, Inc. (PAY株式会社) in Japan. The REST API creates charges, tokenizes cards, manages customers, runs subscriptions (定期課金), and reports transfers (入金) and balances in Japanese yen. Authentication is HTTP Basic with a secret key (sk_test_ / sk_live_) as the username and an empty password. All amounts are integer JPY.
   termsOfService: https://pay.jp/terms
   contact:
@@ -79,6 +79,54 @@ paths:
         '200':
           $ref: '#/components/responses/Deleted'
 components:
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    offset:
+      name: offset
+      in: query
+      schema:
+        type: integer
+        default: 0
+    limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        default: 10
+        maximum: 100
+  responses:
+    List:
+      description: A paginated list object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/List'
+    Customer:
+      description: A Customer object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Customer'
+    Deleted:
+      description: A deletion confirmation
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+              object:
+                type: string
+                example: charge
+              deleted:
+                type: boolean
+                example: true
   schemas:
     List:
       type: object
@@ -119,14 +167,17 @@ components:
           type: string
           example: customer
         email:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         description:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         default_card:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         cards:
           $ref: '#/components/schemas/List'
         subscriptions:
@@ -135,54 +186,6 @@ components:
           type: integer
         livemode:
           type: boolean
-  responses:
-    Deleted:
-      description: A deletion confirmation
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              id:
-                type: string
-              object:
-                type: string
-                example: charge
-              deleted:
-                type: boolean
-                example: true
-    Customer:
-      description: A Customer object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Customer'
-    List:
-      description: A paginated list object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/List'
-  parameters:
-    id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-    offset:
-      name: offset
-      in: query
-      schema:
-        type: integer
-        default: 0
-    limit:
-      name: limit
-      in: query
-      schema:
-        type: integer
-        default: 10
-        maximum: 100
   securitySchemes:
     basicAuth:
       type: http

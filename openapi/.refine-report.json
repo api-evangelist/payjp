@@ -1,20 +1,7 @@
 {
   "provider": "payjp",
   "sources": [
-    "payjp-3d-secure-api-openapi.yml",
-    "payjp-account-api-openapi.yml",
-    "payjp-balances-api-openapi.yml",
-    "payjp-cards-api-openapi.yml",
-    "payjp-charges-api-openapi.yml",
-    "payjp-customers-api-openapi.yml",
-    "payjp-events-api-openapi.yml",
-    "payjp-plans-api-openapi.yml",
-    "payjp-platform-api-openapi.yml",
-    "payjp-statements-api-openapi.yml",
-    "payjp-subscriptions-api-openapi.yml",
-    "payjp-terms-api-openapi.yml",
-    "payjp-tokens-api-openapi.yml",
-    "payjp-transfers-api-openapi.yml"
+    "_original/payjp-openapi.yml"
   ],
   "outputs": [
     "payjp-3d-secure-api-openapi.yml",
@@ -35,6 +22,25 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "payjp-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "payjp-3d-secure-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payjp-account-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payjp-balances-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payjp-cards-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payjp-charges-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payjp-customers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payjp-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payjp-plans-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payjp-platform-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payjp-statements-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payjp-subscriptions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payjp-terms-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payjp-tokens-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payjp-transfers-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
