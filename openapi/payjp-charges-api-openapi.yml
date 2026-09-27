@@ -148,18 +148,6 @@ paths:
           $ref: '#/components/responses/Charge'
 components:
   parameters:
-    id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-    offset:
-      name: offset
-      in: query
-      schema:
-        type: integer
-        default: 0
     limit:
       name: limit
       in: query
@@ -167,42 +155,19 @@ components:
         type: integer
         default: 10
         maximum: 100
-  responses:
-    List:
-      description: A paginated list object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/List'
-    Charge:
-      description: A Charge object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Charge'
-    Error:
-      description: An error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    offset:
+      name: offset
+      in: query
+      schema:
+        type: integer
+        default: 0
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
   schemas:
-    List:
-      type: object
-      properties:
-        object:
-          type: string
-          example: list
-        count:
-          type: integer
-        has_more:
-          type: boolean
-        url:
-          type: string
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Object'
     Card:
       type: object
       properties:
@@ -232,19 +197,28 @@ components:
           - 'null'
         created:
           type: integer
-    Object:
+    Error:
       type: object
       properties:
-        id:
-          type: string
-        object:
-          type: string
-        livemode:
-          type: boolean
-        created:
-          type: integer
-          description: Unix timestamp
-      additionalProperties: true
+        error:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - client_error
+              - card_error
+              - auth_error
+              - server_error
+            code:
+              type: string
+              example: over_capacity
+            message:
+              type: string
+            status:
+              type: integer
+            param:
+              type: string
     Charge:
       type: object
       properties:
@@ -285,28 +259,54 @@ components:
         metadata:
           type: object
           additionalProperties: true
-    Error:
+    Object:
       type: object
       properties:
-        error:
-          type: object
-          properties:
-            type:
-              type: string
-              enum:
-              - client_error
-              - card_error
-              - auth_error
-              - server_error
-            code:
-              type: string
-              example: over_capacity
-            message:
-              type: string
-            status:
-              type: integer
-            param:
-              type: string
+        id:
+          type: string
+        object:
+          type: string
+        livemode:
+          type: boolean
+        created:
+          type: integer
+          description: Unix timestamp
+      additionalProperties: true
+    List:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        count:
+          type: integer
+        has_more:
+          type: boolean
+        url:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Object'
+  responses:
+    List:
+      description: A paginated list object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/List'
+    Charge:
+      description: A Charge object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Charge'
+    Error:
+      description: An error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

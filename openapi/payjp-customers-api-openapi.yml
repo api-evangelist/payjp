@@ -80,18 +80,6 @@ paths:
           $ref: '#/components/responses/Deleted'
 components:
   parameters:
-    id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-    offset:
-      name: offset
-      in: query
-      schema:
-        type: integer
-        default: 0
     limit:
       name: limit
       in: query
@@ -99,6 +87,18 @@ components:
         type: integer
         default: 10
         maximum: 100
+    offset:
+      name: offset
+      in: query
+      schema:
+        type: integer
+        default: 0
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
   responses:
     List:
       description: A paginated list object
@@ -106,12 +106,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/List'
-    Customer:
-      description: A Customer object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Customer'
     Deleted:
       description: A deletion confirmation
       content:
@@ -127,23 +121,13 @@ components:
               deleted:
                 type: boolean
                 example: true
+    Customer:
+      description: A Customer object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Customer'
   schemas:
-    List:
-      type: object
-      properties:
-        object:
-          type: string
-          example: list
-        count:
-          type: integer
-        has_more:
-          type: boolean
-        url:
-          type: string
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Object'
     Object:
       type: object
       properties:
@@ -186,6 +170,22 @@ components:
           type: integer
         livemode:
           type: boolean
+    List:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        count:
+          type: integer
+        has_more:
+          type: boolean
+        url:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Object'
   securitySchemes:
     basicAuth:
       type: http

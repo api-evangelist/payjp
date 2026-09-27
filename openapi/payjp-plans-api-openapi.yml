@@ -88,13 +88,6 @@ paths:
         '200':
           $ref: '#/components/responses/Deleted'
 components:
-  parameters:
-    id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
   responses:
     List:
       description: A paginated list object
@@ -123,7 +116,27 @@ components:
               deleted:
                 type: boolean
                 example: true
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
   schemas:
+    Object:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        livemode:
+          type: boolean
+        created:
+          type: integer
+          description: Unix timestamp
+      additionalProperties: true
     List:
       type: object
       properties:
@@ -140,19 +153,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Object'
-    Object:
-      type: object
-      properties:
-        id:
-          type: string
-        object:
-          type: string
-        livemode:
-          type: boolean
-        created:
-          type: integer
-          description: Unix timestamp
-      additionalProperties: true
   securitySchemes:
     basicAuth:
       type: http

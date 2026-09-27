@@ -25,13 +25,6 @@ paths:
         '200':
           $ref: '#/components/responses/Object'
 components:
-  responses:
-    Object:
-      description: A PAY.JP resource object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Object'
   schemas:
     Object:
       type: object
@@ -46,6 +39,13 @@ components:
           type: integer
           description: Unix timestamp
       additionalProperties: true
+  responses:
+    Object:
+      description: A PAY.JP resource object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Object'
   securitySchemes:
     basicAuth:
       type: http

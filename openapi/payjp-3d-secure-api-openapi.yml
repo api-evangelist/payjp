@@ -75,56 +75,7 @@ paths:
         '200':
           $ref: '#/components/responses/Object'
 components:
-  parameters:
-    id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-  responses:
-    List:
-      description: A paginated list object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/List'
-    Token:
-      description: A Token object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Token'
-    Charge:
-      description: A Charge object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Charge'
-    Object:
-      description: A PAY.JP resource object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Object'
   schemas:
-    Token:
-      type: object
-      properties:
-        id:
-          type: string
-          example: tok_xxxxxxxxxxxxxxxx
-        object:
-          type: string
-          example: token
-        livemode:
-          type: boolean
-        used:
-          type: boolean
-        card:
-          $ref: '#/components/schemas/Card'
-        created:
-          type: integer
     List:
       type: object
       properties:
@@ -170,19 +121,6 @@ components:
           - 'null'
         created:
           type: integer
-    Object:
-      type: object
-      properties:
-        id:
-          type: string
-        object:
-          type: string
-        livemode:
-          type: boolean
-        created:
-          type: integer
-          description: Unix timestamp
-      additionalProperties: true
     Charge:
       type: object
       properties:
@@ -223,6 +161,68 @@ components:
         metadata:
           type: object
           additionalProperties: true
+    Object:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        livemode:
+          type: boolean
+        created:
+          type: integer
+          description: Unix timestamp
+      additionalProperties: true
+    Token:
+      type: object
+      properties:
+        id:
+          type: string
+          example: tok_xxxxxxxxxxxxxxxx
+        object:
+          type: string
+          example: token
+        livemode:
+          type: boolean
+        used:
+          type: boolean
+        card:
+          $ref: '#/components/schemas/Card'
+        created:
+          type: integer
+  responses:
+    Object:
+      description: A PAY.JP resource object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Object'
+    List:
+      description: A paginated list object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/List'
+    Token:
+      description: A Token object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Token'
+    Charge:
+      description: A Charge object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Charge'
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http
