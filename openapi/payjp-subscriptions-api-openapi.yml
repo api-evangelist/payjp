@@ -111,6 +111,13 @@ paths:
         '200':
           $ref: '#/components/responses/Subscription'
 components:
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
   responses:
     Subscription:
       description: A Subscription object
@@ -139,13 +146,6 @@ components:
               deleted:
                 type: boolean
                 example: true
-  parameters:
-    id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
   schemas:
     Object:
       type: object

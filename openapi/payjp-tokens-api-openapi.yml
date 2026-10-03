@@ -62,6 +62,20 @@ paths:
         '200':
           $ref: '#/components/responses/Token'
 components:
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    Token:
+      description: A Token object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Token'
   schemas:
     Card:
       type: object
@@ -109,20 +123,6 @@ components:
           $ref: '#/components/schemas/Card'
         created:
           type: integer
-  parameters:
-    id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-  responses:
-    Token:
-      description: A Token object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Token'
   securitySchemes:
     basicAuth:
       type: http

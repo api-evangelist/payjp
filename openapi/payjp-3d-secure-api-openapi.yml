@@ -76,22 +76,6 @@ paths:
           $ref: '#/components/responses/Object'
 components:
   schemas:
-    List:
-      type: object
-      properties:
-        object:
-          type: string
-          example: list
-        count:
-          type: integer
-        has_more:
-          type: boolean
-        url:
-          type: string
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Object'
     Card:
       type: object
       properties:
@@ -121,6 +105,52 @@ components:
           - 'null'
         created:
           type: integer
+    Object:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        livemode:
+          type: boolean
+        created:
+          type: integer
+          description: Unix timestamp
+      additionalProperties: true
+    Token:
+      type: object
+      properties:
+        id:
+          type: string
+          example: tok_xxxxxxxxxxxxxxxx
+        object:
+          type: string
+          example: token
+        livemode:
+          type: boolean
+        used:
+          type: boolean
+        card:
+          $ref: '#/components/schemas/Card'
+        created:
+          type: integer
+    List:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        count:
+          type: integer
+        has_more:
+          type: boolean
+        url:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Object'
     Charge:
       type: object
       properties:
@@ -161,49 +191,26 @@ components:
         metadata:
           type: object
           additionalProperties: true
-    Object:
-      type: object
-      properties:
-        id:
-          type: string
-        object:
-          type: string
-        livemode:
-          type: boolean
-        created:
-          type: integer
-          description: Unix timestamp
-      additionalProperties: true
-    Token:
-      type: object
-      properties:
-        id:
-          type: string
-          example: tok_xxxxxxxxxxxxxxxx
-        object:
-          type: string
-          example: token
-        livemode:
-          type: boolean
-        used:
-          type: boolean
-        card:
-          $ref: '#/components/schemas/Card'
-        created:
-          type: integer
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
   responses:
-    Object:
-      description: A PAY.JP resource object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Object'
     List:
       description: A paginated list object
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/List'
+    Object:
+      description: A PAY.JP resource object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Object'
     Token:
       description: A Token object
       content:
@@ -216,13 +223,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Charge'
-  parameters:
-    id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
   securitySchemes:
     basicAuth:
       type: http

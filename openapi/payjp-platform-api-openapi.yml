@@ -80,19 +80,26 @@ paths:
         '200':
           $ref: '#/components/responses/Object'
 components:
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
   responses:
-    Object:
-      description: A PAY.JP resource object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Object'
     List:
       description: A paginated list object
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/List'
+    Object:
+      description: A PAY.JP resource object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Object'
     Deleted:
       description: A deletion confirmation
       content:
@@ -108,13 +115,6 @@ components:
               deleted:
                 type: boolean
                 example: true
-  parameters:
-    id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
   schemas:
     Object:
       type: object

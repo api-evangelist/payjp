@@ -80,13 +80,6 @@ paths:
           $ref: '#/components/responses/Deleted'
 components:
   parameters:
-    limit:
-      name: limit
-      in: query
-      schema:
-        type: integer
-        default: 10
-        maximum: 100
     offset:
       name: offset
       in: query
@@ -99,6 +92,13 @@ components:
       required: true
       schema:
         type: string
+    limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        default: 10
+        maximum: 100
   responses:
     List:
       description: A paginated list object

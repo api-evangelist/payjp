@@ -88,19 +88,26 @@ paths:
         '200':
           $ref: '#/components/responses/Deleted'
 components:
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
   responses:
-    List:
-      description: A paginated list object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/List'
     Plan:
       description: A Plan object
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Object'
+    List:
+      description: A paginated list object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/List'
     Deleted:
       description: A deletion confirmation
       content:
@@ -116,13 +123,6 @@ components:
               deleted:
                 type: boolean
                 example: true
-  parameters:
-    id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
   schemas:
     Object:
       type: object
