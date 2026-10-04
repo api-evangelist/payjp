@@ -337,6 +337,9 @@ apis:
   - type: Documentation
     url: https://pay.jp/docs/platform-payment
 common:
+- type: CapabilityMap
+  url: capabilities/payjp-capability-edges.yml
+  name: PAY.JP Business Capability Map
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/payjp/overview
 - type: AgenticAccess
