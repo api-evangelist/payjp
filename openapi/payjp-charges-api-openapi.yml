@@ -147,87 +147,26 @@ paths:
         '200':
           $ref: '#/components/responses/Charge'
 components:
-  schemas:
-    Card:
-      type: object
-      properties:
-        id:
-          type: string
-          example: car_xxxxxxxxxxxxxxxx
-        object:
-          type: string
-          example: card
-        brand:
-          type: string
-          example: Visa
-        last4:
-          type: string
-          example: '4242'
-        exp_month:
-          type: integer
-        exp_year:
-          type: integer
-        name:
-          type:
-          - string
-          - 'null'
-        three_d_secure_status:
-          type:
-          - string
-          - 'null'
-        created:
-          type: integer
+  responses:
     Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            type:
-              type: string
-              enum:
-              - client_error
-              - card_error
-              - auth_error
-              - server_error
-            code:
-              type: string
-              example: over_capacity
-            message:
-              type: string
-            status:
-              type: integer
-            param:
-              type: string
-    Object:
-      type: object
-      properties:
-        id:
-          type: string
-        object:
-          type: string
-        livemode:
-          type: boolean
-        created:
-          type: integer
-          description: Unix timestamp
-      additionalProperties: true
+      description: An error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     List:
-      type: object
-      properties:
-        object:
-          type: string
-          example: list
-        count:
-          type: integer
-        has_more:
-          type: boolean
-        url:
-          type: string
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Object'
+      description: A paginated list object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/List'
+    Charge:
+      description: A Charge object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Charge'
+  schemas:
     Charge:
       type: object
       properties:
@@ -268,6 +207,86 @@ components:
         metadata:
           type: object
           additionalProperties: true
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - client_error
+              - card_error
+              - auth_error
+              - server_error
+            code:
+              type: string
+              example: over_capacity
+            message:
+              type: string
+            status:
+              type: integer
+            param:
+              type: string
+    List:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        count:
+          type: integer
+        has_more:
+          type: boolean
+        url:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Object'
+    Card:
+      type: object
+      properties:
+        id:
+          type: string
+          example: car_xxxxxxxxxxxxxxxx
+        object:
+          type: string
+          example: card
+        brand:
+          type: string
+          example: Visa
+        last4:
+          type: string
+          example: '4242'
+        exp_month:
+          type: integer
+        exp_year:
+          type: integer
+        name:
+          type:
+          - string
+          - 'null'
+        three_d_secure_status:
+          type:
+          - string
+          - 'null'
+        created:
+          type: integer
+    Object:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        livemode:
+          type: boolean
+        created:
+          type: integer
+          description: Unix timestamp
+      additionalProperties: true
   parameters:
     offset:
       name: offset
@@ -288,25 +307,6 @@ components:
         type: integer
         default: 10
         maximum: 100
-  responses:
-    Error:
-      description: An error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    List:
-      description: A paginated list object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/List'
-    Charge:
-      description: A Charge object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Charge'
   securitySchemes:
     basicAuth:
       type: http

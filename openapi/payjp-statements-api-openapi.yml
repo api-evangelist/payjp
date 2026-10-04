@@ -47,6 +47,19 @@ paths:
         '200':
           $ref: '#/components/responses/Object'
 components:
+  responses:
+    Object:
+      description: A PAY.JP resource object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Object'
+    List:
+      description: A paginated list object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/List'
   parameters:
     id:
       name: id
@@ -54,33 +67,7 @@ components:
       required: true
       schema:
         type: string
-  responses:
-    List:
-      description: A paginated list object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/List'
-    Object:
-      description: A PAY.JP resource object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Object'
   schemas:
-    Object:
-      type: object
-      properties:
-        id:
-          type: string
-        object:
-          type: string
-        livemode:
-          type: boolean
-        created:
-          type: integer
-          description: Unix timestamp
-      additionalProperties: true
     List:
       type: object
       properties:
@@ -97,6 +84,19 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Object'
+    Object:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        livemode:
+          type: boolean
+        created:
+          type: integer
+          description: Unix timestamp
+      additionalProperties: true
   securitySchemes:
     basicAuth:
       type: http

@@ -79,68 +79,7 @@ paths:
         '200':
           $ref: '#/components/responses/Deleted'
 components:
-  parameters:
-    offset:
-      name: offset
-      in: query
-      schema:
-        type: integer
-        default: 0
-    id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-    limit:
-      name: limit
-      in: query
-      schema:
-        type: integer
-        default: 10
-        maximum: 100
-  responses:
-    List:
-      description: A paginated list object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/List'
-    Deleted:
-      description: A deletion confirmation
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              id:
-                type: string
-              object:
-                type: string
-                example: charge
-              deleted:
-                type: boolean
-                example: true
-    Customer:
-      description: A Customer object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Customer'
   schemas:
-    Object:
-      type: object
-      properties:
-        id:
-          type: string
-        object:
-          type: string
-        livemode:
-          type: boolean
-        created:
-          type: integer
-          description: Unix timestamp
-      additionalProperties: true
     Customer:
       type: object
       properties:
@@ -186,6 +125,67 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Object'
+    Object:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        livemode:
+          type: boolean
+        created:
+          type: integer
+          description: Unix timestamp
+      additionalProperties: true
+  responses:
+    Deleted:
+      description: A deletion confirmation
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+              object:
+                type: string
+                example: charge
+              deleted:
+                type: boolean
+                example: true
+    Customer:
+      description: A Customer object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Customer'
+    List:
+      description: A paginated list object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/List'
+  parameters:
+    offset:
+      name: offset
+      in: query
+      schema:
+        type: integer
+        default: 0
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        default: 10
+        maximum: 100
   securitySchemes:
     basicAuth:
       type: http

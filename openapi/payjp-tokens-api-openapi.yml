@@ -62,13 +62,6 @@ paths:
         '200':
           $ref: '#/components/responses/Token'
 components:
-  parameters:
-    id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
   responses:
     Token:
       description: A Token object
@@ -123,6 +116,13 @@ components:
           $ref: '#/components/schemas/Card'
         created:
           type: integer
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http

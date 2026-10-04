@@ -74,26 +74,7 @@ paths:
         '200':
           $ref: '#/components/responses/Deleted'
 components:
-  parameters:
-    card_id:
-      name: card_id
-      in: path
-      required: true
-      schema:
-        type: string
-    id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
   responses:
-    List:
-      description: A paginated list object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/List'
     Deleted:
       description: A deletion confirmation
       content:
@@ -109,26 +90,32 @@ components:
               deleted:
                 type: boolean
                 example: true
+    List:
+      description: A paginated list object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/List'
     Card:
       description: A Card object
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Card'
+  parameters:
+    card_id:
+      name: card_id
+      in: path
+      required: true
+      schema:
+        type: string
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
   schemas:
-    Object:
-      type: object
-      properties:
-        id:
-          type: string
-        object:
-          type: string
-        livemode:
-          type: boolean
-        created:
-          type: integer
-          description: Unix timestamp
-      additionalProperties: true
     List:
       type: object
       properties:
@@ -174,6 +161,19 @@ components:
           - 'null'
         created:
           type: integer
+    Object:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        livemode:
+          type: boolean
+        created:
+          type: integer
+          description: Unix timestamp
+      additionalProperties: true
   securitySchemes:
     basicAuth:
       type: http

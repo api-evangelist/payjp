@@ -75,7 +75,105 @@ paths:
         '200':
           $ref: '#/components/responses/Object'
 components:
+  responses:
+    Token:
+      description: A Token object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Token'
+    Object:
+      description: A PAY.JP resource object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Object'
+    List:
+      description: A paginated list object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/List'
+    Charge:
+      description: A Charge object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Charge'
   schemas:
+    Token:
+      type: object
+      properties:
+        id:
+          type: string
+          example: tok_xxxxxxxxxxxxxxxx
+        object:
+          type: string
+          example: token
+        livemode:
+          type: boolean
+        used:
+          type: boolean
+        card:
+          $ref: '#/components/schemas/Card'
+        created:
+          type: integer
+    Charge:
+      type: object
+      properties:
+        id:
+          type: string
+          example: ch_xxxxxxxxxxxxxxxx
+        object:
+          type: string
+          example: charge
+        amount:
+          type: integer
+          example: 3500
+        currency:
+          type: string
+          example: jpy
+        paid:
+          type: boolean
+        captured:
+          type: boolean
+        refunded:
+          type: boolean
+        amount_refunded:
+          type: integer
+        customer:
+          type:
+          - string
+          - 'null'
+        card:
+          $ref: '#/components/schemas/Card'
+        three_d_secure_status:
+          type:
+          - string
+          - 'null'
+        created:
+          type: integer
+        livemode:
+          type: boolean
+        metadata:
+          type: object
+          additionalProperties: true
+    List:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        count:
+          type: integer
+        has_more:
+          type: boolean
+        url:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Object'
     Card:
       type: object
       properties:
@@ -118,79 +216,6 @@ components:
           type: integer
           description: Unix timestamp
       additionalProperties: true
-    Token:
-      type: object
-      properties:
-        id:
-          type: string
-          example: tok_xxxxxxxxxxxxxxxx
-        object:
-          type: string
-          example: token
-        livemode:
-          type: boolean
-        used:
-          type: boolean
-        card:
-          $ref: '#/components/schemas/Card'
-        created:
-          type: integer
-    List:
-      type: object
-      properties:
-        object:
-          type: string
-          example: list
-        count:
-          type: integer
-        has_more:
-          type: boolean
-        url:
-          type: string
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Object'
-    Charge:
-      type: object
-      properties:
-        id:
-          type: string
-          example: ch_xxxxxxxxxxxxxxxx
-        object:
-          type: string
-          example: charge
-        amount:
-          type: integer
-          example: 3500
-        currency:
-          type: string
-          example: jpy
-        paid:
-          type: boolean
-        captured:
-          type: boolean
-        refunded:
-          type: boolean
-        amount_refunded:
-          type: integer
-        customer:
-          type:
-          - string
-          - 'null'
-        card:
-          $ref: '#/components/schemas/Card'
-        three_d_secure_status:
-          type:
-          - string
-          - 'null'
-        created:
-          type: integer
-        livemode:
-          type: boolean
-        metadata:
-          type: object
-          additionalProperties: true
   parameters:
     id:
       name: id
@@ -198,31 +223,6 @@ components:
       required: true
       schema:
         type: string
-  responses:
-    List:
-      description: A paginated list object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/List'
-    Object:
-      description: A PAY.JP resource object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Object'
-    Token:
-      description: A Token object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Token'
-    Charge:
-      description: A Charge object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Charge'
   securitySchemes:
     basicAuth:
       type: http

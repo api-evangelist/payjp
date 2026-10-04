@@ -111,26 +111,7 @@ paths:
         '200':
           $ref: '#/components/responses/Subscription'
 components:
-  parameters:
-    id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
   responses:
-    Subscription:
-      description: A Subscription object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Object'
-    List:
-      description: A paginated list object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/List'
     Deleted:
       description: A deletion confirmation
       content:
@@ -146,20 +127,26 @@ components:
               deleted:
                 type: boolean
                 example: true
+    Subscription:
+      description: A Subscription object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Object'
+    List:
+      description: A paginated list object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/List'
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
   schemas:
-    Object:
-      type: object
-      properties:
-        id:
-          type: string
-        object:
-          type: string
-        livemode:
-          type: boolean
-        created:
-          type: integer
-          description: Unix timestamp
-      additionalProperties: true
     List:
       type: object
       properties:
@@ -176,6 +163,19 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Object'
+    Object:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        livemode:
+          type: boolean
+        created:
+          type: integer
+          description: Unix timestamp
+      additionalProperties: true
   securitySchemes:
     basicAuth:
       type: http
