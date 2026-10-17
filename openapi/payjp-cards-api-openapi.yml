@@ -75,6 +75,12 @@ paths:
           $ref: '#/components/responses/Deleted'
 components:
   responses:
+    Card:
+      description: A Card object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Card'
     Deleted:
       description: A deletion confirmation
       content:
@@ -96,42 +102,7 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/List'
-    Card:
-      description: A Card object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Card'
-  parameters:
-    card_id:
-      name: card_id
-      in: path
-      required: true
-      schema:
-        type: string
-    id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
   schemas:
-    List:
-      type: object
-      properties:
-        object:
-          type: string
-          example: list
-        count:
-          type: integer
-        has_more:
-          type: boolean
-        url:
-          type: string
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Object'
     Card:
       type: object
       properties:
@@ -161,6 +132,22 @@ components:
           - 'null'
         created:
           type: integer
+    List:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        count:
+          type: integer
+        has_more:
+          type: boolean
+        url:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Object'
     Object:
       type: object
       properties:
@@ -174,6 +161,19 @@ components:
           type: integer
           description: Unix timestamp
       additionalProperties: true
+  parameters:
+    card_id:
+      name: card_id
+      in: path
+      required: true
+      schema:
+        type: string
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http

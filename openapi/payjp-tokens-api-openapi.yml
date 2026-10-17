@@ -62,14 +62,24 @@ paths:
         '200':
           $ref: '#/components/responses/Token'
 components:
-  responses:
-    Token:
-      description: A Token object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Token'
   schemas:
+    Token:
+      type: object
+      properties:
+        id:
+          type: string
+          example: tok_xxxxxxxxxxxxxxxx
+        object:
+          type: string
+          example: token
+        livemode:
+          type: boolean
+        used:
+          type: boolean
+        card:
+          $ref: '#/components/schemas/Card'
+        created:
+          type: integer
     Card:
       type: object
       properties:
@@ -99,23 +109,6 @@ components:
           - 'null'
         created:
           type: integer
-    Token:
-      type: object
-      properties:
-        id:
-          type: string
-          example: tok_xxxxxxxxxxxxxxxx
-        object:
-          type: string
-          example: token
-        livemode:
-          type: boolean
-        used:
-          type: boolean
-        card:
-          $ref: '#/components/schemas/Card'
-        created:
-          type: integer
   parameters:
     id:
       name: id
@@ -123,6 +116,13 @@ components:
       required: true
       schema:
         type: string
+  responses:
+    Token:
+      description: A Token object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Token'
   securitySchemes:
     basicAuth:
       type: http
