@@ -1,4 +1,4 @@
-# PAY.JP (payjp)
+# PAY.JP
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,277 +66,197 @@
 
 PAY.JP is an online payment service operated by PAY, Inc. (PAY株式会社) in Japan. Its Stripe-style REST API lets merchants create charges, tokenize cards, manage customers, run subscriptions (定期課金), and settle transfers (入金) in Japanese yen, with a Platform API (beta) for marketplace/multi-tenant payouts.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/payjp/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/payjp/refs/heads/main/apis.yml)
+**Areas:** Payments · Fintech · Japan · Credit Cards · Subscription · Tokenization
+
+## PAY.JP on APIs.io
+
+Everything profiled for PAY.JP is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/payjp/](https://apis.io/providers/payjp/)** — or go straight to one of the APIs or properties below.
+
+### APIs (14)
+
+- [PAY.JP 3D Secure API](https://apis.io/apis/payjp/payjp-3d-secure-api/) — The 3D Secure API from PAY.JP — 4 operation(s) for 3d secure.
+- [PAY.JP Account API](https://apis.io/apis/payjp/payjp-account-api/) — The Account API from PAY.JP — 1 operation(s) for account.
+- [PAY.JP Balances API](https://apis.io/apis/payjp/payjp-balances-api/) — The Balances API from PAY.JP — 2 operation(s) for balances.
+- [PAY.JP Cards API](https://apis.io/apis/payjp/payjp-cards-api/) — The Cards API from PAY.JP — 2 operation(s) for cards.
+- [PAY.JP Charges API](https://apis.io/apis/payjp/payjp-charges-api/) — The Charges API from PAY.JP — 6 operation(s) for charges.
+- [PAY.JP Customers API](https://apis.io/apis/payjp/payjp-customers-api/) — The Customers API from PAY.JP — 2 operation(s) for customers.
+- [PAY.JP Events API](https://apis.io/apis/payjp/payjp-events-api/) — The Events API from PAY.JP — 2 operation(s) for events.
+- [PAY.JP Plans API](https://apis.io/apis/payjp/payjp-plans-api/) — The Plans API from PAY.JP — 2 operation(s) for plans.
+- [PAY.JP Platform API](https://apis.io/apis/payjp/payjp-platform-api/) — The Platform API from PAY.JP — 4 operation(s) for platform.
+- [PAY.JP Statements API](https://apis.io/apis/payjp/payjp-statements-api/) — The Statements API from PAY.JP — 3 operation(s) for statements.
+- [PAY.JP Subscriptions API](https://apis.io/apis/payjp/payjp-subscriptions-api/) — The Subscriptions API from PAY.JP — 5 operation(s) for subscriptions.
+- [PAY.JP Terms API](https://apis.io/apis/payjp/payjp-terms-api/) — The Terms API from PAY.JP — 2 operation(s) for terms.
+- [PAY.JP Tokens API](https://apis.io/apis/payjp/payjp-tokens-api/) — The Tokens API from PAY.JP — 3 operation(s) for tokens.
+- [PAY.JP Transfers API](https://apis.io/apis/payjp/payjp-transfers-api/) — The Transfers API from PAY.JP — 3 operation(s) for transfers.
 
-## Tags
+### Published properties
 
-- Payments
-- FinTech
-- Japan
-- Credit Cards
-- Subscriptions
-- Tokenization
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## Timestamps
+#### AsyncAPI (1)
 
-- **Created:** 2026-07-17
-- **Modified:** 2026-07-17
+Event-driven and webhook contracts.
 
-## APIs
+- [Payjp Webhooks](https://apis.io/asyncapis/payjp/payjp-webhooks/)
 
-### PAY.JP Charges API
+#### MCP servers (1)
 
-Create, retrieve, list, update, capture, re-authorize, and refund one-time and subscription charges in JPY, including two-step (auth/capture) and 3D Secure (tds_finish) flows.
+Model Context Protocol servers that expose the API to agents.
 
-- **Human URL:** [https://docs.pay.jp/v1/api/](https://docs.pay.jp/v1/api/)
-- **Base URL:** `https://api.pay.jp/v1`
+- [payjp](https://apis.io/servers/payjp/payjp/)
 
-#### Tags
+#### Agentic access (1)
 
-- Charges
-- Payments
-- Refunds
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Properties
+- [Payjp Agentic Access](https://apis.io/agentic-access/payjp/payjp-agentic-access/)
 
-- [Documentation](https://pay.jp/docs/charge)
-- [API Reference](https://docs.pay.jp/v1/api/)
-- [OpenAPI](openapi/payjp-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/payjp.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+#### Collections (28)
 
-### PAY.JP Customers API
+Postman and Open Collection request collections.
 
-Create, retrieve, list, update, and delete customer records that store tokenized cards for recurring and one-click billing.
+- [PAY.JP 3D Secure API](https://apis.io/collections/payjp/open-payjp-3d-secure-api/)
+- [PAY.JP 3D Secure Account API](https://apis.io/collections/payjp/open-payjp-account-api/)
+- [PAY.JP 3D Secure Balances API](https://apis.io/collections/payjp/open-payjp-balances-api/)
+- [PAY.JP 3D Secure Cards API](https://apis.io/collections/payjp/open-payjp-cards-api/)
+- [PAY.JP 3D Secure Charges API](https://apis.io/collections/payjp/open-payjp-charges-api/)
+- [PAY.JP 3D Secure Customers API](https://apis.io/collections/payjp/open-payjp-customers-api/)
+- [PAY.JP 3D Secure Events API](https://apis.io/collections/payjp/open-payjp-events-api/)
+- [PAY.JP 3D Secure Plans API](https://apis.io/collections/payjp/open-payjp-plans-api/)
+- [PAY.JP 3D Secure Platform API](https://apis.io/collections/payjp/open-payjp-platform-api/)
+- [PAY.JP 3D Secure Statements API](https://apis.io/collections/payjp/open-payjp-statements-api/)
+- [PAY.JP 3D Secure Subscriptions API](https://apis.io/collections/payjp/open-payjp-subscriptions-api/)
+- [PAY.JP 3D Secure Terms API](https://apis.io/collections/payjp/open-payjp-terms-api/)
+- [PAY.JP 3D Secure Tokens API](https://apis.io/collections/payjp/open-payjp-tokens-api/)
+- [PAY.JP 3D Secure Transfers API](https://apis.io/collections/payjp/open-payjp-transfers-api/)
+- [PAY.JP 3D Secure API](https://apis.io/collections/payjp/postman-payjp-3d-secure-api/)
+- [PAY.JP 3D Secure Account API](https://apis.io/collections/payjp/postman-payjp-account-api/)
+- [PAY.JP 3D Secure Balances API](https://apis.io/collections/payjp/postman-payjp-balances-api/)
+- [PAY.JP 3D Secure Cards API](https://apis.io/collections/payjp/postman-payjp-cards-api/)
+- [PAY.JP 3D Secure Charges API](https://apis.io/collections/payjp/postman-payjp-charges-api/)
+- [PAY.JP 3D Secure Customers API](https://apis.io/collections/payjp/postman-payjp-customers-api/)
+- [PAY.JP 3D Secure Events API](https://apis.io/collections/payjp/postman-payjp-events-api/)
+- [PAY.JP 3D Secure Plans API](https://apis.io/collections/payjp/postman-payjp-plans-api/)
+- [PAY.JP 3D Secure Platform API](https://apis.io/collections/payjp/postman-payjp-platform-api/)
+- [PAY.JP 3D Secure Statements API](https://apis.io/collections/payjp/postman-payjp-statements-api/)
+- [PAY.JP 3D Secure Subscriptions API](https://apis.io/collections/payjp/postman-payjp-subscriptions-api/)
+- …and 3 more published on APIs.io
 
-- **Human URL:** [https://docs.pay.jp/v1/customer](https://docs.pay.jp/v1/customer)
-- **Base URL:** `https://api.pay.jp/v1`
+#### Overlays (15)
 
-#### Tags
+OpenAPI overlays, including conversational phrasing for each operation.
 
-- Customers
-- Billing
+- [Payjp 3D Secure Api Phrasing Overlay](https://apis.io/overlays/payjp/payjp-3d-secure-api-phrasing-overlay/)
+- [Payjp Account Api Phrasing Overlay](https://apis.io/overlays/payjp/payjp-account-api-phrasing-overlay/)
+- [Payjp Balances Api Phrasing Overlay](https://apis.io/overlays/payjp/payjp-balances-api-phrasing-overlay/)
+- [Payjp Cards Api Phrasing Overlay](https://apis.io/overlays/payjp/payjp-cards-api-phrasing-overlay/)
+- [Payjp Charges Api Phrasing Overlay](https://apis.io/overlays/payjp/payjp-charges-api-phrasing-overlay/)
+- [Payjp Customers Api Phrasing Overlay](https://apis.io/overlays/payjp/payjp-customers-api-phrasing-overlay/)
+- [Payjp Events Api Phrasing Overlay](https://apis.io/overlays/payjp/payjp-events-api-phrasing-overlay/)
+- [Payjp Openapi Overlay](https://apis.io/overlays/payjp/payjp-openapi-overlay/)
+- [Payjp Plans Api Phrasing Overlay](https://apis.io/overlays/payjp/payjp-plans-api-phrasing-overlay/)
+- [Payjp Platform Api Phrasing Overlay](https://apis.io/overlays/payjp/payjp-platform-api-phrasing-overlay/)
+- [Payjp Statements Api Phrasing Overlay](https://apis.io/overlays/payjp/payjp-statements-api-phrasing-overlay/)
+- [Payjp Subscriptions Api Phrasing Overlay](https://apis.io/overlays/payjp/payjp-subscriptions-api-phrasing-overlay/)
+- [Payjp Terms Api Phrasing Overlay](https://apis.io/overlays/payjp/payjp-terms-api-phrasing-overlay/)
+- [Payjp Tokens Api Phrasing Overlay](https://apis.io/overlays/payjp/payjp-tokens-api-phrasing-overlay/)
+- [Payjp Transfers Api Phrasing Overlay](https://apis.io/overlays/payjp/payjp-transfers-api-phrasing-overlay/)
 
-#### Properties
+#### Security (4)
 
-- [Documentation](https://docs.pay.jp/v1/customer)
-- [API Reference](https://docs.pay.jp/v1/api/)
-- [OpenAPI](openapi/payjp-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/payjp.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+Authentication, trust centre, and vulnerability disclosure.
 
-### PAY.JP Cards API
+- [Payjp Authentication](https://apis.io/security/payjp/payjp-authentication/)
+- [Payjp Domain Security](https://apis.io/security/payjp/payjp-domain-security/)
+- [Payjp Trust Center](https://apis.io/security/payjp/payjp-trust-center/)
+- [Payjp Vulnerability Disclosure](https://apis.io/security/payjp/payjp-vulnerability-disclosure/)
 
-Attach, list, retrieve, update, and delete stored credit cards on a customer, keeping raw PANs out of the merchant environment.
+#### Plans and pricing (1)
 
-- **Human URL:** [https://docs.pay.jp/v1/api/](https://docs.pay.jp/v1/api/)
-- **Base URL:** `https://api.pay.jp/v1`
+Published plans, tiers and prices.
 
-#### Tags
+- [Payjp Plans Pricing](https://apis.io/plans/payjp/payjp-plans-pricing/)
 
-- Cards
-- Vault
+#### Rate limits (1)
 
-#### Properties
+Published request limits.
 
-- [API Reference](https://docs.pay.jp/v1/api/)
-- [OpenAPI](openapi/payjp-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/payjp.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Payjp Rate Limits](https://apis.io/rate-limits/payjp/payjp-rate-limits/)
 
-### PAY.JP Tokens API
+#### FinOps (1)
 
-Single-use card tokens created with the publishable key (typically via payjp.js / Checkout) and exchanged server-side for charges or customer cards, with a tds_finish step for 3D Secure.
+What the API costs to run, by operation.
 
-- **Human URL:** [https://docs.pay.jp/v1/api/](https://docs.pay.jp/v1/api/)
-- **Base URL:** `https://api.pay.jp/v1`
+- [Payjp Finops](https://apis.io/finops/payjp/payjp-finops/)
 
-#### Tags
+## Where to find this API
 
-- Tokens
-- Tokenization
-- Client Side
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-#### Properties
-
-- [API Reference](https://docs.pay.jp/v1/api/)
-- [OpenAPI](openapi/payjp-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/payjp.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-
-### PAY.JP Plans API
-
-Define recurring billing plans (amount, currency, interval, trial, billing day) that subscriptions attach to.
-
-- **Human URL:** [https://docs.pay.jp/v1/api/](https://docs.pay.jp/v1/api/)
-- **Base URL:** `https://api.pay.jp/v1`
-
-#### Tags
-
-- Plans
-- Recurring
-
-#### Properties
-
-- [API Reference](https://docs.pay.jp/v1/api/)
-- [OpenAPI](openapi/payjp-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/payjp.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-
-### PAY.JP Subscriptions API
-
-Recurring billing (定期課金 / teiki kakin) that links a customer to a plan, with pause, resume, cancel, update, and delete lifecycle operations.
-
-- **Human URL:** [https://docs.pay.jp/v1/subscription](https://docs.pay.jp/v1/subscription)
-- **Base URL:** `https://api.pay.jp/v1`
-
-#### Tags
-
-- Subscriptions
-- Teiki Kakin
-- Recurring
-
-#### Properties
-
-- [Documentation](https://docs.pay.jp/v1/subscription)
-- [API Reference](https://docs.pay.jp/v1/api/)
-- [OpenAPI](openapi/payjp-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/payjp.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-
-### PAY.JP Transfers API
-
-Read-only access to payouts (入金 / nyukin) settled to the merchant bank account, including per-transfer charge details.
-
-- **Human URL:** [https://docs.pay.jp/v1/api/](https://docs.pay.jp/v1/api/)
-- **Base URL:** `https://api.pay.jp/v1`
-
-#### Tags
-
-- Transfers
-- Nyukin
-- Payouts
-
-#### Properties
-
-- [API Reference](https://docs.pay.jp/v1/api/)
-- [OpenAPI](openapi/payjp-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/payjp.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-
-### PAY.JP Statements & Balances API
-
-Transaction statements (取引明細), aggregation terms (集計区間), and account balances (残高), with signed CSV download URLs for reconciliation.
-
-- **Human URL:** [https://docs.pay.jp/v1/api/](https://docs.pay.jp/v1/api/)
-- **Base URL:** `https://api.pay.jp/v1`
-
-#### Tags
-
-- Statements
-- Balances
-- Reporting
-
-#### Properties
-
-- [API Reference](https://docs.pay.jp/v1/api/)
-- [OpenAPI](openapi/payjp-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/payjp.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-
-### PAY.JP Events & Webhooks API
-
-List and retrieve system Event objects that back the webhook system, letting merchants react asynchronously to charge, customer, and subscription changes.
-
-- **Human URL:** [https://docs.pay.jp/v1/api/](https://docs.pay.jp/v1/api/)
-- **Base URL:** `https://api.pay.jp/v1`
-
-#### Tags
-
-- Events
-- Webhooks
-
-#### Properties
-
-- [API Reference](https://docs.pay.jp/v1/api/)
-- [OpenAPI](openapi/payjp-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/payjp.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-
-### PAY.JP 3D Secure API
-
-Create and inspect 3D Secure requests to add cardholder authentication (EMV 3DS) to charges and stored cards.
-
-- **Human URL:** [https://docs.pay.jp/v1/api/](https://docs.pay.jp/v1/api/)
-- **Base URL:** `https://api.pay.jp/v1`
-
-#### Tags
-
-- 3D Secure
-- EMV 3DS
-- Authentication
-
-#### Properties
-
-- [API Reference](https://docs.pay.jp/v1/api/)
-- [OpenAPI](openapi/payjp-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/payjp.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-
-### PAY.JP Platform API (Tenants)
-
-Beta marketplace API to onboard and manage sub-merchant tenants and their transfers, enabling split payouts on a PAY.JP platform account.
-
-- **Human URL:** [https://pay.jp/docs/platform-payment](https://pay.jp/docs/platform-payment)
-- **Base URL:** `https://api.pay.jp/v1`
-
-#### Tags
-
-- Platform
-- Marketplace
-- Multi Tenant
-
-#### Properties
-
-- [Documentation](https://pay.jp/docs/platform-payment)
-- [API Reference](https://docs.pay.jp/v1/api/)
-- [OpenAPI](openapi/payjp-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/payjp.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-
-### PAY.JP Account API
-
-Retrieve the authenticated merchant account, including merchant and customer sub-objects and API key metadata.
-
-- **Human URL:** [https://docs.pay.jp/v1/api/](https://docs.pay.jp/v1/api/)
-- **Base URL:** `https://api.pay.jp/v1`
-
-#### Tags
-
-- Account
-- Merchant
-
-#### Properties
-
-- [API Reference](https://docs.pay.jp/v1/api/)
-- [OpenAPI](openapi/payjp-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/payjp.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-
-## Common Properties
-
-- [Authentication](authentication/payjp-authentication.yml)
-- [Domain Security](security/payjp-domain-security.yml)
-- [Trust Center](security/payjp-trust-center.yml)
-- [Vulnerability Disclosure](security/payjp-vulnerability-disclosure.yml)
-- [Agentic Access](agentic-access/payjp-agentic-access.yml)
-- [GitHub Organization](https://github.com/payjp)
 - [Website](https://pay.jp/)
 - [Documentation](https://docs.pay.jp/v1/)
-- [Plans](plans/payjp-plans-pricing.yml)
-- [Rate Limits](rate-limits/payjp-rate-limits.yml)
-- [Fin Ops](finops/payjp-finops.yml)
+- [Getting started](https://docs.pay.jp/v1/started)
+- [Pricing](https://pay.jp/plan)
+- [Sign up](https://console.pay.jp/d/signup)
+- [Support](https://help.pay.jp/ja)
 - [Blog](https://pay.jp/info)
+- [Compliance](https://pay.jp/security)
+- [Terms of service](https://pay.jp/legal/tos)
+- [Privacy policy](https://pay.co.jp/privacy)
+- [GitHub](https://github.com/payjp)
+- [Status](https://status.pay.jp)
 
-## Authentication
+## API Evangelist rating
 
-PAY.JP uses HTTP Basic authentication: send your **secret key** (`sk_test_…` / `sk_live_…`) as the Basic username with an empty password. Client-side card tokenization (payjp.js / Checkout) uses the **publishable key** (`pk_test_…` / `pk_live_…`), which can only create tokens. The API is HTTPS-only, JPY-only, and returns HTTP 429 with an `over_capacity` error when per-second rate limits are exceeded.
+**Kin Score 63.8** — strong · rubric 0.25.0 · scored 2026-10-23
 
-## Notes
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 55.2 |
+| Contract governance | 18.2 |
+| Operational transparency | 68.4 |
+| Developer ergonomics | 74.4 |
+| Access clarity | 68.4 |
 
-- **Operator:** PAY, Inc. (PAY株式会社), Japan.
-- **No official OpenAPI:** PAY.JP publishes language SDKs (Ruby, PHP, Node, Python, Go, iOS, Android, Flutter, React Native) but no first-party OpenAPI/Swagger file; the OpenAPI here is modeled from the public REST reference.
-- **No WebSocket API:** asynchronous notifications are delivered via outbound HTTP webhooks (Event objects), not WebSocket or SSE — see [review.yml](review.yml).
+**Agent readiness 31.6** — agent-ready
 
-## Maintainers
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | paginated |
+| Operation Distinctiveness | distinct |
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Regulatory alignment 44.6** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/payjp/](https://apis.io/providers/payjp/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for PAY.JP: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/payjp/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
